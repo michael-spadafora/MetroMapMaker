@@ -1,11 +1,13 @@
 package gui;
 
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.SplitPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -20,7 +22,7 @@ import static djf.settings.AppStartupConstants.PATH_IMAGES;
 public class WelcomeDialogSingleton extends Stage {
     static WelcomeDialogSingleton singleton = null;
 
-    SplitPane splitPane;
+    HBox splitPane;
     VBox recentPane;
     VBox rightPane;
     final Label recentLabel = new Label( "Recent Work");
@@ -61,11 +63,14 @@ public class WelcomeDialogSingleton extends Stage {
 
         recentWorks = new ArrayList<Button>();
 
-        splitPane = new SplitPane();
+        splitPane = new HBox();
         recentPane = new VBox();
         rightPane = new VBox();
+        rightPane.setAlignment(Pos.CENTER);
         imageView = new ImageView(logoURL);
         recentPane.getChildren().add(recentLabel);
+
+
 
         newButton = new Button("Create new map");
 
@@ -81,8 +86,8 @@ public class WelcomeDialogSingleton extends Stage {
         rightPane.getChildren().add(newButton);
 
 
-        splitPane.getItems().add(recentPane);
-        splitPane.getItems().add(rightPane);
+        splitPane.getChildren().add(recentPane);
+        splitPane.getChildren().add(rightPane);
         messageScene = new Scene(splitPane);
         this.setScene(messageScene);
 

@@ -16,16 +16,16 @@
 .edit_toolbar_row {
     -fx-padding: 0px;
     -fx-spacing: 10;
-    -fx-background-color: #ddddff;
+    -fx-background-color: #000000;
     -fx-background-radius: 5.0;
     -fx-padding: 15;
     -fx-spacing: 10;
     -fx-border-width: 2px;
-    -fx-border-color: #7777dd;
+    -fx-border-color: #000000;
 }
 
 .color_chooser_pane {
-    -fx-background-color:seashell;
+    -fx-background-color:black;
     -fx-padding: 0px;
 }
 
@@ -35,11 +35,15 @@
 }
 
 .bordered_pane {
-    -fx-background-color: #aaaaff;
+    -fx-background-color: #6d84b4;
     -fx-background-radius: 5.0;
 
-    -fx-padding: 15;
-    -fx-spacing: 10;
+    -fx-padding: 5;
+    -fx-spacing: 0;
     -fx-border-width: 3px;
-    -fx-border-color: #7777dd;
+    -fx-border-color: #3b5998;
+}
+
+.file_button{
+    -fx-background-color: white;
 }
