@@ -9,6 +9,7 @@ import gui.mmmWorkspace;
 import javafx.stage.Stage;
 import properties_manager.PropertiesManager;
 import static djf.settings.AppPropertyType.*;
+import static djf.settings.AppStartupConstants.APP_PROPERTIES_FILE_NAME;
 
 import java.util.Locale;
 
@@ -44,12 +45,16 @@ public class MetroMapMakerApp extends AppTemplate{
         yesNoDialog.init(primaryStage);
         PropertiesManager props = PropertiesManager.getPropertiesManager();
         WelcomeDialogSingleton welc = WelcomeDialogSingleton.getSingleton();
-        welc.init();
+        welc.init(primaryStage);
+        //welc.showAndWait();
 
         try {
             // LOAD APP PROPERTIES, BOTH THE BASIC UI STUFF FOR THE FRAMEWORK
             // AND THE CUSTOM UI STUFF FOR THE WORKSPACE
             boolean success = loadProperties(APP_PROPERTIES_FILE_NAME);
+            if (!success){
+                throw new Exception();
+            }
 
             if (success) {
                 // GET THE TITLE FROM THE XML FILE
@@ -66,9 +71,10 @@ public class MetroMapMakerApp extends AppTemplate{
                 // NOW OPEN UP THE WINDOW
                 primaryStage.show();
             }
+
         }catch (Exception e) {
             AppMessageDialogSingleton dialog = AppMessageDialogSingleton.getSingleton();
-            dialog.show(props.getProperty(PROPERTIES_LOAD_ERROR_TITLE), props.getProperty(PROPERTIES_LOAD_ERROR_MESSAGE));
+            dialog.show("error loading", "Error loading");
         }
     }
 }
