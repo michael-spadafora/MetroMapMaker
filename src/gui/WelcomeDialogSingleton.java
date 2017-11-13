@@ -35,8 +35,11 @@ public class WelcomeDialogSingleton extends Stage {
     Scene messageScene;
     Button newButton;
     private boolean willMakeNew = false;
+    private boolean loadedFile = false;
 
-
+    public boolean isLoadedFile() {
+        return loadedFile;
+    }
 
     public static WelcomeDialogSingleton getSingleton() {
         if (singleton == null){
@@ -76,6 +79,7 @@ public class WelcomeDialogSingleton extends Stage {
             Button b = new Button(recentLabels.get(i));
             b.setOnAction( e->{
                 this.close();
+                loadedFile = true;
             });
             recentWorks.add(b);
         }

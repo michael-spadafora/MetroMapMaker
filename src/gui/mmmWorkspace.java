@@ -126,6 +126,9 @@ public class mmmWorkspace extends AppWorkspaceComponent {
     }
 
     private void initSidePane() {
+        ((Button)(gui.getFileToolbar().getChildren().get(0))).setOnAction(e->{
+            activateWorkspace(app.getGUI().getAppPane());
+        });
         editToolbar = new VBox();
         lineBox = new VBox();
         lineSubBox1 = new FlowPane();
@@ -301,7 +304,7 @@ public class mmmWorkspace extends AppWorkspaceComponent {
         ((BorderPane) workspace).setLeft(editToolbar);
         ((BorderPane) workspace).setCenter(canvas);
 
-        activateWorkspace(app.getGUI().getAppPane());
+        //activateWorkspace(app.getGUI().getAppPane());
 
 
 
