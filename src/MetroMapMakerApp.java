@@ -4,6 +4,7 @@ import djf.ui.AppGUI;
 import djf.ui.AppMessageDialogSingleton;
 import djf.ui.AppYesNoCancelDialogSingleton;
 import file.mmmFiles;
+import gui.EnterNameSingleton;
 import gui.RouteDisplayDialogSingleton;
 import gui.WelcomeDialogSingleton;
 import gui.mmmWorkspace;
@@ -12,6 +13,7 @@ import properties_manager.PropertiesManager;
 import static djf.settings.AppPropertyType.*;
 import static djf.settings.AppStartupConstants.APP_PROPERTIES_FILE_NAME;
 
+import java.io.File;
 import java.util.Locale;
 
 public class MetroMapMakerApp extends AppTemplate{
@@ -50,6 +52,18 @@ public class MetroMapMakerApp extends AppTemplate{
         welc.showAndWait();
         RouteDisplayDialogSingleton rdds = RouteDisplayDialogSingleton.getSingleton();
         rdds.init(primaryStage);
+        EnterNameSingleton ens = EnterNameSingleton.getSingleton();
+        ens.init(primaryStage);
+        String name = "";
+        if (welc.getWillMakeNew()){
+            ens.showAndWait();
+            name = ens.returnTextField();
+            if (new File(name).exists()){
+                 messageDialog.show("file exists already", "file exists already");
+            }
+
+        }
+
         //rdds.show("placeholder", "placeholder", "placeholder", "placeholder");
 
         try {
@@ -62,7 +76,7 @@ public class MetroMapMakerApp extends AppTemplate{
 
             if (success) {
                 // GET THE TITLE FROM THE XML FILE
-                String appTitle = props.getProperty(APP_TITLE);
+                String appTitle = props.getProperty(APP_TITLE) + " " + name;
 
                 // BUILD THE BASIC APP GUI OBJECT FIRST
                 gui = new AppGUI(primaryStage, appTitle, this);

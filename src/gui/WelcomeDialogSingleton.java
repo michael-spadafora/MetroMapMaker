@@ -34,6 +34,7 @@ public class WelcomeDialogSingleton extends Stage {
     ArrayList<String> recentLabels;
     Scene messageScene;
     Button newButton;
+    private boolean willMakeNew = false;
 
 
 
@@ -84,7 +85,11 @@ public class WelcomeDialogSingleton extends Stage {
 
         rightPane.getChildren().add(imageView);
         newButton.setOnAction( e->{
+
             this.close();
+            willMakeNew = true;
+
+
         });
         rightPane.getChildren().add(newButton);
 
@@ -95,4 +100,11 @@ public class WelcomeDialogSingleton extends Stage {
         this.setScene(messageScene);
 
     }
+
+  public boolean getWillMakeNew(){
+        return willMakeNew;
+
+  }
+
+
 }
