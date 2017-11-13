@@ -2,15 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4e1fb8db-1583-436d-b92f-c9996587c59a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/gui/RouteDisplayDialogSingleton.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Metro Map Maker/gui/WelcomeDialogSingleton.class" afterPath="$PROJECT_DIR$/out/production/Metro Map Maker/gui/WelcomeDialogSingleton.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Metro Map Maker/gui/mmmWorkspace.class" afterPath="$PROJECT_DIR$/out/production/Metro Map Maker/gui/mmmWorkspace.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Metro Map Maker/css/mmm_style.css" afterPath="$PROJECT_DIR$/out/production/Metro Map Maker/css/mmm_style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MetroMapMakerApp.java" afterPath="$PROJECT_DIR$/src/MetroMapMakerApp.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/css/mmmStyle.java" afterPath="$PROJECT_DIR$/src/css/mmmStyle.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/css/mmm_style.css" afterPath="$PROJECT_DIR$/src/css/mmm_style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gui/WelcomeDialogSingleton.java" afterPath="$PROJECT_DIR$/src/gui/WelcomeDialogSingleton.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/images/ZoomIn.png" afterPath="$PROJECT_DIR$/images/ZoomIn.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/images/ZoomOut.png" afterPath="$PROJECT_DIR$/images/ZoomOut.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gui/mmmWorkspace.java" afterPath="$PROJECT_DIR$/src/gui/mmmWorkspace.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -26,8 +19,8 @@
       <file leaf-file-name="mmmWorkspace.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/gui/mmmWorkspace.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="243">
-              <caret line="460" column="9" lean-forward="true" selection-start-line="460" selection-start-column="9" selection-end-line="460" selection-end-column="9" />
+            <state relative-caret-position="199">
+              <caret line="301" column="51" lean-forward="true" selection-start-line="301" selection-start-column="51" selection-end-line="301" selection-end-column="51" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#initTopToolbars#0;class#mmmWorkspace#0" expanded="false" />
@@ -223,6 +216,11 @@
             <path>
               <item name="Metro Map Maker" type="b2602c69:ProjectViewProjectNode" />
               <item name="Metro Map Maker" type="462c0819:PsiDirectoryNode" />
+              <item name="images" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Metro Map Maker" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Metro Map Maker" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -390,12 +388,12 @@
       <option name="presentableId" value="Default" />
       <updated>1510449299561</updated>
       <workItem from="1510449303493" duration="108000" />
-      <workItem from="1510449471750" duration="36464000" />
+      <workItem from="1510449471750" duration="38054000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36572000" />
+    <option name="totallyTimeSpent" value="38162000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -447,16 +445,6 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/gui/mmmWorkspace.java</url>
-          <line>275</line>
-          <properties class="gui.mmmWorkspace" method="initTopToolbars">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="20" />
-        </line-breakpoint>
-      </breakpoints>
       <option name="time" value="21" />
     </breakpoint-manager>
     <watches-manager />
@@ -605,8 +593,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/gui/mmmWorkspace.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="460" column="9" lean-forward="true" selection-start-line="460" selection-start-column="9" selection-end-line="460" selection-end-column="9" />
+        <state relative-caret-position="199">
+          <caret line="301" column="51" lean-forward="true" selection-start-line="301" selection-start-column="51" selection-end-line="301" selection-end-column="51" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#initTopToolbars#0;class#mmmWorkspace#0" expanded="false" />

@@ -85,6 +85,15 @@ public class mmmWorkspace extends AppWorkspaceComponent {
     HBox decorSubBox2;
     Button setImageBackgroundButton, addImageButton, addLabelButton, removeElementButton;
 
+    VBox navigationBox;
+    FlowPane navigationSubBox1;
+    Text navigationText = new Text("Navigation");
+    CheckBox showGrid;
+    FlowPane navigationSubBox2;
+    Button zoomInButton;
+    Button zoomOutButton;
+    Button biggerMapButton;
+    Button smallerMapButton;
 
 
 
@@ -97,6 +106,7 @@ public class mmmWorkspace extends AppWorkspaceComponent {
     HBox decorSubBox3;
     FlowPane decorSubBox4;
     FlowPane fontSubPane3;
+    Pane canvas;
 
 
     public mmmWorkspace(AppTemplate initApp) {
@@ -267,9 +277,33 @@ public class mmmWorkspace extends AppWorkspaceComponent {
 
 
 //////////////////////////
+
+         navigationBox = new VBox();
+         navigationSubBox1 = new FlowPane();
+         navigationText = new Text("Navigation\t\t");
+         showGrid = new CheckBox("Show Grid");
+         navigationSubBox1.getChildren().add(navigationText);
+         navigationSubBox1.getChildren().add(showGrid);
+
+         navigationSubBox2 = new FlowPane();
+        zoomInButton = initChildButton(navigationSubBox2, "ZoomIn.png", "Zoom in on the map", false );
+        zoomOutButton = initChildButton(navigationSubBox2, "ZoomOut.png", "Zoom out of the map", false );
+        biggerMapButton = initChildButton(navigationSubBox2, "enlargeMap.png", "Enlarges the map", false);
+        smallerMapButton = initChildButton(navigationSubBox2, "shrinkMap.png", "shrinks the map", false);
+
+
+        navigationBox.getChildren().add(navigationSubBox1);
+        navigationBox.getChildren().add(navigationSubBox2);
+        editToolbar.getChildren().add(navigationBox);
+        /////////////
+        canvas = new Pane();
         workspace = new BorderPane();
         ((BorderPane) workspace).setLeft(editToolbar);
+        ((BorderPane) workspace).setCenter(canvas);
+
         activateWorkspace(app.getGUI().getAppPane());
+
+
 
     }
 
@@ -450,13 +484,26 @@ public class mmmWorkspace extends AppWorkspaceComponent {
             fontSubPane2.getStyleClass().add(UNBORDERED_PANE);{
                 boldButton.getStyleClass().add(SIDE_BUTTON);
                 italicButton.getStyleClass().add(SIDE_BUTTON);
-
             }
+
             fontSubPane3.getStyleClass().add(UNBORDERED_PANE);{
                 fontClassComboBox.getStyleClass().add(COMBO_BOX);
                 fontSizeComboBox.getStyleClass().add(COMBO_BOX);
                 fontClassComboBox.setMaxWidth(100);
                 fontSizeComboBox.setMaxWidth(100);
+            }
+        }
+
+        navigationBox.getStyleClass().add(SIDE_PANE);{
+            navigationSubBox1.getStyleClass().add(UNBORDERED_PANE);{
+
+            }
+            navigationSubBox2.getStyleClass().add(UNBORDERED_PANE);{
+                zoomInButton.getStyleClass().add(SIDE_BUTTON);
+                zoomOutButton.getStyleClass().add(SIDE_BUTTON);
+
+                biggerMapButton.getStyleClass().add(SIDE_BUTTON);
+                smallerMapButton.getStyleClass().add(SIDE_BUTTON);
             }
         }
 
