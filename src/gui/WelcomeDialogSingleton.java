@@ -73,6 +73,9 @@ public class WelcomeDialogSingleton extends Stage {
 
         for (int i = 0; i< 6; i++){
             Button b = new Button(recentLabels.get(i));
+            b.setOnAction( e->{
+                this.close();
+            });
             recentWorks.add(b);
         }
         for(Button b: recentWorks){
@@ -80,6 +83,9 @@ public class WelcomeDialogSingleton extends Stage {
         }
 
         rightPane.getChildren().add(imageView);
+        newButton.setOnAction( e->{
+            this.close();
+        });
         rightPane.getChildren().add(newButton);
 
 

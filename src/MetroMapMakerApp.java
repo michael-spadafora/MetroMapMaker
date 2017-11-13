@@ -47,7 +47,7 @@ public class MetroMapMakerApp extends AppTemplate{
         PropertiesManager props = PropertiesManager.getPropertiesManager();
         WelcomeDialogSingleton welc = WelcomeDialogSingleton.getSingleton();
         welc.init(primaryStage);
-        //welc.showAndWait();
+        welc.showAndWait();
         RouteDisplayDialogSingleton rdds = RouteDisplayDialogSingleton.getSingleton();
         rdds.init(primaryStage);
         //rdds.show("placeholder", "placeholder", "placeholder", "placeholder");

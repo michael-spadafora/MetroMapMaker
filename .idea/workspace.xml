@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4e1fb8db-1583-436d-b92f-c9996587c59a" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/images/ZoomIn.png" afterPath="$PROJECT_DIR$/images/ZoomIn.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/images/ZoomOut.png" afterPath="$PROJECT_DIR$/images/ZoomOut.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gui/mmmWorkspace.java" afterPath="$PROJECT_DIR$/src/gui/mmmWorkspace.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MetroMapMakerApp.java" afterPath="$PROJECT_DIR$/src/MetroMapMakerApp.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gui/WelcomeDialogSingleton.java" afterPath="$PROJECT_DIR$/src/gui/WelcomeDialogSingleton.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,11 +15,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="mmmWorkspace.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="mmmWorkspace.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/gui/mmmWorkspace.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="199">
-              <caret line="301" column="51" lean-forward="true" selection-start-line="301" selection-start-column="51" selection-end-line="301" selection-end-column="51" />
+            <state relative-caret-position="148">
+              <caret line="301" column="50" lean-forward="true" selection-start-line="301" selection-start-column="50" selection-end-line="301" selection-end-column="50" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#initTopToolbars#0;class#mmmWorkspace#0" expanded="false" />
@@ -36,8 +35,8 @@
       <file leaf-file-name="MetroMapMakerApp.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/MetroMapMakerApp.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="80" column="24" lean-forward="true" selection-start-line="80" selection-start-column="24" selection-end-line="80" selection-end-column="24" />
+            <state relative-caret-position="232">
+              <caret line="49" column="27" lean-forward="true" selection-start-line="49" selection-start-column="27" selection-end-line="49" selection-end-column="27" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -72,11 +71,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WelcomeDialogSingleton.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="WelcomeDialogSingleton.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/gui/WelcomeDialogSingleton.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-601">
-              <caret line="34" column="2" lean-forward="true" selection-start-line="34" selection-start-column="2" selection-end-line="34" selection-end-column="23" />
+            <state relative-caret-position="300">
+              <caret line="88" column="47" lean-forward="true" selection-start-line="88" selection-start-column="47" selection-end-line="88" selection-end-column="47" />
               <folding>
                 <element signature="method#getSingleton#0;class#WelcomeDialogSingleton#0" expanded="false" />
                 <element signature="method#WelcomeDialogSingleton#0;class#WelcomeDialogSingleton#0" expanded="false" />
@@ -170,12 +169,12 @@
         <option value="$PROJECT_DIR$/src/file/mmmFiles.java" />
         <option value="$PROJECT_DIR$/../DesktopJavaFramework.jar!/djf/ui/AppGUI.class" />
         <option value="$PROJECT_DIR$/data/app_properties_EN.xml" />
-        <option value="$PROJECT_DIR$/src/gui/WelcomeDialogSingleton.java" />
         <option value="$PROJECT_DIR$/src/gui/RouteDisplayDialogSingleton.java" />
-        <option value="$PROJECT_DIR$/src/MetroMapMakerApp.java" />
         <option value="$PROJECT_DIR$/src/css/mmmStyle.java" />
         <option value="$PROJECT_DIR$/src/css/mmm_style.css" />
         <option value="$PROJECT_DIR$/src/gui/mmmWorkspace.java" />
+        <option value="$PROJECT_DIR$/src/MetroMapMakerApp.java" />
+        <option value="$PROJECT_DIR$/src/gui/WelcomeDialogSingleton.java" />
       </list>
     </option>
   </component>
@@ -212,11 +211,6 @@
             <path>
               <item name="Metro Map Maker" type="b2602c69:ProjectViewProjectNode" />
               <item name="Metro Map Maker" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Metro Map Maker" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Metro Map Maker" type="462c0819:PsiDirectoryNode" />
-              <item name="images" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Metro Map Maker" type="b2602c69:ProjectViewProjectNode" />
@@ -388,12 +382,12 @@
       <option name="presentableId" value="Default" />
       <updated>1510449299561</updated>
       <workItem from="1510449303493" duration="108000" />
-      <workItem from="1510449471750" duration="38054000" />
+      <workItem from="1510449471750" duration="38925000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="38162000" />
+    <option name="totallyTimeSpent" value="39033000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -570,21 +564,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/WelcomeDialogSingleton.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-601">
-          <caret line="34" column="2" lean-forward="true" selection-start-line="34" selection-start-column="2" selection-end-line="34" selection-end-column="23" />
-          <folding>
-            <element signature="method#getSingleton#0;class#WelcomeDialogSingleton#0" expanded="false" />
-            <element signature="method#WelcomeDialogSingleton#0;class#WelcomeDialogSingleton#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/MetroMapMakerApp.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="80" column="24" lean-forward="true" selection-start-line="80" selection-start-column="24" selection-end-line="80" selection-end-column="24" />
+        <state relative-caret-position="232">
+          <caret line="49" column="27" lean-forward="true" selection-start-line="49" selection-start-column="27" selection-end-line="49" selection-end-column="27" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -593,8 +576,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/gui/mmmWorkspace.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="199">
-          <caret line="301" column="51" lean-forward="true" selection-start-line="301" selection-start-column="51" selection-end-line="301" selection-end-column="51" />
+        <state relative-caret-position="148">
+          <caret line="301" column="50" lean-forward="true" selection-start-line="301" selection-start-column="50" selection-end-line="301" selection-end-column="50" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#initTopToolbars#0;class#mmmWorkspace#0" expanded="false" />
@@ -602,6 +585,17 @@
             <element signature="method#initChildButton#1;class#mmmWorkspace#0" expanded="false" />
             <element signature="method#resetWorkspace#0;class#mmmWorkspace#0" expanded="false" />
             <element signature="method#reloadWorkspace#0;class#mmmWorkspace#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/WelcomeDialogSingleton.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="88" column="47" lean-forward="true" selection-start-line="88" selection-start-column="47" selection-end-line="88" selection-end-column="47" />
+          <folding>
+            <element signature="method#getSingleton#0;class#WelcomeDialogSingleton#0" expanded="false" />
+            <element signature="method#WelcomeDialogSingleton#0;class#WelcomeDialogSingleton#0" expanded="false" />
           </folding>
         </state>
       </provider>
