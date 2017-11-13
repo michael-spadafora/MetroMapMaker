@@ -11,6 +11,7 @@
 
 .color-picker {
     -fx-padding: 2px;
+
 }
 
 .edit_toolbar_row {
@@ -43,7 +44,64 @@
     -fx-border-width: 3px;
     -fx-border-color: #3b5998;
 }
+.combo_box{
+    -fx-pref-width: 170;
+}
 
+.slider{
+    -fx-pref-width: 210;
+}
+
+.unbordered_pane {
+    -fx-background-color: #6d84b4;
+    -fx-background-radius: 5.0;
+    -fx-hgap: 5;
+
+    -fx-pref-width: 210;
+
+    -fx-padding: 2;
+    -fx-spacing: 0;
+    -fx-border-width: 0;
+    -fx-border-color: #3b5998;
+}
+
+.side_pane {
+    -fx-background-color: #6d84b4;
+    -fx-background-radius: 5.0;
+
+    -fx-padding: 2;
+    -fx-spacing: 0;
+    -fx-border-width: 3px;
+    -fx-border-color: #6d84b4;
+}
 .file_button{
     -fx-background-color: white;
 }
+
+.side_button{
+    -fx-background-color: white;
+    -fx-spacing: 5;
+    -fx-pref-width: 100;
+}
+
+.full_side_button{
+    -fx-background-color: white;
+    -fx-spacing: 5;
+    -fx-pref-width: 205;
+
+}
+
+.vertical_side_pane{
+    -fx-background-color: #6d84b4;
+    -fx-background-radius: 5.0;
+    -fx-hgap: 5;
+
+    -fx-pref-width: 105;
+
+    -fx-padding: 2;
+    -fx-spacing: 0;
+    -fx-border-width: 0;
+    -fx-border-color: #3b5998;
+
+}
+

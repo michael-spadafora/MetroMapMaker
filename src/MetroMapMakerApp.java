@@ -4,6 +4,7 @@ import djf.ui.AppGUI;
 import djf.ui.AppMessageDialogSingleton;
 import djf.ui.AppYesNoCancelDialogSingleton;
 import file.mmmFiles;
+import gui.RouteDisplayDialogSingleton;
 import gui.WelcomeDialogSingleton;
 import gui.mmmWorkspace;
 import javafx.stage.Stage;
@@ -47,6 +48,9 @@ public class MetroMapMakerApp extends AppTemplate{
         WelcomeDialogSingleton welc = WelcomeDialogSingleton.getSingleton();
         welc.init(primaryStage);
         //welc.showAndWait();
+        RouteDisplayDialogSingleton rdds = RouteDisplayDialogSingleton.getSingleton();
+        rdds.init(primaryStage);
+        //rdds.show("placeholder", "placeholder", "placeholder", "placeholder");
 
         try {
             // LOAD APP PROPERTIES, BOTH THE BASIC UI STUFF FOR THE FRAMEWORK

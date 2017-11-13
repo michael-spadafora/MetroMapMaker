@@ -69,9 +69,6 @@ public class WelcomeDialogSingleton extends Stage {
         rightPane.setAlignment(Pos.CENTER);
         imageView = new ImageView(logoURL);
         recentPane.getChildren().add(recentLabel);
-
-
-
         newButton = new Button("Create new map");
 
         for (int i = 0; i< 6; i++){
@@ -90,12 +87,6 @@ public class WelcomeDialogSingleton extends Stage {
         splitPane.getChildren().add(rightPane);
         messageScene = new Scene(splitPane);
         this.setScene(messageScene);
-
-
-
-
-
-
 
     }
 }
