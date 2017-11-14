@@ -88,6 +88,7 @@ public class MetroMapMakerApp extends AppTemplate{
 
                 // NOW OPEN UP THE WINDOW
                 primaryStage.show();
+
                 if (welc.getWillMakeNew() || welc.isLoadedFile()){
                     this.getWorkspaceComponent().activateWorkspace(getGUI().getAppPane());
                 }
