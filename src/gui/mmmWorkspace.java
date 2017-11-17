@@ -111,6 +111,7 @@ public class mmmWorkspace extends AppWorkspaceComponent {
     Pane canvas;
     Button editLineButton;
     Button stationListButton;
+    CanvasController canvasController;
 
 
     public mmmWorkspace(AppTemplate initApp) {
@@ -156,6 +157,31 @@ public class mmmWorkspace extends AppWorkspaceComponent {
 
         deleteStationButton.setOnAction(e-> {
             mapEditController.processRemoveStation();
+        });
+
+        // MAKE THE CANVAS CONTROLLER
+        canvasController = new CanvasController(app);
+        canvas.setOnMousePressed(e -> {
+            canvasController.processCanvasMousePress((int) e.getX(), (int) e.getY(), e.getClickCount());
+            mmmData dataManager = (mmmData) app.getDataComponent();
+
+            // e.getClickCount()
+        });
+
+        canvas.setOnMouseReleased(e -> {
+            canvasController.processCanvasMouseRelease((int) e.getX(), (int) e.getY());
+        });
+        canvas.setOnMouseDragged(e -> {
+//            golData data = (golData) app.getDataComponent();
+//            boolean isSizing = true;
+//            if (data.getState().equals(golState.SIZING_SHAPE))
+//            {
+//                isSizing = true;
+//
+//            }
+            canvasController.processCanvasMouseDragged((int) e.getX(), (int) e.getY());
+
+
         });
        /* Button removeLineButton;
         Button addStationsToLineButton;
@@ -353,6 +379,7 @@ public class mmmWorkspace extends AppWorkspaceComponent {
 
         mmmData data = (mmmData) app.getDataComponent();
         data.setShapes(canvas.getChildren());
+
 
         ((BorderPane) workspace).setLeft(editToolbar);
         ((BorderPane) workspace).setCenter(canvas);

@@ -12,7 +12,12 @@ public class mmmData implements AppDataComponent {
     AppTemplate app;
     ObservableList<Node> elements;
     mmmState state;
-    private DraggableElement selectedElement;
+
+    public DraggableElement getSelectedElement() {
+        return selectedElement;
+    }
+
+    DraggableElement selectedElement;
 
     public mmmData(AppTemplate initApp) {
         // KEEP THE APP FOR LATER

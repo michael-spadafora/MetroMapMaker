@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.shape.Shape;
 
 import static data.mmmState.DRAGGING_NOTHING;
+import static data.mmmState.DRAGGING_SHAPE;
 import static data.mmmState.SELECTING_SHAPE;
 
 public class CanvasController {
@@ -37,7 +38,7 @@ public class CanvasController {
             // AND START DRAGGING IT
             if (shape != null) {
                 scene.setCursor(Cursor.MOVE);
-                dataManager.setState(mmmState.DRAGGING_SHAPE);
+                dataManager.setState(DRAGGING_SHAPE);
                 app.getGUI().updateToolbarControls(false);
             } else {
                 scene.setCursor(Cursor.DEFAULT);
@@ -53,8 +54,9 @@ public class CanvasController {
 //        }// else if (dataManager.isInState(golState.STARTING_TEXT)) {
 //            dataManager.startNewText(x, y);
 //        }
-        mmmWorkspace workspace = (mmmWorkspace) app.getWorkspaceComponent();
-        workspace.reloadWorkspace(dataManager);
+            mmmWorkspace workspace = (mmmWorkspace) app.getWorkspaceComponent();
+            workspace.reloadWorkspace(dataManager);
+        }
     }
 
     /**
@@ -62,16 +64,12 @@ public class CanvasController {
      * but is actually a Pane.
      */
     public void processCanvasMouseDragged(int x, int y) {
-        golData dataManager = (golData) app.getDataComponent();
-        if (dataManager.isInState(SIZING_SHAPE)) {
-            Draggable newDraggableShape = (Draggable) dataManager.getNewShape();
-            newDraggableShape.size(x, y);
-        } else if (dataManager.isInState(DRAGGING_SHAPE)) {
-            Draggable selectedDraggableShape = (Draggable) dataManager.getSelectedShape();
+        mmmData dataManager = (mmmData) app.getDataComponent();
+        if (dataManager.isInState(DRAGGING_SHAPE)) {
+            DraggableElement selectedDraggableShape = (DraggableElement) dataManager.getSelectedElement();
             selectedDraggableShape.drag(x, y);
             app.getGUI().updateToolbarControls(false);
         }
-
 
     }
 
@@ -80,20 +78,13 @@ public class CanvasController {
      * canvas, but is actually a Pane.
      */
     public void processCanvasMouseRelease(int x, int y) {
-        golData dataManager = (golData) app.getDataComponent();
-        if (dataManager.isInState(SIZING_SHAPE)) {
-            dataManager.selectSizedShape();
-            NewShapeTransaction newShapeTransaction = new NewShapeTransaction(dataManager.getSelectedShape(),dataManager);
-            dataManager.getUndoRedoStack().addTransaction(newShapeTransaction);
-            UndoRedoStack stack = dataManager.getUndoRedoStack();
-            dataManager.updateUndoRedoButtons();
-            app.getGUI().updateToolbarControls(false);
-        } else if (dataManager.isInState(golState.DRAGGING_SHAPE)) {
+        mmmData dataManager = (mmmData) app.getDataComponent();
+       if (dataManager.isInState(mmmState.DRAGGING_SHAPE)) {
             dataManager.setState(SELECTING_SHAPE);
             Scene scene = app.getGUI().getPrimaryScene();
             scene.setCursor(Cursor.DEFAULT);
             app.getGUI().updateToolbarControls(false);
-        } else if (dataManager.isInState(golState.DRAGGING_NOTHING)) {
+        } else if (dataManager.isInState(mmmState.DRAGGING_NOTHING)) {
             dataManager.setState(SELECTING_SHAPE);
         }
     }
