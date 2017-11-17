@@ -5,9 +5,14 @@ import djf.components.AppDataComponent;
 import gui.mmmWorkspace;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
+import javafx.scene.effect.BlurType;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.effect.Effect;
+import javafx.scene.paint.Color;
 
 public class mmmData implements AppDataComponent {
 
+    Effect highlightedEffect;
     UndoRedoStack undoRedoStack;
     AppTemplate app;
     ObservableList<Node> elements;
@@ -24,8 +29,27 @@ public class mmmData implements AppDataComponent {
         app = initApp;
         undoRedoStack = new UndoRedoStack();
         selectedElement = null;
-        state = mmmState.DRAGGING_NOTHING;
+        state = mmmState.SELECTING_SHAPE;
 
+
+
+        DropShadow dropShadowEffect = new DropShadow();
+        dropShadowEffect.setOffsetX(0.0f);
+        dropShadowEffect.setOffsetY(0.0f);
+        dropShadowEffect.setSpread(1.0);
+        dropShadowEffect.setColor(Color.YELLOW);
+        dropShadowEffect.setBlurType(BlurType.GAUSSIAN);
+        dropShadowEffect.setRadius(5);
+        highlightedEffect = dropShadowEffect;
+
+    }
+
+    public void unhighlightShape(DraggableElement shape) {
+        ((Station) (shape)).setEffect(null);
+    }
+
+    public void highlightShape(DraggableElement shape) {
+        ((Station) (shape)).setEffect(highlightedEffect);
     }
 
     @Override
@@ -51,11 +75,11 @@ public class mmmData implements AppDataComponent {
         //    return shape;
         // }
 
-        /*if (selectedShape != null) {
-            unhighlightShape(selectedShape);
-        }*/
+        if (selectedElement != null) {
+            unhighlightShape(selectedElement);
+        }
         if (shape != null) {
-           // highlightShape(shape);
+            highlightShape(shape);
             mmmWorkspace workspace = (mmmWorkspace) app.getWorkspaceComponent();
             //workspace.loadSelectedShapeSettings(shape);
         }
