@@ -1,5 +1,6 @@
 package gui;
 
+import data.mmmData;
 import djf.AppTemplate;
 import djf.components.AppDataComponent;
 import djf.components.AppWorkspaceComponent;
@@ -90,6 +91,7 @@ public class mmmWorkspace extends AppWorkspaceComponent {
     Text navigationText = new Text("Navigation");
     CheckBox showGrid;
     FlowPane navigationSubBox2;
+
     Button zoomInButton;
     Button zoomOutButton;
     Button biggerMapButton;
@@ -107,6 +109,8 @@ public class mmmWorkspace extends AppWorkspaceComponent {
     FlowPane decorSubBox4;
     FlowPane fontSubPane3;
     Pane canvas;
+    Button editLineButton;
+    Button stationListButton;
 
 
     public mmmWorkspace(AppTemplate initApp) {
@@ -117,6 +121,47 @@ public class mmmWorkspace extends AppWorkspaceComponent {
     }
 
     private void initControllers() {
+
+
+        MapEditController mapEditController = new MapEditController(app);
+
+
+        addLineButton.setOnAction(e-> {
+            mapEditController.processAddLine();
+        });
+
+        removeLineButton.setOnAction(e-> {
+            mapEditController.processRemoveLine();
+        });
+
+        editLineButton.setOnAction(e-> {
+            mapEditController.processEditLine();
+        });
+
+        stationListButton.setOnAction(e-> {
+            mapEditController.processAddLine();
+        });
+
+        addStationsToLineButton.setOnAction(e-> {
+            mapEditController.processAddStationToLine();
+        });
+
+        removeStationsFromLineButton.setOnAction(e-> {
+            mapEditController.processRemoveStationFromLine();
+        });
+
+        addStationButton.setOnAction(e-> {
+            mapEditController.processAddStation();
+        });
+
+        deleteStationButton.setOnAction(e-> {
+            mapEditController.processRemoveStation();
+        });
+       /* Button removeLineButton;
+        Button addStationsToLineButton;
+        Button removeStationsFromLineButton;
+        Slider lineThicknessSlider;*/
+
     }
 
     private void initLayout() {
@@ -135,6 +180,9 @@ public class mmmWorkspace extends AppWorkspaceComponent {
         //lineSubBox1.getChildren().add(metroLinesText);
         linesComboBox = new ComboBox<>();
         lineSubBox1.getChildren().add(linesComboBox);
+        editLineButton = new Button("edit");
+        editLineButton.setDisable(true);
+        lineSubBox1.getChildren().add(editLineButton);
         linesColorPicker = new ColorPicker();
         lineSubBox1.getChildren().add(linesColorPicker);
 
@@ -144,6 +192,7 @@ public class mmmWorkspace extends AppWorkspaceComponent {
         lineSubBox3 = new FlowPane();
         addStationsToLineButton = initChildButton(lineSubBox3, "addStation.png", "Adds a station to this line", false);
         removeStationsFromLineButton = initChildButton(lineSubBox3, "removeStation.png", "Removes a station from this line", false);
+        stationListButton = initChildButton(lineSubBox3, "list all stations", true);
 
 
         linesColorPicker.setPrefWidth(30);
@@ -301,6 +350,10 @@ public class mmmWorkspace extends AppWorkspaceComponent {
         /////////////
         canvas = new Pane();
         workspace = new BorderPane();
+
+        mmmData data = (mmmData) app.getDataComponent();
+        data.setShapes(canvas.getChildren());
+
         ((BorderPane) workspace).setLeft(editToolbar);
         ((BorderPane) workspace).setCenter(canvas);
 
@@ -407,6 +460,7 @@ public class mmmWorkspace extends AppWorkspaceComponent {
 
             lineSubBox1.getStyleClass().add(UNBORDERED_PANE);{
                 linesComboBox.getStyleClass().add(COMBO_BOX);
+                linesComboBox.setMaxWidth(130);
             }
 
             lineSubBox2.getStyleClass().add(UNBORDERED_PANE);
@@ -415,6 +469,7 @@ public class mmmWorkspace extends AppWorkspaceComponent {
                 removeLineButton.getStyleClass().add(SIDE_BUTTON);
                 addStationsToLineButton.getStyleClass().add(SIDE_BUTTON);
                 removeStationsFromLineButton.getStyleClass().add(SIDE_BUTTON);
+                stationListButton.getStyleClass().add(FULL_WIDTH_SIDE_BUTTON);
             }
 
             lineSubBox3.getStyleClass().add(UNBORDERED_PANE);
