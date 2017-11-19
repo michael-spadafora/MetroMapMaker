@@ -58,10 +58,20 @@ public class Station extends Circle implements DraggableElement {
         double newY = getCenterY() + diffY;
         setCenterX(newX);
         setCenterY(newY);
-        label.setX(newX+10);
-        label.setY(newY+10);
+        double[] newLocs = getNewLabelLocation(newX, newY);
+        label.setX(newLocs[0]);
+        label.setY(newLocs[1]);
         startCenterX = x;
         startCenterY = y;
+    }
+
+    private double[] getNewLabelLocation(double newX, double newY) {
+        double x,  y;
+        x = newX+10;
+        y = newY+10;
+
+        return new double[]{x,y};
+
     }
 
     @Override
