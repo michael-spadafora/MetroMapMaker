@@ -59,7 +59,7 @@ public class Station extends Circle implements DraggableElement {
         setCenterX(newX);
         setCenterY(newY);
         label.setX(newX+10);
-        label.setX(newY+10);
+        label.setY(newY+10);
         startCenterX = x;
         startCenterY = y;
     }
