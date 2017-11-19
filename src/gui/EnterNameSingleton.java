@@ -49,7 +49,7 @@ public class EnterNameSingleton extends Stage{
 
     }
 
-    public String returnTextField() {
+    public String getName() {
         return textfield.getText();
     }
 }

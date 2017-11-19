@@ -214,7 +214,7 @@ public class mmmWorkspace extends AppWorkspaceComponent {
 
         lineSubBox2 = new FlowPane();
         addLineButton = initChildButton(lineSubBox2, "add line",false);
-        removeLineButton = initChildButton(lineSubBox2, "remove line", true);
+        removeLineButton = initChildButton(lineSubBox2, "remove line", false);
         lineSubBox3 = new FlowPane();
         addStationsToLineButton = initChildButton(lineSubBox3, "addStation.png", "Adds a station to this line", false);
         removeStationsFromLineButton = initChildButton(lineSubBox3, "removeStation.png", "Removes a station from this line", false);
@@ -252,7 +252,7 @@ public class mmmWorkspace extends AppWorkspaceComponent {
        // Text spacer = new Text("\n");
         stationSubBox2 = new FlowPane();
         addStationButton = initChildButton(stationSubBox2, "New Station", false);
-        deleteStationButton = initChildButton(stationSubBox2, "Delete Station", true);
+        deleteStationButton = initChildButton(stationSubBox2, "Delete Station", false);
 
         stationSubBox2a = new FlowPane();
         snapToGridButton = initChildButton(stationSubBox2a, "snap to Grid", false);

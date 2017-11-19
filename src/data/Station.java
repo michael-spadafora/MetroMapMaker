@@ -3,14 +3,31 @@ package data;
 import javafx.scene.shape.Circle;
 
 import java.util.ArrayList;
-
+import javafx.scene.text.Text;
 public class Station extends Circle implements DraggableElement {
     ArrayList<SubwayLine> subwayLines;
+    Text label;
     private double startCenterX;
     private double startCenterY;
 
 
     public Station(){
+        label = new Text ("default");
+        label.setX(200+10);
+        label.setY(300+10);
+        subwayLines = new ArrayList<SubwayLine>();
+        this.setCenterX(200);
+        this.setCenterY(300);
+        this.setRadius(10);
+
+    }
+
+    public Text getLabel() {
+        return label;
+    }
+
+    public Station(String name){
+
         subwayLines = new ArrayList<SubwayLine>();
         this.setCenterX(200);
         this.setCenterY(300);
@@ -41,6 +58,8 @@ public class Station extends Circle implements DraggableElement {
         double newY = getCenterY() + diffY;
         setCenterX(newX);
         setCenterY(newY);
+        label.setX(newX+10);
+        label.setX(newY+10);
         startCenterX = x;
         startCenterY = y;
     }

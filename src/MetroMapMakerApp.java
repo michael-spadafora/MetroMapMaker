@@ -57,7 +57,7 @@ public class MetroMapMakerApp extends AppTemplate{
         String name = "";
         if (welc.getWillMakeNew()){
             ens.showAndWait();
-            name = ens.returnTextField();
+            name = ens.getName();
             if (new File(name).exists()){
                  messageDialog.show("file exists already", "file exists already");
             }

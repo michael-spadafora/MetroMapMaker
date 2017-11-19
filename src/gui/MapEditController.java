@@ -1,8 +1,11 @@
 package gui;
 
+import data.DraggableElement;
 import data.Station;
 import data.mmmData;
 import djf.AppTemplate;
+import javafx.scene.text.Text;
+
 
 public class MapEditController {
     AppTemplate app;
@@ -30,10 +33,16 @@ public class MapEditController {
     }
 
     public void processRemoveStation() {
+        data.removeSelectedElement();
     }
 
     public void processAddStation() {
+//        EnterNameSingleton ens = EnterNameSingleton.getSingleton();
+//        ens.showAndWait();
+//        String name = ens.getName();
+
         Station stat = new Station();
         data.addStation(stat);
+        data.addText(stat.getLabel());
     }
 }

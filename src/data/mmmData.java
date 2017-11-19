@@ -9,6 +9,7 @@ import javafx.scene.effect.BlurType;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.effect.Effect;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 
 public class mmmData implements AppDataComponent {
 
@@ -69,6 +70,10 @@ public class mmmData implements AppDataComponent {
         elements.add(stat);
     }
 
+    public void addText(Text text){
+        elements.add(text);
+    }
+
     public DraggableElement selectTopShape(int x, int y) {
         DraggableElement shape = getTopShape(x, y);
         // if (shape == selectedShape) {
@@ -91,14 +96,16 @@ public class mmmData implements AppDataComponent {
     }
 
     public DraggableElement getTopShape(int x, int y) {
+
         for (int i = elements.size() - 1; i >= 0; i--) {
+            if (!(elements.get(i) instanceof Text)){
             DraggableElement shape = (DraggableElement) elements.get(i);
             if (shape instanceof Station) {
                     Station stat = (Station) shape;
                     if (stat.contains(x,y)){
                         return shape;
                     }
-            }
+            }}
         }
         return null;
     }
@@ -109,5 +116,9 @@ public class mmmData implements AppDataComponent {
 
     public void setState(mmmState state) {
         this.state = state;
+    }
+
+    public void removeSelectedElement() {
+        elements.remove(selectedElement);
     }
 }

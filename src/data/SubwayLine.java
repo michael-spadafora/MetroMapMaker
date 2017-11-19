@@ -1,13 +1,12 @@
 package data;
 
-import javafx.scene.Node;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
+import javafx.scene.shape.Polyline;
 
 import java.util.ArrayList;
 
-public class SubwayLine{
-    ArrayList<Line> lineSegments;
+public class SubwayLine extends Polyline{
     ArrayList<Station> stations;
     double startX;
     double startY;
@@ -16,7 +15,7 @@ public class SubwayLine{
 
     public SubwayLine() {
         Line firstLine = new Line(300, 300, 200, 200);
-        lineSegments.add(firstLine);
+
         stations = new ArrayList<>();
         color = Color.BLACK;
         firstLine.setFill(color);
@@ -24,11 +23,12 @@ public class SubwayLine{
     }
 
     public SubwayLine(ArrayList<Line> lineSegments, ArrayList<Station> stations) {
-        this.lineSegments = lineSegments;
+        //this.lineSegments = lineSegments;
         this.stations = stations;
     }
 
     public ArrayList<Line> getLineSegments() {
-        return lineSegments;
+      //  return lineSegments;
+        return null;
     }
 }
