@@ -3,6 +3,7 @@ package data;
 public interface DraggableElement {
     public static final String STATION = "STATION";
     public static final String LINE = "LINE";
+    public static final String LINE_END = "LINE_END";
     //public static final String IMAGE = "IMAGE";
     // public static final String TEXT = "TEXT";
     //public mmmState getStartingState();

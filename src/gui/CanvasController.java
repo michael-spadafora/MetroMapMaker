@@ -1,8 +1,6 @@
 package gui;
 
-import data.DraggableElement;
-import data.mmmData;
-import data.mmmState;
+import data.*;
 import djf.AppTemplate;
 import javafx.scene.Cursor;
 import javafx.scene.Scene;
@@ -68,6 +66,15 @@ public class CanvasController {
         if (dataManager.isInState(DRAGGING_SHAPE)) {
             DraggableElement selectedDraggableShape = (DraggableElement) dataManager.getSelectedElement();
             selectedDraggableShape.drag(x, y);
+            if (selectedDraggableShape instanceof Station){
+                for(SubwayLine sl : ((Station) selectedDraggableShape).getSubwayLines()){
+                    sl.fixPoints();
+                }
+            }
+            if (selectedDraggableShape instanceof LineEnd){
+                ((LineEnd) selectedDraggableShape).getSubwayLine().fixPoints();
+
+            }
             app.getGUI().updateToolbarControls(false);
         }
 

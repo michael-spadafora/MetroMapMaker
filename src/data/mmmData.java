@@ -46,11 +46,11 @@ public class mmmData implements AppDataComponent {
     }
 
     public void unhighlightShape(DraggableElement shape) {
-        ((Station) (shape)).setEffect(null);
+        ((Node) (shape)).setEffect(null);
     }
 
     public void highlightShape(DraggableElement shape) {
-        ((Station) (shape)).setEffect(highlightedEffect);
+        ((Node) (shape)).setEffect(highlightedEffect);
     }
 
     @Override
@@ -63,7 +63,12 @@ public class mmmData implements AppDataComponent {
     }
 
     public void addSubwayLine(SubwayLine swl){
-        elements.addAll(swl.getLineSegments());
+        //elements.addAll(swl.getLineSegments());
+        elements.add(swl);
+        elements.add(swl.getEnd());
+        elements.add(swl.getStart());
+        elements.add(swl.getStart().getLabel());
+
     }
 
     public void addStation(Station stat){
@@ -98,14 +103,13 @@ public class mmmData implements AppDataComponent {
     public DraggableElement getTopShape(int x, int y) {
 
         for (int i = elements.size() - 1; i >= 0; i--) {
-            if (!(elements.get(i) instanceof Text)){
+            if (!(elements.get(i) instanceof Text)&&!(elements.get(i) instanceof SubwayLine)){
             DraggableElement shape = (DraggableElement) elements.get(i);
-            if (shape instanceof Station) {
-                    Station stat = (Station) shape;
-                    if (stat.contains(x,y)){
-                        return shape;
-                    }
-            }}
+            Node element = (Node) shape;
+                if (element.contains(x,y)){
+                    return shape;
+                }
+            }
         }
         return null;
     }
@@ -119,6 +123,9 @@ public class mmmData implements AppDataComponent {
     }
 
     public void removeSelectedElement() {
+        if (selectedElement instanceof  Station){
+             elements.remove(((Station) selectedElement).getLabel());
+        }
         elements.remove(selectedElement);
     }
 }

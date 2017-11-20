@@ -1,52 +1,64 @@
-package data;
+package gui;
 
+import data.DraggableElement;
+import data.SubwayLine;
 import javafx.scene.shape.Circle;
+import javafx.scene.text.Text;
 
 import java.util.ArrayList;
-import javafx.scene.text.Text;
-public class Station extends Circle implements DraggableElement {
-    ArrayList<SubwayLine> subwayLines;
+
+public class LineEnd extends Circle implements DraggableElement{
+
     Text label;
     private double startCenterX;
     private double startCenterY;
+    SubwayLine sl;
 
 
-    public ArrayList<SubwayLine> getSubwayLines() {
-        return subwayLines;
-    }
-
-    public Station(){
+    public LineEnd(){
         label = new Text ("default");
         label.setX(200+10);
         label.setY(300+10);
-        subwayLines = new ArrayList<SubwayLine>();
         this.setCenterX(200);
         this.setCenterY(300);
-        this.setRadius(10);
+        this.setRadius(4);
+    }
+
+    public Double[] getCoordinates() {
+        return new Double[]{this.getCenterX(), this.getCenterY()};
     }
 
     public Text getLabel() {
         return label;
     }
 
-    public Station(String name){
+    public LineEnd(String name){
         label = new Text (name);
         label.setX(200+10);
         label.setY(300+10);
-        subwayLines = new ArrayList<SubwayLine>();
         this.setCenterX(200);
         this.setCenterY(300);
-        this.setRadius(10);
+        this.setRadius(6);
 
     }
 
-    public void addSubwayLine(SubwayLine subLine){
-        subwayLines.add(subLine);
+    public LineEnd(SubwayLine sl, String name, double x, double y){
+        this.sl = sl;
+        label = new Text (name);
+        label.setX(x+10);
+        label.setY(y+10);
+        this.setCenterX(x);
+        this.setCenterY(y);
+        this.setRadius(6);
     }
 
-    public void removeSubwayLine(SubwayLine subLine){
-        subwayLines.remove(subLine);
+    public LineEnd(SubwayLine sl, double x, double y){
+        this.sl = sl;
+        this.setCenterX(x);
+        this.setCenterY(y);
+        this.setRadius(6);
     }
+
 
     @Override
     public void start(int x, int y) {
@@ -64,8 +76,9 @@ public class Station extends Circle implements DraggableElement {
         setCenterX(newX);
         setCenterY(newY);
         double[] newLocs = getNewLabelLocation(newX, newY);
+        if (label!= null){
         label.setX(newLocs[0]);
-        label.setY(newLocs[1]);
+        label.setY(newLocs[1]);}
         startCenterX = x;
         startCenterY = y;
     }
@@ -108,10 +121,11 @@ public class Station extends Circle implements DraggableElement {
 
     @Override
     public String getElementType() {
-        return STATION;
+        return LINE_END;
     }
 
-    public Double[] getCoordinates() {
-        return new Double[]{getCenterX(), getCenterY()};
+    public SubwayLine getSubwayLine() {
+        return sl;
     }
 }
+
