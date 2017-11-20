@@ -100,6 +100,15 @@ public class mmmData implements AppDataComponent {
         return shape;
     }
 
+    public void setSelectedElement(Node element){
+        if (selectedElement != null) {
+            unhighlightShape(selectedElement);
+        }
+
+        selectedElement = (DraggableElement) element;
+        highlightShape((DraggableElement) element);
+    }
+
     public DraggableElement getTopShape(int x, int y) {
 
         for (int i = elements.size() - 1; i >= 0; i--) {
@@ -127,5 +136,9 @@ public class mmmData implements AppDataComponent {
              elements.remove(((Station) selectedElement).getLabel());
         }
         elements.remove(selectedElement);
+    }
+
+    public ObservableList<Node> getElements() {
+        return elements;
     }
 }

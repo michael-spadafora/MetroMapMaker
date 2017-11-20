@@ -1,13 +1,17 @@
 package gui;
 
+import data.Station;
+import data.SubwayLine;
 import data.mmmData;
 import djf.AppTemplate;
 import djf.components.AppDataComponent;
 import djf.components.AppWorkspaceComponent;
 import djf.ui.AppGUI;
+import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.Side;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
@@ -17,6 +21,7 @@ import javafx.scene.text.Text;
 import properties_manager.PropertiesManager;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 import static css.mmmStyle.*;
 import static djf.settings.AppStartupConstants.*;
@@ -159,6 +164,14 @@ public class mmmWorkspace extends AppWorkspaceComponent {
             mapEditController.processRemoveStation();
         });
 
+        linesComboBox.setOnAction(e-> {
+            mapEditController.processLineComboBoxClick();
+        });
+
+        stationComboBox.setOnAction(e-> {
+            mapEditController.processStationComboBoxClick();
+        });
+
         // MAKE THE CANVAS CONTROLLER
         canvasController = new CanvasController(app);
         canvas.setOnMousePressed(e -> {
@@ -185,7 +198,7 @@ public class mmmWorkspace extends AppWorkspaceComponent {
         });
        /* Button removeLineButton;
         Button addStationsToLineButton;
-        Button removeStationsFromLineButton;
+        Button removeStationsFromLineBu tton;
         Slider lineThicknessSlider;*/
 
     }
@@ -246,8 +259,13 @@ public class mmmWorkspace extends AppWorkspaceComponent {
         stationBox = new VBox();
 
         stationSubBox1 = new FlowPane();
+
         stationComboBox = new ComboBox<>();
+        stationComboBox.setMaxWidth(150);
         stationColorPicker = new ColorPicker();
+        stationColorPicker.setMaxWidth(50);
+        stationSubBox1.getChildren().add(stationComboBox);
+        stationSubBox1.getChildren().add(stationColorPicker);
 
        // Text spacer = new Text("\n");
         stationSubBox2 = new FlowPane();
@@ -472,6 +490,30 @@ public class mmmWorkspace extends AppWorkspaceComponent {
 
     }
 
+    public void updateLineComboBox(ObservableList<Node> nodes){
+        ArrayList<String> lines = new ArrayList<>();
+        for (Node node: nodes){
+            if (node instanceof SubwayLine){
+                lines.add(((SubwayLine) node).getStart().getLabel().getText());
+            }
+        }
+
+        linesComboBox.getItems().clear();
+        linesComboBox.getItems().addAll(lines);
+    }
+
+    public void updateStationComboBox(ObservableList<Node> nodes){
+        ArrayList<String> lines = new ArrayList<>();
+        for (Node node: nodes){
+            if (node instanceof Station){
+                lines.add(((Station) node).getLabel().getText());
+            }
+        }
+
+        stationComboBox.getItems().clear();
+        stationComboBox.getItems().addAll(lines);
+    }
+
     @Override
     public void reloadWorkspace(AppDataComponent appDataComponent) {
 
@@ -594,6 +636,14 @@ public class mmmWorkspace extends AppWorkspaceComponent {
 
 
 
+    }
+
+    public ComboBox<String> getLinesComboBox() {
+        return linesComboBox;
+    }
+
+    public ComboBox<String> getStationComboBox() {
+        return stationComboBox;
     }
 }
 

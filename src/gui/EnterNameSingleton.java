@@ -52,4 +52,10 @@ public class EnterNameSingleton extends Stage{
     public String getName() {
         return textfield.getText();
     }
+
+    public void show(boolean whatever){
+        textfield.setText("");
+        showAndWait();
+
+    }
 }

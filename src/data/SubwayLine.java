@@ -19,21 +19,19 @@ public class SubwayLine extends Polyline{
 
 
     public SubwayLine() {
-
         stations = new ArrayList<>();
-        //setLayoutX(100);
-        //setLayoutY(100);
         start = new LineEnd(this, "default", 100, 200);
         end = new LineEnd(this, 110,120);
-//        getPoints().addAll(new Double[]{
-//                0.0, 0.0,
-//                20.0, 10.0,
-//                10.0, 20.0 });
-
         addLineEnd(start);
         addLineEnd(end);
+    }
 
-
+    public SubwayLine(String name) {
+        stations = new ArrayList<>();
+        start = new LineEnd(this, name, 100, 200);
+        end = new LineEnd(this, 110,120);
+        addLineEnd(start);
+        addLineEnd(end);
     }
 
     public SubwayLine(ArrayList<Line> lineSegments, ArrayList<Station> stations) {
@@ -76,6 +74,5 @@ public class SubwayLine extends Polyline{
         }
         getPoints().addAll(start.getCoordinates());
         getPoints().addAll(end.getCoordinates());
-
     }
 }

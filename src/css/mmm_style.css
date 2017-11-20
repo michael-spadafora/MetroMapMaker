@@ -56,6 +56,7 @@
     -fx-background-color: #6d84b4;
     -fx-background-radius: 5.0;
     -fx-hgap: 5;
+    -fx-vgap: 1px;
 
     -fx-pref-width: 210;
 
@@ -95,10 +96,11 @@
     -fx-background-color: #6d84b4;
     -fx-background-radius: 5.0;
     -fx-hgap: 5;
+    -fx-vgap: 11;
 
     -fx-pref-width: 105;
 
-    -fx-padding: 2;
+    -fx-padding: 1;
     -fx-spacing: 0;
     -fx-border-width: 0;
     -fx-border-color: #3b5998;
