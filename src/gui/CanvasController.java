@@ -3,12 +3,11 @@ package gui;
 import data.*;
 import djf.AppTemplate;
 import javafx.scene.Cursor;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.shape.Shape;
 
-import static data.mmmState.DRAGGING_NOTHING;
-import static data.mmmState.DRAGGING_SHAPE;
-import static data.mmmState.SELECTING_SHAPE;
+import static data.mmmState.*;
 
 public class CanvasController {
     AppTemplate app;
@@ -54,6 +53,33 @@ public class CanvasController {
 //        }
             mmmWorkspace workspace = (mmmWorkspace) app.getWorkspaceComponent();
             workspace.reloadWorkspace(dataManager);
+        }
+        else if (dataManager.isInState(ADDING_STATION_TO_LINE)){
+            DraggableElement shape = dataManager.selectTopShape(x, y);
+
+            if (shape instanceof Station)
+            {
+                mmmWorkspace workspace = (mmmWorkspace) app.getWorkspaceComponent();
+                //workspace.reloadWorkspace(dataManager);
+                mmmData data = (mmmData) app.getDataComponent();
+
+                String temp =workspace.getLinesComboBox().getSelectionModel().getSelectedItem();
+                // why is this not working?
+                SubwayLine subwayLine = data.getLineFromString(temp);
+                if (subwayLine!=null) {
+                    subwayLine.addStation((Station) shape);
+                    ((Station) shape).addSubwayLine(subwayLine);
+                }
+
+            }
+
+            Scene scene = app.getGUI().getPrimaryScene();
+            scene.setCursor(Cursor.DEFAULT);
+            dataManager.setState(SELECTING_SHAPE);
+
+
+
+
         }
     }
 

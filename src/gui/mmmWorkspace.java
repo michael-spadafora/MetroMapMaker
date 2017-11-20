@@ -515,8 +515,8 @@ public class mmmWorkspace extends AppWorkspaceComponent {
     }
 
     public void emptyComboBoxes(){
-        linesComboBox.getSelectionModel().select(null);
-        stationComboBox.getSelectionModel().select(null);
+      //  linesComboBox.getSelectionModel().select("");
+     //  stationComboBox.getSelectionModel().select("");
     }
 
     @Override
@@ -645,6 +645,10 @@ public class mmmWorkspace extends AppWorkspaceComponent {
 
     public ComboBox<String> getLinesComboBox() {
         return linesComboBox;
+    }
+
+    public String getSelectedLine(){
+        return linesComboBox.getSelectionModel().getSelectedItem();
     }
 
     public ComboBox<String> getStationComboBox() {

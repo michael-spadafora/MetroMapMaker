@@ -70,7 +70,6 @@ public class LineEnd extends Circle implements DraggableElement{
     public void drag(int x, int y) {
         double diffX = x - startCenterX; //this is the current cursor position minus the start position
         double diffY = y - startCenterY;
-
         double newX = getCenterX() + diffX;
         double newY = getCenterY() + diffY;
         setCenterX(newX);
@@ -81,6 +80,7 @@ public class LineEnd extends Circle implements DraggableElement{
         label.setY(newLocs[1]);}
         startCenterX = x;
         startCenterY = y;
+        getSubwayLine().fixPoints();
     }
 
     private double[] getNewLabelLocation(double newX, double newY) {

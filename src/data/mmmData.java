@@ -154,4 +154,18 @@ public class mmmData implements AppDataComponent {
     public ObservableList<Node> getElements() {
         return elements;
     }
+
+    public SubwayLine getLineFromString(String s){
+        for (Node node: elements){
+            if (node instanceof LineEnd && ((LineEnd) node).getLabel()!=null){
+                if (((LineEnd) node).getLabel().getText().equals(s)){
+                    return ((LineEnd) node).getSubwayLine();
+                }
+            }
+        }
+        return null;
+    }
+
+
+
 }

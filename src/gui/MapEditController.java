@@ -5,8 +5,12 @@ import data.Station;
 import data.SubwayLine;
 import data.mmmData;
 import djf.AppTemplate;
+import javafx.scene.Cursor;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.text.Text;
+
+import static data.mmmState.ADDING_STATION_TO_LINE;
 
 
 public class MapEditController {
@@ -35,12 +39,18 @@ public class MapEditController {
     }
 
     public void processRemoveLine() {
+
     }
 
     public void processEditLine() {
     }
 
     public void processAddStationToLine() {
+        Scene scene = app.getGUI().getPrimaryScene();
+        scene.setCursor(Cursor.CROSSHAIR);
+        data.setState(ADDING_STATION_TO_LINE);
+
+
     }
 
     public void processRemoveStationFromLine() {
