@@ -70,6 +70,10 @@ public class Station extends Circle implements DraggableElement {
         label.setY(newLocs[1]);
         startCenterX = x;
         startCenterY = y;
+
+        for(SubwayLine s: subwayLines){
+            s.fixPoints();
+        }
     }
 
     private double[] getNewLabelLocation(double newX, double newY) {

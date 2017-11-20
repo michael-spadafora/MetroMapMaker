@@ -53,6 +53,7 @@ public class SubwayLine extends Polyline{
     }
 
     public void addStation(Station station){
+        stations.add(station);
         getPoints().addAll(station.getCoordinates());
         fixPoints();
 
