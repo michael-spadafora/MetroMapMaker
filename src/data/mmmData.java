@@ -2,6 +2,7 @@ package data;
 
 import djf.AppTemplate;
 import djf.components.AppDataComponent;
+import gui.LineEnd;
 import gui.mmmWorkspace;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
@@ -10,6 +11,8 @@ import javafx.scene.effect.DropShadow;
 import javafx.scene.effect.Effect;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
+
+import javax.sound.sampled.Line;
 
 public class mmmData implements AppDataComponent {
 
@@ -110,12 +113,22 @@ public class mmmData implements AppDataComponent {
     }
 
     public DraggableElement getTopShape(int x, int y) {
+        mmmWorkspace workspace = (mmmWorkspace) app.getWorkspaceComponent();
+        workspace.emptyComboBoxes();
 
         for (int i = elements.size() - 1; i >= 0; i--) {
             if (!(elements.get(i) instanceof Text)&&!(elements.get(i) instanceof SubwayLine)){
             DraggableElement shape = (DraggableElement) elements.get(i);
             Node element = (Node) shape;
                 if (element.contains(x,y)){
+                    if (element instanceof LineEnd){
+                        String selection = ((LineEnd) element).getSubwayLine().getStart().getLabel().getText();
+                        workspace.getLinesComboBox().getSelectionModel().select(selection);
+                    }
+                    else if (element instanceof  Station){
+                        String selection = ((Station) element).getLabel().getText();
+                        workspace.getStationComboBox().getSelectionModel().select(selection);
+                    }
                     return shape;
                 }
             }

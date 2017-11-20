@@ -514,6 +514,11 @@ public class mmmWorkspace extends AppWorkspaceComponent {
         stationComboBox.getItems().addAll(lines);
     }
 
+    public void emptyComboBoxes(){
+        linesComboBox.getSelectionModel().select(null);
+        stationComboBox.getSelectionModel().select(null);
+    }
+
     @Override
     public void reloadWorkspace(AppDataComponent appDataComponent) {
 
