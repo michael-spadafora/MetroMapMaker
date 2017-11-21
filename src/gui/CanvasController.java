@@ -81,6 +81,31 @@ public class CanvasController {
 
 
         }
+
+        else if (dataManager.isInState(REMOVING_STATION_FROM_LINE)){
+            DraggableElement shape = dataManager.selectTopShape(x, y);
+
+            if (shape instanceof Station)
+            {
+                mmmWorkspace workspace = (mmmWorkspace) app.getWorkspaceComponent();
+                //workspace.reloadWorkspace(dataManager);
+                mmmData data = (mmmData) app.getDataComponent();
+
+
+                // why is this not working?
+                SubwayLine subwayLine = workspace.getSelectedLine();
+                if (subwayLine!=null) {
+                    subwayLine.removeStation((Station) shape);
+                    ((Station) shape).addSubwayLine(subwayLine);
+                }
+
+            }
+
+            Scene scene = app.getGUI().getPrimaryScene();
+            scene.setCursor(Cursor.DEFAULT);
+            dataManager.setState(SELECTING_SHAPE);
+
+        }
     }
 
     /**

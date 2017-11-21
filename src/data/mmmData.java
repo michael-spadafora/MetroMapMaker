@@ -151,6 +151,18 @@ public class mmmData implements AppDataComponent {
         elements.remove(selectedElement);
     }
 
+    public void removeSelectedLine(){
+        mmmWorkspace workspace = (mmmWorkspace) app.getWorkspaceComponent();
+        SubwayLine line = workspace.getSelectedLine();
+        LineEnd start = line.getStart();
+        LineEnd end = line.getEnd();
+
+        elements.remove(workspace.getSelectedLine());
+        elements.remove(start.getLabel());
+        elements.remove(start);
+        elements.remove(end);
+    }
+
     public ObservableList<Node> getElements() {
         return elements;
     }
@@ -167,5 +179,21 @@ public class mmmData implements AppDataComponent {
     }
 
 
+    public Station getStationFromString(String s) {
+        for (Node node: elements){
+            if (node instanceof Station){
+                if (((Station) node).getLabel().getText().equals(s)){
+                    return ((Station) node);
+                }
+            }
+        }
+        return null;
+    }
 
+    public void removeSelectedStation() {
+        mmmWorkspace workspace = (mmmWorkspace) app.getWorkspaceComponent();
+        elements.remove(workspace.getSelectedStation().getLabel());
+        elements.remove(workspace.getSelectedStation());
+
+    }
 }

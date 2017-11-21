@@ -2,6 +2,7 @@ package gui;
 
 import data.DraggableElement;
 import data.SubwayLine;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 
@@ -22,6 +23,11 @@ public class LineEnd extends Circle implements DraggableElement{
         this.setCenterX(200);
         this.setCenterY(300);
         this.setRadius(4);
+        this.setFill(Color.WHITE);
+        this.setStroke(Color.BLACK);
+        //this.set
+        //this.set
+
     }
 
     public Double[] getCoordinates() {
@@ -39,6 +45,9 @@ public class LineEnd extends Circle implements DraggableElement{
         this.setCenterX(200);
         this.setCenterY(300);
         this.setRadius(6);
+        this.setFill(Color.WHITE);
+        this.setStroke(Color.BLACK);
+        setStrokeWidth(1.5);
 
     }
 
@@ -50,6 +59,9 @@ public class LineEnd extends Circle implements DraggableElement{
         this.setCenterX(x);
         this.setCenterY(y);
         this.setRadius(6);
+        this.setFill(Color.WHITE);
+        this.setStroke(Color.BLACK);
+        setStrokeWidth(1.5);
     }
 
     public LineEnd(SubwayLine sl, double x, double y){
@@ -57,6 +69,9 @@ public class LineEnd extends Circle implements DraggableElement{
         this.setCenterX(x);
         this.setCenterY(y);
         this.setRadius(6);
+        this.setFill(Color.WHITE);
+        this.setStroke(Color.BLACK);
+        setStrokeWidth(1.5);
     }
 
 
@@ -88,7 +103,6 @@ public class LineEnd extends Circle implements DraggableElement{
         x = newX+10;
         y = newY+10;
         return new double[]{x,y};
-
     }
 
     @Override

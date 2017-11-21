@@ -131,6 +131,14 @@ public class mmmWorkspace extends AppWorkspaceComponent {
 
         MapEditController mapEditController = new MapEditController(app);
 
+        stationColorPicker.setOnAction( e-> {
+            mapEditController.processStationColorChange(stationColorPicker.getValue());
+        });
+
+        linesColorPicker.setOnAction( e-> {
+            mapEditController.processLineColorChange(linesColorPicker.getValue());
+        });
+
 
         addLineButton.setOnAction(e-> {
             mapEditController.processAddLine();
@@ -500,6 +508,7 @@ public class mmmWorkspace extends AppWorkspaceComponent {
 
         linesComboBox.getItems().clear();
         linesComboBox.getItems().addAll(lines);
+        linesComboBox.getSelectionModel().select(0);
     }
 
     public void updateStationComboBox(ObservableList<Node> nodes){
@@ -512,6 +521,7 @@ public class mmmWorkspace extends AppWorkspaceComponent {
 
         stationComboBox.getItems().clear();
         stationComboBox.getItems().addAll(lines);
+        stationComboBox.getSelectionModel().select(0);
     }
 
     public void emptyComboBoxes(){
@@ -647,12 +657,27 @@ public class mmmWorkspace extends AppWorkspaceComponent {
         return linesComboBox;
     }
 
-    public String getSelectedLine(){
+    public String getSelectedLineName(){
         return linesComboBox.getSelectionModel().getSelectedItem();
     }
 
+    public SubwayLine getSelectedLine(){
+        mmmData data = (mmmData) app.getDataComponent();
+        return data.getLineFromString(getSelectedLineName());
+    }
+
+    public String getSelectedStationName(){ return stationComboBox.getSelectionModel().getSelectedItem();}
+
+
+
+
     public ComboBox<String> getStationComboBox() {
         return stationComboBox;
+    }
+
+    public Station getSelectedStation() {
+        mmmData data = (mmmData) app.getDataComponent();
+        return data.getStationFromString(getSelectedStationName());
     }
 }
 
