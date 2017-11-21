@@ -30,7 +30,7 @@ public class SubwayLine extends Polyline{
     public SubwayLine(String name) {
         stations = new ArrayList<>();
         start = new LineEnd(this, name, 100, 200);
-        end = new LineEnd(this, 110,120);
+        end = new LineEnd(this, name, 110,120);
         addLineEnd(start);
         addLineEnd(end);
         setStrokeWidth(6);

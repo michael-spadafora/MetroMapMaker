@@ -1,21 +1,21 @@
 package gui;
 
-import data.DraggableElement;
 import data.Station;
 import data.SubwayLine;
 import data.mmmData;
 import djf.AppTemplate;
+import djf.ui.AppYesNoCancelDialogSingleton;
 import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Text;
 
 import javax.sound.sampled.Line;
 import java.util.ArrayList;
 
 import static data.mmmState.ADDING_STATION_TO_LINE;
 import static data.mmmState.REMOVING_STATION_FROM_LINE;
+import static djf.ui.AppYesNoCancelDialogSingleton.YES;
 
 
 public class MapEditController {
@@ -31,23 +31,33 @@ public class MapEditController {
     }
 
     public void processAddLine() {
-        EnterNameSingleton ens = EnterNameSingleton.getSingleton();
-        ens.show(true);
-        String name = ens.getName();
+        LineSingleton ls = LineSingleton.getSingleton();
+        //EnterNameSingleton ens = EnterNameSingleton.getSingleton();
+        ls.show(true);
 
-        SubwayLine temp = new SubwayLine(name);
-        data.addSubwayLine(temp);
-        mmmWorkspace workspace = (mmmWorkspace) app.getWorkspaceComponent();
-        workspace.updateLineComboBox(data.getElements());
-        workspace.getLinesComboBox().getSelectionModel().select(temp.getStart().getLabel().getText());
+        if (ls.getSelection().equals("Confirm")){
+
+            SubwayLine temp = new SubwayLine(ls.getLineName());
+            temp.setColor(ls.getSelectedColor());
+            data.addSubwayLine(temp);
+            mmmWorkspace workspace = (mmmWorkspace) app.getWorkspaceComponent();
+            workspace.updateLineComboBox(data.getElements());
+            workspace.getLinesComboBox().getSelectionModel().select(temp.getStart().getLabel().getText());
+        }
 
 
     }
 
     public void processRemoveLine() {
+
+        AppYesNoCancelDialogSingleton appYesNoCancelDialogSingleton = AppYesNoCancelDialogSingleton.getSingleton();
+
+        appYesNoCancelDialogSingleton.show("Line remove", "Are you sure you want to remove this line?");
+        String selection = appYesNoCancelDialogSingleton.getSelection();
+        if (selection.equals(YES)){
         data.removeSelectedLine();
         mmmWorkspace workspace = (mmmWorkspace) app.getWorkspaceComponent();
-        workspace.updateLineComboBox(data.getElements());
+        workspace.updateLineComboBox(data.getElements());}
         //workspace.
 
     }

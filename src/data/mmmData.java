@@ -69,6 +69,7 @@ public class mmmData implements AppDataComponent {
         //elements.addAll(swl.getLineSegments());
         elements.add(swl);
         elements.add(swl.getEnd());
+        elements.add(swl.getEnd().getLabel());
         elements.add(swl.getStart());
         elements.add(swl.getStart().getLabel());
 
@@ -160,6 +161,7 @@ public class mmmData implements AppDataComponent {
         elements.remove(workspace.getSelectedLine());
         elements.remove(start.getLabel());
         elements.remove(start);
+        elements.remove(end.getLabel());
         elements.remove(end);
     }
 
