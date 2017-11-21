@@ -137,9 +137,9 @@ public class LineSingleton extends Stage {
      * This method loads a custom message into the label
      * then pops open the dialog.
      *
-     * @param title The title to appear in the dialog window bar.
+     //* @param title The title to appear in the dialog window bar.
      *
-     * @param message Message to appear inside the dialog.
+    // * @param message Message to appear inside the dialog.
      */
     public void show(String currentName, Color currentColor) {
         setTitle("Edit Station");
@@ -156,6 +156,7 @@ public class LineSingleton extends Stage {
         setTitle("Add New Station");
         colorPicker.setValue(Color.BLACK);
         messageLabel.setText("Enter name and choose a color");
+        textField.setText("");
         showAndWait();
     }
 }

@@ -63,6 +63,20 @@ public class MapEditController {
     }
 
     public void processEditLine() {
+        LineSingleton ls = LineSingleton.getSingleton();
+        mmmWorkspace workspace = (mmmWorkspace) app.getWorkspaceComponent();
+        SubwayLine line = workspace.getSelectedLine();
+
+        ls.show(line.getStart().getLabel().getText(), (Color) line.getStroke());
+
+        if (ls.getSelection().equals("Confirm")){
+            line.setName(ls.getLineName());
+            line.setColor(ls.getSelectedColor());
+            workspace.updateLineComboBox(data.getElements());
+
+
+        }
+
     }
 
     public void processAddStationToLine() {

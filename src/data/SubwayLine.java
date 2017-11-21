@@ -41,9 +41,11 @@ public class SubwayLine extends Polyline{
         this.stations = stations;
     }
 
-    public ArrayList<Line> getLineSegments() {
-      //  return lineSegments;
-        return null;
+
+
+    public void setName(String s){
+        start.getLabel().setText(s);
+        end.getLabel().setText(s);
     }
 
     public LineEnd getStart() {

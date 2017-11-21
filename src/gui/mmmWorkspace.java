@@ -228,7 +228,7 @@ public class mmmWorkspace extends AppWorkspaceComponent {
         linesComboBox = new ComboBox<>();
         lineSubBox1.getChildren().add(linesComboBox);
         editLineButton = new Button("edit");
-        editLineButton.setDisable(true);
+        editLineButton.setDisable(false);
         lineSubBox1.getChildren().add(editLineButton);
         linesColorPicker = new ColorPicker();
         lineSubBox1.getChildren().add(linesColorPicker);
