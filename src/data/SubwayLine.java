@@ -36,6 +36,10 @@ public class SubwayLine extends Polyline{
         setStrokeWidth(6);
     }
 
+    public String getName(){
+        return start.getLabel().getText();
+    }
+
     public SubwayLine(ArrayList<Line> lineSegments, ArrayList<Station> stations) {
         //this.lineSegments = lineSegments;
         this.stations = stations;
@@ -86,7 +90,10 @@ public class SubwayLine extends Polyline{
         setStroke(color);
         start.setStroke(color);
         end.setStroke(color);
+    }
 
+    public Color getColor(){
+        return (Color) getStroke();
     }
 
     public void removeStation(Station station) {
@@ -94,5 +101,9 @@ public class SubwayLine extends Polyline{
         getPoints().removeAll(station.getCoordinates());
         fixPoints();
 
+    }
+
+    public ArrayList<Station> getStations() {
+        return stations;
     }
 }
