@@ -17,10 +17,11 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import properties_manager.PropertiesManager;
 
-import java.awt.*;
+
 import java.util.ArrayList;
 
 import static css.mmmStyle.*;
@@ -678,6 +679,14 @@ public class mmmWorkspace extends AppWorkspaceComponent {
     public Station getSelectedStation() {
         mmmData data = (mmmData) app.getDataComponent();
         return data.getStationFromString(getSelectedStationName());
+    }
+
+    public void setSelectedStationColor(Color c){
+        stationColorPicker.setValue(c);
+    }
+
+    public void setSelectedLineColor(Color c){
+        linesColorPicker.setValue(c);
     }
 }
 

@@ -108,6 +108,11 @@ public class MapEditController {
     public void processAddStation() {
        EnterNameSingleton ens = EnterNameSingleton.getSingleton();
        ens.show(true);
+
+
+       if (ens.getSelection().equals("Confirm")){
+
+
        String name = ens.getName();
 
 
@@ -119,6 +124,7 @@ public class MapEditController {
         mmmWorkspace workspace = (mmmWorkspace) app.getWorkspaceComponent();
         workspace.updateStationComboBox(data.getElements());
         workspace.getStationComboBox().getSelectionModel().select(stat.getLabel().getText());
+       }
     }
 
     public void processLineComboBoxClick() {

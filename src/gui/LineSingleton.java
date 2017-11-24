@@ -142,17 +142,18 @@ public class LineSingleton extends Stage {
     // * @param message Message to appear inside the dialog.
      */
     public void show(String currentName, Color currentColor) {
+        selection = "null";
         setTitle("Edit Station");
         // SET THE DIALOG TITLE BAR TITLE
         //setTitle(title);
         textField.setText(currentName);
         colorPicker.setValue(currentColor);
         messageLabel.setText("Edit station");
-
         showAndWait();
     }
 
     public void show(boolean whatever){
+        selection = "null";
         setTitle("Add New Station");
         colorPicker.setValue(Color.BLACK);
         messageLabel.setText("Enter name and choose a color");

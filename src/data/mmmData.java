@@ -22,6 +22,7 @@ public class mmmData implements AppDataComponent {
     ObservableList<Node> elements;
     mmmState state;
 
+
     public DraggableElement getSelectedElement() {
         return selectedElement;
     }
@@ -110,6 +111,21 @@ public class mmmData implements AppDataComponent {
         }
 
         selectedElement = (DraggableElement) element;
+        mmmWorkspace workspace = (mmmWorkspace) app.getWorkspaceComponent();
+
+        if (selectedElement instanceof SubwayLine)
+        {
+            workspace.setSelectedLineColor((Color) ((SubwayLine) selectedElement).getFill());
+
+        }
+
+        else if (selectedElement instanceof LineEnd){
+            workspace.setSelectedLineColor((Color) ((LineEnd) selectedElement).getStroke());
+        }
+
+        else if (selectedElement instanceof Station){
+            workspace.setSelectedStationColor((Color) ((Station) selectedElement).getFill());
+        }
         highlightShape((DraggableElement) element);
     }
 

@@ -17,12 +17,17 @@ public class EnterNameSingleton extends Stage{
     TextField textfield;
     VBox vbox;
     Text topText = new Text("Enter a name");
+    String selection;
 
     public static EnterNameSingleton getSingleton() {
         return ourInstance;
     }
 
     private EnterNameSingleton() {
+    }
+
+    public String getSelection() {
+        return selection;
     }
 
     public void init(Stage primaryStage){
@@ -34,7 +39,7 @@ public class EnterNameSingleton extends Stage{
         okButton = new Button("ok");
         textfield = new TextField();
         okButton.setOnAction( e-> {
-            String returnedName = textfield.getText();
+            selection = "Confirm";
             this.close();
         });
         vbox.getChildren().add(okButton);
@@ -54,6 +59,7 @@ public class EnterNameSingleton extends Stage{
     }
 
     public void show(boolean whatever){
+        selection = "null";
         textfield.setText("");
         showAndWait();
 
