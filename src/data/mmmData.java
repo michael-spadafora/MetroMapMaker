@@ -26,11 +26,13 @@ public class mmmData implements AppDataComponent {
     mmmState state;
 
 
+
     public DraggableElement getSelectedElement() {
         return selectedElement;
     }
 
     DraggableElement selectedElement;
+
 
     public mmmData(AppTemplate initApp) {
         // KEEP THE APP FOR LATER
@@ -50,6 +52,10 @@ public class mmmData implements AppDataComponent {
         dropShadowEffect.setRadius(5);
         highlightedEffect = dropShadowEffect;
 
+    }
+
+    public AppTemplate getApp() {
+        return app;
     }
 
     public void unhighlightShape(DraggableElement shape) {

@@ -88,8 +88,12 @@ public class mmmFiles implements AppFileComponent {
         JsonArray lineArray = lineArrayBuilder.build();
         JsonArray stationArray = stationArrayBuilder.build();
 
+        String[] parts = filePath.split(".");
+
         JsonObject finalProduct = Json.createObjectBuilder()
-                .add(JSON_ELEMENTS,array)
+                .add(JSON_NAME, parts[0])
+                .add(JSON_LINES,lineArray)
+                .add(JSON_STATIONS, stationArray)
                 .build();
 
 
@@ -144,9 +148,9 @@ public class mmmFiles implements AppFileComponent {
                 .add(JSON_NAME, name)
                 .add(JSON_X, x)
                 .add(JSON_Y, y)
-                .add(JSON_RAD, radius)
-                .add(JSON_COLOR, statColor)
-                .add(JSON_LINES, linesJson)
+                //.add(JSON_RAD, radius)
+                //.add(JSON_COLOR, statColor)
+                //.add(JSON_LINES, linesJson)
                 .build();
 
         return stationJson;
@@ -186,7 +190,7 @@ public class mmmFiles implements AppFileComponent {
 
         JsonObject shapeJson = Json.createObjectBuilder()
                 .add(JSON_TYPE, type)
-                .add(JSON_IS_STATION, circular)
+                .add(JSON_CIRCULAR, circular)
                 .add(JSON_X_START, xStart)
                 .add(JSON_Y_START, yStart)
                 .add(JSON_X_END, xEnd)
@@ -254,10 +258,15 @@ public class mmmFiles implements AppFileComponent {
     private Node loadLine(JsonObject jsonNode) {
         SubwayLine line = new SubwayLine(jsonNode.getString(JSON_NAME));
 
-        line.getStart().setCenterX(getDataAsDouble(jsonNode, JSON_X_START));
-        line.getStart().setCenterY(getDataAsDouble(jsonNode, JSON_Y_START));
-        line.getEnd().setCenterX(getDataAsDouble(jsonNode, JSON_X_END));
-        line.getEnd().setCenterY(getDataAsDouble(jsonNode, JSON_Y_END));
+        try{
+            line.getStart().setCenterX(getDataAsDouble(jsonNode, JSON_X_START));
+            line.getStart().setCenterY(getDataAsDouble(jsonNode, JSON_Y_START));
+            line.getEnd().setCenterX(getDataAsDouble(jsonNode, JSON_X_END));
+            line.getEnd().setCenterY(getDataAsDouble(jsonNode, JSON_Y_END));
+        }
+        catch (Exception ex){
+            this stuff right here is what i should be working on next
+        }
 
 
     }
