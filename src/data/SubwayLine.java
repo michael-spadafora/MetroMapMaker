@@ -12,18 +12,12 @@ public class SubwayLine extends Polyline{
     ArrayList<Station> stations;
     LineEnd start;
     LineEnd end;
+    boolean circular = false;
+    Line circularConnector;
 
     double startX;
     double startY;
 
-    public SubwayLine() {
-        stations = new ArrayList<>();
-        start = new LineEnd(this, "default", 100, 200);
-        end = new LineEnd(this, 110,120);
-        addLineEnd(start);
-        addLineEnd(end);
-        setStrokeWidth(6);
-    }
 
     public SubwayLine(String name) {
         stations = new ArrayList<>();
@@ -32,6 +26,8 @@ public class SubwayLine extends Polyline{
         addLineEnd(start);
         addLineEnd(end);
         setStrokeWidth(6);
+        circular = false;
+        circularConnector = new Line();
     }
 
     public String getName(){
@@ -42,7 +38,6 @@ public class SubwayLine extends Polyline{
         //this.lineSegments = lineSegments;
         this.stations = stations;
     }
-
 
 
     public void setName(String s){
@@ -68,7 +63,19 @@ public class SubwayLine extends Polyline{
             fixPoints();
         }
 
+        else if (!circular && stations.indexOf(station)==0 || stations.indexOf(station)==stations.size()-1){
+//                Station startStat = stations.get(0);
+//                Station endStat = stations.get(stations.size()-1);
+//                //circularConnector = new Line();
+//                circularConnector.startXProperty().bind(startStat.centerXProperty());
+//                circularConnector.startYProperty().bind(startStat.centerYProperty());
+//                circularConnector.endXProperty().bind(endStat.centerXProperty());
+//                circularConnector.endYProperty().bind(endStat.centerYProperty());
+//                circularConnector.setStrokeWidth(6);
+                circular = true;
+                fixPoints();
 
+        }
     }
 
     public void addLineEnd(LineEnd line){
@@ -85,6 +92,16 @@ public class SubwayLine extends Polyline{
             getPoints().addAll(s.getCoordinates());
         }
 
+        if (circular){
+            Station startStat = stations.get(0);
+            Station endStat = stations.get(stations.size()-1);
+            circularConnector.startXProperty().bind(startStat.centerXProperty());
+            circularConnector.startYProperty().bind(startStat.centerYProperty());
+            circularConnector.endXProperty().bind(endStat.centerXProperty());
+            circularConnector.endYProperty().bind(endStat.centerYProperty());
+            circularConnector.setStrokeWidth(6);
+        }
+
         getPoints().addAll(end.getCoordinates());
     }
 
@@ -92,6 +109,7 @@ public class SubwayLine extends Polyline{
         setStroke(color);
         start.setStroke(color);
         end.setStroke(color);
+        circularConnector.setStroke(color);
     }
 
     public Color getColor(){
@@ -99,9 +117,21 @@ public class SubwayLine extends Polyline{
     }
 
     public void removeStation(Station station) {
-        stations.remove(station);
-        getPoints().removeAll(station.getCoordinates());
-        fixPoints();
+
+        if (!circular){
+            stations.remove(station);
+            //getPoints().removeAll(station.getCoordinates());
+            fixPoints();
+
+        }
+        if (stations.size()>0 && circular && (station.equals(stations.get(0)) || station.equals(stations.get(stations.size()-1)))){
+            circular = false;
+            circularConnector.setStrokeWidth(0);
+            fixPoints();
+        }
+
+
+
 
     }
 
@@ -145,5 +175,9 @@ public class SubwayLine extends Polyline{
         }
         return currIndex;
 
+    }
+
+    public Line getConnectorLine() {
+        return circularConnector;
     }
 }

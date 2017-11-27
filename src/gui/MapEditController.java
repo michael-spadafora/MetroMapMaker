@@ -121,6 +121,7 @@ public class MapEditController {
         data.addStation(stat);
         data.addText(stat.getLabel());
 
+
         mmmWorkspace workspace = (mmmWorkspace) app.getWorkspaceComponent();
         workspace.updateStationComboBox(data.getElements());
         workspace.getStationComboBox().getSelectionModel().select(stat.getLabel().getText());

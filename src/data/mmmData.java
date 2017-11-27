@@ -10,9 +10,10 @@ import javafx.scene.effect.BlurType;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.effect.Effect;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Line;
 import javafx.scene.text.Text;
 
-import javax.sound.sampled.Line;
+
 
 public class mmmData implements AppDataComponent {
 
@@ -73,6 +74,7 @@ public class mmmData implements AppDataComponent {
         elements.add(swl.getEnd().getLabel());
         elements.add(swl.getStart());
         elements.add(swl.getStart().getLabel());
+        elements.add(swl.getConnectorLine());
 
     }
 
@@ -134,7 +136,7 @@ public class mmmData implements AppDataComponent {
         workspace.emptyComboBoxes();
 
         for (int i = elements.size() - 1; i >= 0; i--) {
-            if (!(elements.get(i) instanceof Text)&&!(elements.get(i) instanceof SubwayLine)){
+            if (!(elements.get(i) instanceof Text)&&!(elements.get(i) instanceof SubwayLine) && !(elements.get(i) instanceof Line)){
             DraggableElement shape = (DraggableElement) elements.get(i);
             Node element = (Node) shape;
                 if (element.contains(x,y)){
@@ -173,12 +175,14 @@ public class mmmData implements AppDataComponent {
         SubwayLine line = workspace.getSelectedLine();
         LineEnd start = line.getStart();
         LineEnd end = line.getEnd();
+        Line connector = line.getConnectorLine();
 
         elements.remove(workspace.getSelectedLine());
         elements.remove(start.getLabel());
         elements.remove(start);
         elements.remove(end.getLabel());
         elements.remove(end);
+        elements.remove(connector);
     }
 
     public ObservableList<Node> getElements() {
