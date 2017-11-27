@@ -1,5 +1,6 @@
 package data;
 
+import djf.ui.AppMessageDialogSingleton;
 import gui.LineEnd;
 import javafx.scene.Node;
 import javafx.scene.paint.Color;
@@ -12,12 +13,17 @@ public class SubwayLine extends Polyline{
     ArrayList<Station> stations;
     LineEnd start;
     LineEnd end;
+
+
     boolean circular = false;
     Line circularConnector;
 
     double startX;
     double startY;
 
+    public boolean isCircular() {
+        return circular;
+    }
 
     public SubwayLine(String name) {
         stations = new ArrayList<>();
@@ -58,6 +64,9 @@ public class SubwayLine extends Polyline{
             int index = 0;
             if (stations.size() >= 0){
              index = getClosestStationIndex(station) + 1 ;}
+             if (circular && index == 1 ){
+                index = 0;
+             }
             stations.add(index, station);
             getPoints().addAll(station.getCoordinates());
             fixPoints();
@@ -88,13 +97,21 @@ public class SubwayLine extends Polyline{
 
         getPoints().addAll(start.getCoordinates());
 
+
+
         for (Station s: stations){
             getPoints().addAll(s.getCoordinates());
         }
 
+        getPoints().addAll(end.getCoordinates());
+
         if (circular){
             Station startStat = stations.get(0);
             Station endStat = stations.get(stations.size()-1);
+            circularConnector.startXProperty().unbind();
+            circularConnector.startYProperty().unbind();
+            circularConnector.endXProperty().unbind();
+            circularConnector.endYProperty().unbind();
             circularConnector.startXProperty().bind(startStat.centerXProperty());
             circularConnector.startYProperty().bind(startStat.centerYProperty());
             circularConnector.endXProperty().bind(endStat.centerXProperty());
@@ -102,7 +119,7 @@ public class SubwayLine extends Polyline{
             circularConnector.setStrokeWidth(6);
         }
 
-        getPoints().addAll(end.getCoordinates());
+
     }
 
     public void setColor(Color color){
@@ -117,6 +134,11 @@ public class SubwayLine extends Polyline{
     }
 
     public void removeStation(Station station) {
+
+        if (!stations.contains(station)){
+            AppMessageDialogSingleton singleton = AppMessageDialogSingleton.getSingleton();
+            singleton.show("error", "selected line does not contain this station");
+        }
 
         if (!circular){
             stations.remove(station);

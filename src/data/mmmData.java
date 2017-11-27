@@ -9,6 +9,8 @@ import javafx.scene.Node;
 import javafx.scene.effect.BlurType;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.effect.Effect;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Text;
@@ -217,5 +219,23 @@ public class mmmData implements AppDataComponent {
         elements.remove(workspace.getSelectedStation().getLabel());
         elements.remove(workspace.getSelectedStation());
 
+    }
+
+    public void addElement(Node node){
+        if (node instanceof SubwayLine){
+            addSubwayLine((SubwayLine) node);
+
+        }
+
+        else if (node instanceof Station){
+            addStation((Station) node);
+        }
+
+        else if (node instanceof ImageView){
+            addImage((ImageView) node);
+        }
+    }
+
+    private void addImage(ImageView img) {
     }
 }

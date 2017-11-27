@@ -42,9 +42,10 @@ public class EnterNameSingleton extends Stage{
             selection = "Confirm";
             this.close();
         });
+        vbox.getChildren().add(textfield);
         vbox.getChildren().add(okButton);
 
-        vbox.getChildren().add(textfield);
+
 
         messageScene = new Scene(vbox);
         this.setScene(messageScene);
@@ -59,7 +60,7 @@ public class EnterNameSingleton extends Stage{
     }
 
     public void show(boolean whatever){
-        selection = "null";
+        selection = "nulllllll";
         textfield.setText("");
         showAndWait();
 
