@@ -9,9 +9,9 @@ import djf.components.AppWorkspaceComponent;
 import djf.controller.AppFileController;
 import djf.ui.AppGUI;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.geometry.Side;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
@@ -120,6 +120,9 @@ public class mmmWorkspace extends AppWorkspaceComponent {
     Button stationListButton;
     CanvasController canvasController;
 
+    Button exportButton;
+    Button importButton;
+
 
     public mmmWorkspace(AppTemplate initApp) {
         app = initApp;
@@ -135,7 +138,11 @@ public class mmmWorkspace extends AppWorkspaceComponent {
 
         MapEditController mapEditController = new MapEditController(app);
 
+        AppFileController fileController = gui.getFileController();
 
+        exportButton.setOnAction( e -> {
+            fileController.processExportRequest();
+        });
 
         stationColorPicker.setOnAction( e-> {
             mapEditController.processStationColorChange(stationColorPicker.getValue());
@@ -436,9 +443,13 @@ public class mmmWorkspace extends AppWorkspaceComponent {
         undoRedoToolbar.setAlignment(Pos.CENTER);
         undoRedoToolbar.setHgap(5);
 
+
+
         undoButton = initChildButton(undoRedoToolbar, "Undo.png", "removes current item, and copies it to clipboard", true);
         redoButton = initChildButton(undoRedoToolbar, "Redo.png", "copies currently selected item to clipboard", true);
         aboutButton = initChildButton(undoRedoToolbar, "About.png", "about us", false);
+
+        exportButton = initChildButton(gui.getFileToolbar(), "Export.png", "exports current map", false);
 
 
 

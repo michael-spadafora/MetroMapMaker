@@ -62,24 +62,24 @@ public class mmmFiles implements AppFileComponent {
 
     @Override
     public void saveData(AppDataComponent appDataComponent, String filePath) throws IOException {
-        mmmData dataManager = (mmmData) appDataComponent;
 
-        // FIRST THE BACKGROUND COLOR
-        //Color bgColor = dataManager.getBackgroundColor();
-        //JsonObject bgColorJson = makeJsonColorObject(bgColor);
-        JsonArrayBuilder lineArrayBuilder = Json.createArrayBuilder();
-        JsonArrayBuilder stationArrayBuilder = Json.createArrayBuilder();
-        ObservableList<Node> elements = dataManager.getElements();
+            mmmData dataManager = (mmmData) appDataComponent;
 
-        for (Node node : elements) {
-            if (node instanceof SubwayLine) {
-                JsonObject subwayJson = createSubwayLineJson(node);
-                lineArrayBuilder.add(subwayJson);
-            } else if (node instanceof Station) {
-                JsonObject stationJson = createStationJson(node);
-                stationArrayBuilder.add(stationJson);
-            }
+            // FIRST THE BACKGROUND COLOR
+            //Color bgColor = dataManager.getBackgroundColor();
+            //JsonObject bgColorJson = makeJsonColorObject(bgColor);
+            JsonArrayBuilder lineArrayBuilder = Json.createArrayBuilder();
+            JsonArrayBuilder stationArrayBuilder = Json.createArrayBuilder();
+            ObservableList<Node> elements = dataManager.getElements();
 
+            for (Node node : elements) {
+                if (node instanceof SubwayLine) {
+                    JsonObject subwayJson = createSubwayLineJson(node);
+                    lineArrayBuilder.add(subwayJson);
+                } else if (node instanceof Station) {
+                    JsonObject stationJson = createStationJson(node);
+                    stationArrayBuilder.add(stationJson);
+                }
 //            else if (node instanceof DraggableImage){
 //        }
         }
@@ -185,10 +185,7 @@ public class mmmFiles implements AppFileComponent {
 
 
         for (Station stat: stations){
-            JsonObject stationJson = Json.createObjectBuilder()
-                    .add(JSON_NAME, stat.getLabel().getText())
-                    .build();
-            arrayBuilder.add(stationJson);
+            arrayBuilder.add(stat.getLabel().getText());
         }
 
         JsonArray stationsJson = arrayBuilder.build();
@@ -254,8 +251,6 @@ public class mmmFiles implements AppFileComponent {
             SubwayLine subwayLine = (SubwayLine) node;
             subwayLines.add(subwayLine);
 
-
-
         }
 
         for (SubwayLine swl: subwayLines ){
@@ -294,8 +289,8 @@ public class mmmFiles implements AppFileComponent {
         ArrayList<String> currStations = new ArrayList<>();
 
         for (int i = 0; i < jsonStations.size(); i++){
-            JsonObject temp = jsonStations.getJsonObject(i);
-            currStations.add(temp.getString(JSON_NAME));
+            //JsonObject temp = jsonStations.getJsonObject(i);
+            currStations.add(jsonStations.getString(i));
         }
 
         for (Station stat: stations){
@@ -343,12 +338,75 @@ public class mmmFiles implements AppFileComponent {
 
     @Override
     public void exportData(AppDataComponent appDataComponent, String s) throws IOException {
+        mmmData dataManager = (mmmData) appDataComponent;
 
+        // FIRST THE BACKGROUND COLOR
+        //Color bgColor = dataManager.getBackgroundColor();
+        //JsonObject bgColorJson = makeJsonColorObject(bgColor);
+        JsonArrayBuilder lineArrayBuilder = Json.createArrayBuilder();
+        JsonArrayBuilder stationArrayBuilder = Json.createArrayBuilder();
+        ObservableList<Node> elements = dataManager.getElements();
+
+        for (Node node : elements) {
+            if (node instanceof SubwayLine) {
+                JsonObject subwayJson = exportSubwayLineJson(node);
+                lineArrayBuilder.add(subwayJson);
+            } else if (node instanceof Station) {
+                JsonObject stationJson = createStationJson(node);
+                stationArrayBuilder.add(stationJson);
+            }
+
+        }
     }
 
     @Override
     public void importData(AppDataComponent appDataComponent, String s) throws IOException {
+        loadData(appDataComponent, s);
+    }
 
+    private JsonObject exportSubwayLineJson(Node node) {
+        SubwayLine subwayLine = (SubwayLine) node;
+
+        String type = JSON_IS_LINE;
+        boolean circular = subwayLine.isCircular();
+        String name = subwayLine.getName();
+        double xStart = subwayLine.getStart().getX();
+        double yStart = subwayLine.getStart().getY();
+
+        double xEnd = subwayLine.getEnd().getX();
+        double yEnd = subwayLine.getEnd().getY();
+
+        Color color = subwayLine.getColor();
+        double strokeWidth = subwayLine.getStrokeWidth();
+
+
+        ArrayList<Station> stations = subwayLine.getStations();
+        JsonArrayBuilder arrayBuilder = Json.createArrayBuilder();
+
+
+        for (Station stat: stations){
+            arrayBuilder.add(stat.getLabel().getText());
+        }
+
+        JsonArray stationsJson = arrayBuilder.build();
+
+        JsonObject colorJson = makeJsonColorObject(subwayLine.getColor());
+
+
+        JsonObject shapeJson = Json.createObjectBuilder()
+                .add(JSON_TYPE, type)
+                .add(JSON_NAME, name)
+                .add(JSON_CIRCULAR, circular)
+//                .add(JSON_X_START, xStart)
+//                .add(JSON_Y_START, yStart)
+//                .add(JSON_X_END, xEnd)
+//                .add(JSON_Y_END, yEnd)
+                .add(JSON_COLOR, colorJson)
+                .add(JSON_LINE_WIDTH, strokeWidth)
+                .add(JSON_STATIONS_ON_LINE, stationsJson)
+                .build();
+
+        return shapeJson;
     }
 
     private double getDataAsDouble(JsonObject json, String dataName) {

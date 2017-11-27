@@ -160,7 +160,7 @@ public class mmmData implements AppDataComponent {
         workspace.emptyComboBoxes();
 
         for (int i = elements.size() - 1; i >= 0; i--) {
-            if (!(elements.get(i) instanceof Text)&&!(elements.get(i) instanceof SubwayLine) && !(elements.get(i) instanceof Line)){
+            if (!(elements.get(i) instanceof Text) && !(elements.get(i) instanceof SubwayLine) && !(elements.get(i) instanceof Line)){
             DraggableElement shape = (DraggableElement) elements.get(i);
             Node element = (Node) shape;
                 if (element.contains(x,y)){
@@ -175,6 +175,7 @@ public class mmmData implements AppDataComponent {
                     return shape;
                 }
             }
+
         }
         return null;
     }
