@@ -132,6 +132,8 @@ public class mmmWorkspace extends AppWorkspaceComponent {
 
         MapEditController mapEditController = new MapEditController(app);
 
+
+
         stationColorPicker.setOnAction( e-> {
             mapEditController.processStationColorChange(stationColorPicker.getValue());
         });

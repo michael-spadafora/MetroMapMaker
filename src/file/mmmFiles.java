@@ -11,6 +11,7 @@ import javafx.scene.paint.Color;
 
 import javax.json.*;
 import javax.json.stream.JsonGenerator;
+import javax.sound.sampled.Line;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -228,13 +229,28 @@ public class mmmFiles implements AppFileComponent {
         //dataManager.setBackgroundColor(bgColor);
 
         // AND NOW LOAD ALL THE SHAPES
-        JsonArray jsonShapeArray = json.getJsonArray(JSON_ELEMENTS);
-        for (int i = 0; i < jsonShapeArray.size(); i++) {
-            JsonObject jsonNode = jsonShapeArray.getJsonObject(i);
+        JsonArray jsonLineArray = json.getJsonArray(JSON_LINES);
+        JsonArray jsonStationArray = json.getJsonArray(JSON_STATIONS);
+        ArrayList<Station> stations = new ArrayList<>();
+        ArrayList<SubwayLine> subwayLines = new ArrayList<>();
+        for (int i = 0; i < jsonStationArray.size(); i++) {
+            JsonObject jsonNode = jsonStationArray.getJsonObject(i);
             Node node = loadNode(jsonNode);
-            //Shape shape = loadShape(jsonShape);
-            //dataManager.addElement(shape);
+            Station station = (Station) node;
+            stations.add(station);
         }
+
+        for (int i = 0; i < jsonLineArray.size(); i++) {
+            JsonObject jsonNode = jsonLineArray.getJsonObject(i);
+            Node node = loadLine(jsonNode, stations);
+            SubwayLine subwayLine = (SubwayLine) node;
+            subwayLines.add(subwayLine);
+
+
+
+        }
+
+
 
     }
 
@@ -246,32 +262,60 @@ public class mmmFiles implements AppFileComponent {
             case JSON_IS_STATION:
                 returnedNode = loadStation(jsonNode);
                 break;
-            case JSON_IS_LINE:
-                returnedNode = loadLine(jsonNode);
-                break;
-
+//            case JSON_IS_LINE:
+//                returnedNode = loadLine(jsonNode);
+//                break;
         }
 
         return returnedNode;
     }
 
-    private Node loadLine(JsonObject jsonNode) {
+    private Node loadLine(JsonObject jsonNode, ArrayList<Station> stations) {
         SubwayLine line = new SubwayLine(jsonNode.getString(JSON_NAME));
+        JsonArray jsonStations = jsonNode.getJsonArray(JSON_STATIONS_ON_LINE);
+        ArrayList<String> currStations = new ArrayList<>();
+
+        for (int i = 0; i < jsonStations.size(); i++){
+            currStations.add(jsonStations.getString(i));
+        }
+
+        for (Station stat: stations){
+            if (currStations.contains(stat.getLabel().getText())){
+                line.addStation(stat);
+            }
+        }
+
+        double startx, starty, endx, endy;
 
         try{
-            line.getStart().setCenterX(getDataAsDouble(jsonNode, JSON_X_START));
-            line.getStart().setCenterY(getDataAsDouble(jsonNode, JSON_Y_START));
-            line.getEnd().setCenterX(getDataAsDouble(jsonNode, JSON_X_END));
-            line.getEnd().setCenterY(getDataAsDouble(jsonNode, JSON_Y_END));
+            startx= getDataAsDouble(jsonNode, JSON_X_START);
+            starty = getDataAsDouble(jsonNode, JSON_Y_START);
+            endx = getDataAsDouble(jsonNode, JSON_X_END);
+            endy = getDataAsDouble(jsonNode, JSON_Y_END);
         }
         catch (Exception ex){
-            this stuff right here is what i should be working on next
+            startx = line.getStations().get(0).getX()-10;
+            starty = line.getStations().get(0).getY()-10;
+
+            endx = line.getStations().get(line.getStations().size()-1).getX()+10;
+            endy = line.getStations().get(line.getStations().size()-1).getY()+10;
         }
+
+        line.fixPoints();
+
+        line.setColor(loadColor(jsonNode, JSON_COLOR));
+        return line;
 
 
     }
 
     private Node loadStation(JsonObject jsonNode) {
+        Station stat  = new Station();
+        stat.getLabel().setText(jsonNode.getString(JSON_NAME));
+        stat.setCenterX(getDataAsDouble(jsonNode, JSON_X));
+        stat.setCenterY(getDataAsDouble(jsonNode, JSON_Y));
+
+        return stat;
     }
 
     @Override
