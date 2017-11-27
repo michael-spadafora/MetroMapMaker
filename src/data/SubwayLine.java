@@ -16,8 +16,6 @@ public class SubwayLine extends Polyline{
     double startX;
     double startY;
 
-
-
     public SubwayLine() {
         stations = new ArrayList<>();
         start = new LineEnd(this, "default", 100, 200);
@@ -62,9 +60,13 @@ public class SubwayLine extends Polyline{
 
     public void addStation(Station station){
         if (!stations.contains(station)){
-        stations.add(station);
-        getPoints().addAll(station.getCoordinates());
-        fixPoints();}
+            int index = 0;
+            if (stations.size() >= 0){
+             index = getClosestStationIndex(station) + 1 ;}
+            stations.add(index, station);
+            getPoints().addAll(station.getCoordinates());
+            fixPoints();
+        }
 
 
     }
@@ -105,5 +107,43 @@ public class SubwayLine extends Polyline{
 
     public ArrayList<Station> getStations() {
         return stations;
+    }
+
+
+    public int getClosestStationIndex(Station newS){
+        int currIndex = 0;
+        double minDistance = 99999;
+        int i = 0;
+
+        for (Station s: stations){
+            double xDistance = Math.pow(newS.getX() - s.getX(),2);
+            double yDistance = Math.pow(newS.getY() - s.getY(),2);
+            double totDistance = xDistance+yDistance;
+            if (totDistance<=minDistance){
+                currIndex = i;
+                minDistance = totDistance;
+            }
+            i++;
+        }
+
+        double xDistance = Math.pow(newS.getX() - start.getX(),2);
+        double yDistance = Math.pow(newS.getY() - start.getY(),2);
+        double totDistance = xDistance+yDistance;
+        if (totDistance<=minDistance){
+            currIndex = -1;
+            minDistance = totDistance;
+        }
+
+
+
+         xDistance = Math.pow(newS.getX() - end.getX(),2);
+         yDistance = Math.pow(newS.getY() - end.getY(),2);
+         totDistance = xDistance+yDistance;
+        if (totDistance<=minDistance){
+            currIndex = stations.size()-1;
+            minDistance = totDistance;
+        }
+        return currIndex;
+
     }
 }
