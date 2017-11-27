@@ -6,6 +6,7 @@ import data.mmmData;
 import djf.AppTemplate;
 import djf.components.AppDataComponent;
 import djf.components.AppWorkspaceComponent;
+import djf.controller.AppFileController;
 import djf.ui.AppGUI;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
@@ -130,6 +131,8 @@ public class mmmWorkspace extends AppWorkspaceComponent {
     private void initControllers() {
 
 
+
+
         MapEditController mapEditController = new MapEditController(app);
 
 
@@ -221,8 +224,10 @@ public class mmmWorkspace extends AppWorkspaceComponent {
     }
 
     private void initSidePane() {
+        AppFileController fileController = app.getGUI().getFileController();
         ((Button)(gui.getFileToolbar().getChildren().get(0))).setOnAction(e->{
             activateWorkspace(app.getGUI().getAppPane());
+            fileController.handleNewRequest();
         });
         editToolbar = new VBox();
         lineBox = new VBox();
@@ -534,6 +539,9 @@ public class mmmWorkspace extends AppWorkspaceComponent {
 
     @Override
     public void reloadWorkspace(AppDataComponent appDataComponent) {
+        mmmData  data = (mmmData) appDataComponent;
+       // app.getDataComponent().resetData();
+
 
     }
 
@@ -689,6 +697,10 @@ public class mmmWorkspace extends AppWorkspaceComponent {
 
     public void setSelectedLineColor(Color c){
         linesColorPicker.setValue(c);
+    }
+
+    public Pane getCanvas() {
+        return canvas;
     }
 }
 

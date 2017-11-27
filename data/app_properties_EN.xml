@@ -76,7 +76,7 @@
         <property name="SAVE_WORK_TITLE"		value="Save your work"></property>
         <property name="LOAD_WORK_TITLE"		value="Select work file to load"></property>
         <property name="WORK_FILE_EXT"			value="pm"></property>
-        <property name="WORK_FILE_EXT_DESC"		value="goLogoLo Files"></property>
+        <property name="WORK_FILE_EXT_DESC"		value="MetroMapMaker Files"></property>
 
         <!-- PROGRAM ICON FILES -->
         <property name="SELECTION_TOOL_ICON"	value="SelectionTool.png"></property>

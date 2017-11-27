@@ -89,10 +89,17 @@ public class mmmFiles implements AppFileComponent {
         JsonArray lineArray = lineArrayBuilder.build();
         JsonArray stationArray = stationArrayBuilder.build();
 
-        String[] parts = filePath.split(".");
+        String fileName = filePath;
+
+        if (filePath.contains(".")){
+            String[] parts = filePath.split(".");
+            fileName = parts[0];
+
+        }
+
 
         JsonObject finalProduct = Json.createObjectBuilder()
-                .add(JSON_NAME, parts[0])
+                .add(JSON_NAME, fileName)
                 .add(JSON_LINES,lineArray)
                 .add(JSON_STATIONS, stationArray)
                 .build();
@@ -191,6 +198,7 @@ public class mmmFiles implements AppFileComponent {
 
         JsonObject shapeJson = Json.createObjectBuilder()
                 .add(JSON_TYPE, type)
+                .add(JSON_NAME, name)
                 .add(JSON_CIRCULAR, circular)
                 .add(JSON_X_START, xStart)
                 .add(JSON_Y_START, yStart)
@@ -250,6 +258,16 @@ public class mmmFiles implements AppFileComponent {
 
         }
 
+        for (SubwayLine swl: subwayLines ){
+            ((mmmData) data).addSubwayLine(swl);
+        }
+
+        for (Station stat: stations){
+            ((mmmData) data).addStation(stat);
+        }
+
+
+
 
 
     }
@@ -276,12 +294,17 @@ public class mmmFiles implements AppFileComponent {
         ArrayList<String> currStations = new ArrayList<>();
 
         for (int i = 0; i < jsonStations.size(); i++){
-            currStations.add(jsonStations.getString(i));
+            JsonObject temp = jsonStations.getJsonObject(i);
+            currStations.add(temp.getString(JSON_NAME));
         }
 
         for (Station stat: stations){
-            if (currStations.contains(stat.getLabel().getText())){
-                line.addStation(stat);
+            for (String name:currStations){
+                String labelText = stat.getLabel().getText();
+                if (name.equals(labelText)){
+                    line.addStation(stat);
+                    stat.addSubwayLine(line);
+                }
             }
         }
 

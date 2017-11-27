@@ -15,6 +15,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Text;
 
+import static data.mmmState.SELECTING_SHAPE;
 
 
 public class mmmData implements AppDataComponent {
@@ -39,7 +40,7 @@ public class mmmData implements AppDataComponent {
         app = initApp;
         undoRedoStack = new UndoRedoStack();
         selectedElement = null;
-        state = mmmState.SELECTING_SHAPE;
+        state = SELECTING_SHAPE;
 
 
 
@@ -68,6 +69,18 @@ public class mmmData implements AppDataComponent {
 
     @Override
     public void resetData() {
+        setState(SELECTING_SHAPE);
+        //newShape = null;
+        selectedElement = null;
+
+        // INIT THE COLORS
+        mmmWorkspace workspace = (mmmWorkspace) app.getWorkspaceComponent();
+        workspace.setSelectedLineColor(Color.BLACK);
+        workspace.setSelectedStationColor(Color.BLACK);
+
+        elements.clear();
+        ((mmmWorkspace) app.getWorkspaceComponent()).getCanvas().getChildren().clear();
+
 
     }
 
@@ -88,6 +101,9 @@ public class mmmData implements AppDataComponent {
 
     public void addStation(Station stat){
         elements.add(stat);
+        elements.add(stat.getLabel());
+        stat.getLabel().setX(stat.getCenterX()+10);
+        stat.getLabel().setY(stat.getCenterY()+10);
     }
 
     public void addText(Text text){

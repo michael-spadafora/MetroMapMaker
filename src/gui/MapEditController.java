@@ -114,12 +114,11 @@ public class MapEditController {
 
 
        String name = ens.getName();
-
-
-
         Station stat = new Station(name);
         data.addStation(stat);
-        data.addText(stat.getLabel());
+
+
+        //data.addText(stat.getLabel());
 
 
         mmmWorkspace workspace = (mmmWorkspace) app.getWorkspaceComponent();
