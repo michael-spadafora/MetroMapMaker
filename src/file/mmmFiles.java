@@ -90,7 +90,7 @@ public class mmmFiles implements AppFileComponent {
         JsonArray lineArray = lineArrayBuilder.build();
         JsonArray stationArray = stationArrayBuilder.build();
 
-        String fileName = filePath.substring(filePath.lastIndexOf("\\"));
+        String fileName = filePath.substring(filePath.lastIndexOf("\\") + 1);
 
         if (filePath.contains(".")){
             String[] parts = filePath.split(".");
@@ -264,10 +264,6 @@ public class mmmFiles implements AppFileComponent {
 
         mmmWorkspace workspace = (mmmWorkspace) dataManager.getApp().getWorkspaceComponent();
         workspace.updateLineComboBox(dataManager.getElements());
-
-
-
-
 
     }
 

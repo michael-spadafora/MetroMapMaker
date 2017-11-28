@@ -4,7 +4,6 @@
     <list default="true" id="4e1fb8db-1583-436d-b92f-c9996587c59a" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/data/SubwayLine.java" afterPath="$PROJECT_DIR$/src/data/SubwayLine.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/file/mmmFiles.java" afterPath="$PROJECT_DIR$/src/file/mmmFiles.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gui/mmmWorkspace.java" afterPath="$PROJECT_DIR$/src/gui/mmmWorkspace.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,8 +18,8 @@
       <file leaf-file-name="SubwayLine.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/data/SubwayLine.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="367">
-              <caret line="160" column="20" lean-forward="false" selection-start-line="160" selection-start-column="20" selection-end-line="160" selection-end-column="20" />
+            <state relative-caret-position="229">
+              <caret line="214" column="0" lean-forward="true" selection-start-line="214" selection-start-column="0" selection-end-line="214" selection-end-column="0" />
               <folding>
                 <element signature="method#SubwayLine#0;class#SubwayLine#0" expanded="false" />
                 <element signature="method#SubwayLine#1;class#SubwayLine#0" expanded="false" />
@@ -28,9 +27,10 @@
                 <element signature="method#addStation#0;class#SubwayLine#0" expanded="false" />
                 <element signature="method#fixPoints#0;class#SubwayLine#0" expanded="false" />
                 <element signature="method#setColor#0;class#SubwayLine#0" expanded="false" />
+                <element signature="method#removeStation#0;class#SubwayLine#0" expanded="false" />
                 <element signature="method#getClosestStationIndex#0;class#SubwayLine#0" expanded="false" />
-                <element signature="e#6332#6333#0" expanded="true" />
-                <element signature="e#6372#6373#0" expanded="true" />
+                <element signature="e#6351#6352#0" expanded="true" />
+                <element signature="e#6391#6392#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -89,12 +89,15 @@
       <file leaf-file-name="mmmData.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/data/mmmData.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="222">
-              <caret line="168" column="61" lean-forward="false" selection-start-line="168" selection-start-column="61" selection-end-line="168" selection-end-column="61" />
+            <state relative-caret-position="351">
+              <caret line="157" column="0" lean-forward="false" selection-start-line="157" selection-start-column="0" selection-end-line="157" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#resetData#0;class#mmmData#0" expanded="false" />
                 <element signature="method#addSubwayLine#0;class#mmmData#0" expanded="false" />
+                <element signature="method#selectTopShape#0;class#mmmData#0" expanded="false" />
+                <element signature="method#setSelectedElement#0;class#mmmData#0" expanded="false" />
+                <element signature="method#getTopShape#0;class#mmmData#0" expanded="false" />
                 <element signature="method#removeSelectedElement#0;class#mmmData#0" expanded="false" />
                 <element signature="method#removeSelectedLine#0;class#mmmData#0" expanded="false" />
                 <element signature="method#getLineFromString#0;class#mmmData#0" expanded="false" />
@@ -109,10 +112,9 @@
       <file leaf-file-name="mmmFiles.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/file/mmmFiles.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="233">
-              <caret line="265" column="51" lean-forward="false" selection-start-line="265" selection-start-column="51" selection-end-line="265" selection-end-column="51" />
+            <state relative-caret-position="184">
+              <caret line="95" column="19" lean-forward="true" selection-start-line="95" selection-start-column="19" selection-end-line="95" selection-end-column="19" />
               <folding>
-                <element signature="method#saveData#0;class#mmmFiles#0" expanded="false" />
                 <element signature="method#createStationJson#0;class#mmmFiles#0" expanded="false" />
                 <element signature="method#createSubwayLineJson#0;class#mmmFiles#0" expanded="false" />
                 <element signature="method#makeJsonColorObject#0;class#mmmFiles#0" expanded="false" />
@@ -155,6 +157,7 @@
       <find>reset</find>
       <find>HAS_EXPORT</find>
       <find>HAS_</find>
+      <find>\\</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -426,12 +429,12 @@
       <workItem from="1510618265822" duration="2206000" />
       <workItem from="1510877734143" duration="32670000" />
       <workItem from="1511200032396" duration="21939000" />
-      <workItem from="1511758115564" duration="21470000" />
+      <workItem from="1511758115564" duration="21723000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="123177000" />
+    <option name="totallyTimeSpent" value="123430000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -497,7 +500,7 @@
           <option name="timeStamp" value="113" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="114" />
+      <option name="time" value="115" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -514,6 +517,9 @@
             <element signature="imports" expanded="true" />
             <element signature="method#resetData#0;class#mmmData#0" expanded="false" />
             <element signature="method#addSubwayLine#0;class#mmmData#0" expanded="false" />
+            <element signature="method#selectTopShape#0;class#mmmData#0" expanded="false" />
+            <element signature="method#setSelectedElement#0;class#mmmData#0" expanded="false" />
+            <element signature="method#getTopShape#0;class#mmmData#0" expanded="false" />
             <element signature="method#removeSelectedElement#0;class#mmmData#0" expanded="false" />
             <element signature="method#removeSelectedLine#0;class#mmmData#0" expanded="false" />
             <element signature="method#getLineFromString#0;class#mmmData#0" expanded="false" />
@@ -801,47 +807,47 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1511839888914" expanded="true" signature="61919:61936" ph="..." />
-            <marker date="1511839888914" expanded="true" signature="61919:61954" ph="..." />
-            <marker date="1511839888914" expanded="true" signature="61919:61967" ph="..." />
-            <marker date="1511839888914" expanded="true" signature="61919:61982" ph="..." />
-            <marker date="1511839888914" expanded="true" signature="62017:64557" ph="..." />
-            <marker date="1511839888914" expanded="true" signature="62030:64542" ph="..." />
-            <marker date="1511839888914" expanded="true" signature="62084:62379" ph="..." />
-            <marker date="1511839888914" expanded="true" signature="62103:62364" ph="..." />
-            <marker date="1511839888914" expanded="true" signature="62166:62344" ph="..." />
-            <marker date="1511839888914" expanded="true" signature="62206:62310" ph="..." />
-            <marker date="1511839888914" expanded="true" signature="62227:62288" ph="..." />
-            <marker date="1511839888914" expanded="true" signature="62429:62756" ph="..." />
-            <marker date="1511839888914" expanded="true" signature="62448:62741" ph="..." />
-            <marker date="1511839888914" expanded="true" signature="62543:62721" ph="..." />
-            <marker date="1511839888914" expanded="true" signature="62583:62687" ph="..." />
-            <marker date="1511839888914" expanded="true" signature="62604:62665" ph="..." />
-            <marker date="1511839888914" expanded="true" signature="62807:63072" ph="..." />
-            <marker date="1511839888914" expanded="true" signature="62826:63057" ph="..." />
-            <marker date="1511839888914" expanded="true" signature="62859:63037" ph="..." />
-            <marker date="1511839888914" expanded="true" signature="62899:63003" ph="..." />
-            <marker date="1511839888914" expanded="true" signature="62920:62981" ph="..." />
-            <marker date="1511839888914" expanded="true" signature="63115:63421" ph="..." />
-            <marker date="1511839888914" expanded="true" signature="63134:63406" ph="..." />
-            <marker date="1511839888914" expanded="true" signature="63208:63386" ph="..." />
-            <marker date="1511839888914" expanded="true" signature="63248:63352" ph="..." />
-            <marker date="1511839888914" expanded="true" signature="63269:63330" ph="..." />
-            <marker date="1511839888914" expanded="true" signature="63472:63829" ph="..." />
-            <marker date="1511839888914" expanded="true" signature="63491:63814" ph="..." />
-            <marker date="1511839888914" expanded="true" signature="63577:63794" ph="..." />
-            <marker date="1511839888914" expanded="true" signature="63617:63760" ph="..." />
-            <marker date="1511839888914" expanded="true" signature="63638:63738" ph="..." />
-            <marker date="1511839888914" expanded="true" signature="63864:64170" ph="..." />
-            <marker date="1511839888914" expanded="true" signature="63883:64155" ph="..." />
-            <marker date="1511839888914" expanded="true" signature="63957:64135" ph="..." />
-            <marker date="1511839888914" expanded="true" signature="63997:64101" ph="..." />
-            <marker date="1511839888914" expanded="true" signature="64018:64079" ph="..." />
-            <marker date="1511839888914" expanded="true" signature="64222:64528" ph="..." />
-            <marker date="1511839888914" expanded="true" signature="64241:64513" ph="..." />
-            <marker date="1511839888914" expanded="true" signature="64315:64493" ph="..." />
-            <marker date="1511839888914" expanded="true" signature="64355:64459" ph="..." />
-            <marker date="1511839888914" expanded="true" signature="64376:64437" ph="..." />
+            <marker date="1511840121942" expanded="true" signature="62644:62661" ph="..." />
+            <marker date="1511840121942" expanded="true" signature="62644:62679" ph="..." />
+            <marker date="1511840121942" expanded="true" signature="62644:62692" ph="..." />
+            <marker date="1511840121942" expanded="true" signature="62644:62707" ph="..." />
+            <marker date="1511840121942" expanded="true" signature="62742:65282" ph="..." />
+            <marker date="1511840121942" expanded="true" signature="62755:65267" ph="..." />
+            <marker date="1511840121942" expanded="true" signature="62809:63104" ph="..." />
+            <marker date="1511840121942" expanded="true" signature="62828:63089" ph="..." />
+            <marker date="1511840121942" expanded="true" signature="62891:63069" ph="..." />
+            <marker date="1511840121942" expanded="true" signature="62931:63035" ph="..." />
+            <marker date="1511840121942" expanded="true" signature="62952:63013" ph="..." />
+            <marker date="1511840121942" expanded="true" signature="63154:63481" ph="..." />
+            <marker date="1511840121942" expanded="true" signature="63173:63466" ph="..." />
+            <marker date="1511840121942" expanded="true" signature="63268:63446" ph="..." />
+            <marker date="1511840121942" expanded="true" signature="63308:63412" ph="..." />
+            <marker date="1511840121942" expanded="true" signature="63329:63390" ph="..." />
+            <marker date="1511840121942" expanded="true" signature="63532:63797" ph="..." />
+            <marker date="1511840121942" expanded="true" signature="63551:63782" ph="..." />
+            <marker date="1511840121942" expanded="true" signature="63584:63762" ph="..." />
+            <marker date="1511840121942" expanded="true" signature="63624:63728" ph="..." />
+            <marker date="1511840121942" expanded="true" signature="63645:63706" ph="..." />
+            <marker date="1511840121942" expanded="true" signature="63840:64146" ph="..." />
+            <marker date="1511840121942" expanded="true" signature="63859:64131" ph="..." />
+            <marker date="1511840121942" expanded="true" signature="63933:64111" ph="..." />
+            <marker date="1511840121942" expanded="true" signature="63973:64077" ph="..." />
+            <marker date="1511840121942" expanded="true" signature="63994:64055" ph="..." />
+            <marker date="1511840121942" expanded="true" signature="64197:64554" ph="..." />
+            <marker date="1511840121942" expanded="true" signature="64216:64539" ph="..." />
+            <marker date="1511840121942" expanded="true" signature="64302:64519" ph="..." />
+            <marker date="1511840121942" expanded="true" signature="64342:64485" ph="..." />
+            <marker date="1511840121942" expanded="true" signature="64363:64463" ph="..." />
+            <marker date="1511840121942" expanded="true" signature="64589:64895" ph="..." />
+            <marker date="1511840121942" expanded="true" signature="64608:64880" ph="..." />
+            <marker date="1511840121942" expanded="true" signature="64682:64860" ph="..." />
+            <marker date="1511840121942" expanded="true" signature="64722:64826" ph="..." />
+            <marker date="1511840121942" expanded="true" signature="64743:64804" ph="..." />
+            <marker date="1511840121942" expanded="true" signature="64947:65253" ph="..." />
+            <marker date="1511840121942" expanded="true" signature="64966:65238" ph="..." />
+            <marker date="1511840121942" expanded="true" signature="65040:65218" ph="..." />
+            <marker date="1511840121942" expanded="true" signature="65080:65184" ph="..." />
+            <marker date="1511840121942" expanded="true" signature="65101:65162" ph="..." />
           </folding>
         </state>
       </provider>
@@ -894,48 +900,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/data/SubwayLine.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="367">
-          <caret line="160" column="20" lean-forward="false" selection-start-line="160" selection-start-column="20" selection-end-line="160" selection-end-column="20" />
-          <folding>
-            <element signature="method#SubwayLine#0;class#SubwayLine#0" expanded="false" />
-            <element signature="method#SubwayLine#1;class#SubwayLine#0" expanded="false" />
-            <element signature="method#setName#0;class#SubwayLine#0" expanded="false" />
-            <element signature="method#addStation#0;class#SubwayLine#0" expanded="false" />
-            <element signature="method#fixPoints#0;class#SubwayLine#0" expanded="false" />
-            <element signature="method#setColor#0;class#SubwayLine#0" expanded="false" />
-            <element signature="method#getClosestStationIndex#0;class#SubwayLine#0" expanded="false" />
-            <element signature="e#6332#6333#0" expanded="true" />
-            <element signature="e#6372#6373#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/gui/CanvasController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="103" column="0" lean-forward="false" selection-start-line="103" selection-start-column="0" selection-end-line="103" selection-end-column="0" />
           <folding>
             <element signature="method#processCanvasMouseDragged#0;class#CanvasController#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/data/mmmData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
-          <caret line="168" column="61" lean-forward="false" selection-start-line="168" selection-start-column="61" selection-end-line="168" selection-end-column="61" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#resetData#0;class#mmmData#0" expanded="false" />
-            <element signature="method#addSubwayLine#0;class#mmmData#0" expanded="false" />
-            <element signature="method#removeSelectedElement#0;class#mmmData#0" expanded="false" />
-            <element signature="method#removeSelectedLine#0;class#mmmData#0" expanded="false" />
-            <element signature="method#getLineFromString#0;class#mmmData#0" expanded="false" />
-            <element signature="method#getStationFromString#0;class#mmmData#0" expanded="false" />
-            <element signature="method#removeSelectedStation#0;class#mmmData#0" expanded="false" />
-            <element signature="method#addElement#0;class#mmmData#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -986,12 +956,51 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/data/SubwayLine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="229">
+          <caret line="214" column="0" lean-forward="true" selection-start-line="214" selection-start-column="0" selection-end-line="214" selection-end-column="0" />
+          <folding>
+            <element signature="method#SubwayLine#0;class#SubwayLine#0" expanded="false" />
+            <element signature="method#SubwayLine#1;class#SubwayLine#0" expanded="false" />
+            <element signature="method#setName#0;class#SubwayLine#0" expanded="false" />
+            <element signature="method#addStation#0;class#SubwayLine#0" expanded="false" />
+            <element signature="method#fixPoints#0;class#SubwayLine#0" expanded="false" />
+            <element signature="method#setColor#0;class#SubwayLine#0" expanded="false" />
+            <element signature="method#removeStation#0;class#SubwayLine#0" expanded="false" />
+            <element signature="method#getClosestStationIndex#0;class#SubwayLine#0" expanded="false" />
+            <element signature="e#6351#6352#0" expanded="true" />
+            <element signature="e#6391#6392#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/data/mmmData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="157" column="0" lean-forward="false" selection-start-line="157" selection-start-column="0" selection-end-line="157" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#resetData#0;class#mmmData#0" expanded="false" />
+            <element signature="method#addSubwayLine#0;class#mmmData#0" expanded="false" />
+            <element signature="method#selectTopShape#0;class#mmmData#0" expanded="false" />
+            <element signature="method#setSelectedElement#0;class#mmmData#0" expanded="false" />
+            <element signature="method#getTopShape#0;class#mmmData#0" expanded="false" />
+            <element signature="method#removeSelectedElement#0;class#mmmData#0" expanded="false" />
+            <element signature="method#removeSelectedLine#0;class#mmmData#0" expanded="false" />
+            <element signature="method#getLineFromString#0;class#mmmData#0" expanded="false" />
+            <element signature="method#getStationFromString#0;class#mmmData#0" expanded="false" />
+            <element signature="method#removeSelectedStation#0;class#mmmData#0" expanded="false" />
+            <element signature="method#addElement#0;class#mmmData#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/file/mmmFiles.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="233">
-          <caret line="265" column="51" lean-forward="false" selection-start-line="265" selection-start-column="51" selection-end-line="265" selection-end-column="51" />
+        <state relative-caret-position="184">
+          <caret line="95" column="19" lean-forward="true" selection-start-line="95" selection-start-column="19" selection-end-line="95" selection-end-column="19" />
           <folding>
-            <element signature="method#saveData#0;class#mmmFiles#0" expanded="false" />
             <element signature="method#createStationJson#0;class#mmmFiles#0" expanded="false" />
             <element signature="method#createSubwayLineJson#0;class#mmmFiles#0" expanded="false" />
             <element signature="method#makeJsonColorObject#0;class#mmmFiles#0" expanded="false" />

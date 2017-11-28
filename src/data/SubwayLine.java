@@ -174,7 +174,7 @@ public class SubwayLine extends Polyline{
 
     public int getClosestStationIndex(Station newS){
         int currIndex = 0;
-        double minDistance = 99999;
+        double minDistance = Double.POSITIVE_INFINITY;
         int i = 0;
 
         for (Station s: stations){
