@@ -294,8 +294,8 @@ public class mmmFiles implements AppFileComponent {
 
         ArrayList<Station> stationsToBeAdded = new ArrayList<>();
 
-        for (Station stat: stations){
-            for (String name:currStations){
+        for (String name:currStations){
+            for (Station stat: stations){
                 String labelText = stat.getLabel().getText();
                 if (name.equals(labelText)){
                     stationsToBeAdded.add(stat);

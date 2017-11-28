@@ -268,6 +268,8 @@ public class mmmData implements AppDataComponent {
     }
 
     public void fixStationPriority(){
+
+        try{
         ArrayList<Node> nodes = new ArrayList<>();
 
         for (Node swl: elements){
@@ -275,6 +277,10 @@ public class mmmData implements AppDataComponent {
                 elements.remove(swl);
                 elements.add(swl);
             }
+
+        }
+        }
+        catch (Exception ex){
 
         }
     }

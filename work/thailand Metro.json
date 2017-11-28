@@ -5,10 +5,10 @@
         {
             "name":"Makkasan",
             "circular":false,
-            "x_start":335.0,
-            "y_start":109.0,
-            "x_end":57.0,
-            "y_end":164.0,
+            "x_start":329.0,
+            "y_start":103.0,
+            "x_end":51.0,
+            "y_end":158.0,
             "color":{
                 "red":0.800000011920929,
                 "green":0.20000000298023224,
@@ -27,10 +27,10 @@
         {
             "name":"Mo Chit",
             "circular":false,
-            "x_start":440.0,
-            "y_start":61.0,
-            "x_end":509.0,
-            "y_end":19.0,
+            "x_start":434.0,
+            "y_start":55.0,
+            "x_end":503.0,
+            "y_end":13.0,
             "color":{
                 "red":0.7019608020782471,
                 "green":0.9019607901573181,
@@ -46,10 +46,10 @@
         {
             "name":"Silom",
             "circular":false,
-            "x_start":104.0,
-            "y_start":108.0,
+            "x_start":98.0,
+            "y_start":102.0,
             "x_end":679.0,
-            "y_end":148.0,
+            "y_end":167.0,
             "color":{
                 "red":0.0,
                 "green":0.20000000298023224,
@@ -60,16 +60,18 @@
                 "Siam",
                 "National Stadium",
                 "Chong Nonsi",
+                "Surasak",
+                "Krung Thonburi",
                 "Thalat Plu"
             ]
         },
         {
             "name":"Sathon-Ratchapreuk",
             "circular":false,
-            "x_start":276.0,
-            "y_start":328.0,
-            "x_end":676.0,
-            "y_end":317.0,
+            "x_start":270.0,
+            "y_start":322.0,
+            "x_end":670.0,
+            "y_end":311.0,
             "color":{
                 "red":1.0,
                 "green":1.0,
@@ -78,16 +80,13 @@
             },
             "station_names":[
                 "Chong Nonsi",
+                "Wat Dan",
+                "Wat Pariwat",
                 "Thalat Plu"
             ]
         }
     ],
     "stations":[
-        {
-            "name":"Phayothai",
-            "x":424.0,
-            "y":108.0
-        },
         {
             "name":"Ratchaprarop",
             "x":444.0,
@@ -100,8 +99,8 @@
         },
         {
             "name":"Ban Thab Chang",
-            "x":264.0,
-            "y":151.0
+            "x":274.0,
+            "y":159.0
         },
         {
             "name":"Suvarnabhumi",
@@ -137,6 +136,31 @@
             "name":"Thalat Plu",
             "x":685.0,
             "y":256.0
+        },
+        {
+            "name":"Wat Dan",
+            "x":422.0,
+            "y":375.0
+        },
+        {
+            "name":"Phayothai",
+            "x":424.0,
+            "y":108.0
+        },
+        {
+            "name":"Wat Pariwat",
+            "x":521.0,
+            "y":377.0
+        },
+        {
+            "name":"Surasak",
+            "x":415.0,
+            "y":262.0
+        },
+        {
+            "name":"Krung Thonburi",
+            "x":539.0,
+            "y":263.0
         }
     ]
 }
