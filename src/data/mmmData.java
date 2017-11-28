@@ -15,6 +15,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Text;
 
+import java.util.ArrayList;
+
 import static data.mmmState.SELECTING_SHAPE;
 
 
@@ -96,6 +98,7 @@ public class mmmData implements AppDataComponent {
         elements.add(swl.getStart());
         elements.add(swl.getStart().getLabel());
         elements.add(swl.getConnectorLine());
+        fixStationPriority();
 
     }
 
@@ -257,8 +260,22 @@ public class mmmData implements AppDataComponent {
         else if (node instanceof ImageView){
             addImage((ImageView) node);
         }
+
+        fixStationPriority();
     }
 
     private void addImage(ImageView img) {
+    }
+
+    public void fixStationPriority(){
+        ArrayList<Node> nodes = new ArrayList<>();
+
+        for (Node swl: elements){
+            if (swl instanceof Station){
+                elements.remove(swl);
+                elements.add(swl);
+            }
+
+        }
     }
 }

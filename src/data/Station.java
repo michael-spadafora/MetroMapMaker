@@ -1,6 +1,8 @@
 package data;
 
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+
 
 import java.util.ArrayList;
 import javafx.scene.text.Text;
@@ -23,6 +25,9 @@ public class Station extends Circle implements DraggableElement {
         this.setCenterX(200);
         this.setCenterY(300);
         this.setRadius(10);
+        setFill(Color.WHITE);
+        setStroke(Color.BLACK);
+        setStrokeWidth(2);
     }
 
     public Text getLabel() {
@@ -37,6 +42,9 @@ public class Station extends Circle implements DraggableElement {
         this.setCenterX(200);
         this.setCenterY(300);
         this.setRadius(10);
+        setFill(Color.WHITE);
+        setStroke(Color.BLACK);
+        setStrokeWidth(2);
 
     }
 

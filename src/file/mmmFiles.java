@@ -97,11 +97,6 @@ public class mmmFiles implements AppFileComponent {
 
         String fileName = filePath.substring(filePath.lastIndexOf("\\") + 1);
 
-        if (filePath.contains(".")){
-            String[] parts = filePath.split(".");
-            fileName = parts[0];
-
-        }
 
 
         JsonObject finalProduct = Json.createObjectBuilder()
@@ -110,7 +105,7 @@ public class mmmFiles implements AppFileComponent {
                 .add(JSON_STATIONS, stationArray)
                 .build();
 
-        filePath+=".json";
+        filePath+=" Metro.json";
 
 
         Map<String, Object> properties = new HashMap<>(1);
@@ -297,15 +292,19 @@ public class mmmFiles implements AppFileComponent {
             currStations.add(jsonStations.getString(i));
         }
 
+        ArrayList<Station> stationsToBeAdded = new ArrayList<>();
+
         for (Station stat: stations){
             for (String name:currStations){
                 String labelText = stat.getLabel().getText();
                 if (name.equals(labelText)){
-                    line.addStation(stat);
+                    stationsToBeAdded.add(stat);
                     stat.addSubwayLine(line);
                 }
             }
         }
+
+        line.addStations(stationsToBeAdded);
 
         double startx, starty, endx, endy;
 
@@ -396,7 +395,7 @@ public class mmmFiles implements AppFileComponent {
                 .build();
 
         String imagePath = filePath;
-        filePath+=".json";
+        filePath+=" Metro.json";
 
 
 
@@ -422,7 +421,7 @@ public class mmmFiles implements AppFileComponent {
         mmmWorkspace workspace = (mmmWorkspace)dataManager.getApp().getWorkspaceComponent();
         Pane canvas = workspace.getCanvas();
         WritableImage image = canvas.snapshot(new SnapshotParameters(), null);
-        File file = new File(imagePath+".png");
+        File file = new File(imagePath+" Metro.png");
         try {
             ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", file);
         }

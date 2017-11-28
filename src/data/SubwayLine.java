@@ -59,6 +59,14 @@ public class SubwayLine extends Polyline{
         return end;
     }
 
+    public void addStations(ArrayList<Station> stationsToAdd){
+        for (Station stat: stationsToAdd){
+            stations.add(stat);
+        }
+        fixPoints();
+
+    }
+
     public void addStation(Station station){
         if (!stations.contains(station)){
             int index = 0;
