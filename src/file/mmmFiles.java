@@ -5,6 +5,7 @@ import data.SubwayLine;
 import data.mmmData;
 import djf.components.AppDataComponent;
 import djf.components.AppFileComponent;
+import gui.mmmWorkspace;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import javafx.scene.paint.Color;
@@ -23,7 +24,7 @@ public class mmmFiles implements AppFileComponent {
 
     static final String JSON_LINES = "lines";
     static final String JSON_TYPE = "type";
-   // static final String JSON_NAME = "name"
+    // static final String JSON_NAME = "name"
     static final String JSON_CIRCULAR = "circular";
     static final String JSON_COLOR = "color";
     static final String JSON_RED = "red";
@@ -63,23 +64,23 @@ public class mmmFiles implements AppFileComponent {
     @Override
     public void saveData(AppDataComponent appDataComponent, String filePath) throws IOException {
 
-            mmmData dataManager = (mmmData) appDataComponent;
+        mmmData dataManager = (mmmData) appDataComponent;
 
-            // FIRST THE BACKGROUND COLOR
-            //Color bgColor = dataManager.getBackgroundColor();
-            //JsonObject bgColorJson = makeJsonColorObject(bgColor);
-            JsonArrayBuilder lineArrayBuilder = Json.createArrayBuilder();
-            JsonArrayBuilder stationArrayBuilder = Json.createArrayBuilder();
-            ObservableList<Node> elements = dataManager.getElements();
+        // FIRST THE BACKGROUND COLOR
+        //Color bgColor = dataManager.getBackgroundColor();
+        //JsonObject bgColorJson = makeJsonColorObject(bgColor);
+        JsonArrayBuilder lineArrayBuilder = Json.createArrayBuilder();
+        JsonArrayBuilder stationArrayBuilder = Json.createArrayBuilder();
+        ObservableList<Node> elements = dataManager.getElements();
 
-            for (Node node : elements) {
-                if (node instanceof SubwayLine) {
-                    JsonObject subwayJson = createSubwayLineJson(node);
-                    lineArrayBuilder.add(subwayJson);
-                } else if (node instanceof Station) {
-                    JsonObject stationJson = createStationJson(node);
-                    stationArrayBuilder.add(stationJson);
-                }
+        for (Node node : elements) {
+            if (node instanceof SubwayLine) {
+                JsonObject subwayJson = createSubwayLineJson(node);
+                lineArrayBuilder.add(subwayJson);
+            } else if (node instanceof Station) {
+                JsonObject stationJson = createStationJson(node);
+                stationArrayBuilder.add(stationJson);
+            }
 //            else if (node instanceof DraggableImage){
 //        }
         }
@@ -89,7 +90,7 @@ public class mmmFiles implements AppFileComponent {
         JsonArray lineArray = lineArrayBuilder.build();
         JsonArray stationArray = stationArrayBuilder.build();
 
-        String fileName = filePath;
+        String fileName = filePath.substring(filePath.lastIndexOf("\\"));
 
         if (filePath.contains(".")){
             String[] parts = filePath.split(".");
@@ -152,7 +153,7 @@ public class mmmFiles implements AppFileComponent {
         JsonArray linesJson = arrayBuilder.build();
 
         JsonObject stationJson = Json.createObjectBuilder()
-                .add(JSON_TYPE, type)
+                //.add(JSON_TYPE, type)
                 .add(JSON_NAME, name)
                 .add(JSON_X, x)
                 .add(JSON_Y, y)
@@ -194,7 +195,7 @@ public class mmmFiles implements AppFileComponent {
 
 
         JsonObject shapeJson = Json.createObjectBuilder()
-                .add(JSON_TYPE, type)
+                //.add(JSON_TYPE, type)
                 .add(JSON_NAME, name)
                 .add(JSON_CIRCULAR, circular)
                 .add(JSON_X_START, xStart)
@@ -202,7 +203,7 @@ public class mmmFiles implements AppFileComponent {
                 .add(JSON_X_END, xEnd)
                 .add(JSON_Y_END, yEnd)
                 .add(JSON_COLOR, colorJson)
-                .add(JSON_LINE_WIDTH, strokeWidth)
+                //.add(JSON_LINE_WIDTH, strokeWidth)
                 .add(JSON_STATIONS_ON_LINE, stationsJson)
                 .build();
 
@@ -261,6 +262,9 @@ public class mmmFiles implements AppFileComponent {
             ((mmmData) data).addStation(stat);
         }
 
+        mmmWorkspace workspace = (mmmWorkspace) dataManager.getApp().getWorkspaceComponent();
+        workspace.updateLineComboBox(dataManager.getElements());
+
 
 
 
@@ -268,17 +272,14 @@ public class mmmFiles implements AppFileComponent {
     }
 
     private Node loadNode(JsonObject jsonNode) {
-        String type = jsonNode.getString(JSON_TYPE);
+        //String type = jsonNode.getString(JSON_TYPE);
         Node returnedNode = null;
 
-        switch (type){
-            case JSON_IS_STATION:
-                returnedNode = loadStation(jsonNode);
-                break;
+        returnedNode = loadStation(jsonNode);
 //            case JSON_IS_LINE:
 //                returnedNode = loadLine(jsonNode);
 //                break;
-        }
+
 
         return returnedNode;
     }
@@ -318,6 +319,18 @@ public class mmmFiles implements AppFileComponent {
             endx = line.getStations().get(line.getStations().size()-1).getX()+10;
             endy = line.getStations().get(line.getStations().size()-1).getY()+10;
         }
+
+        line.getStart().setCenterX(startx);
+        line.getStart().setCenterY(starty);
+        line.getStart().getLabel().setX(startx+10);
+        line.getStart().getLabel().setY(starty+10);
+        line.getEnd().setCenterX(endx);
+        line.getEnd().setCenterY(endy);
+        line.getEnd().getLabel().setX(endx+10);
+        line.getEnd().getLabel().setY(endy+10);
+
+        line.setCircular(jsonNode.getBoolean(JSON_CIRCULAR));
+
 
         line.fixPoints();
 

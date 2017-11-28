@@ -1,0 +1,24 @@
+
+{
+    "name":"\\asdfsdffsdfzxcxzc",
+    "lines":[
+        {
+            "name":"asdf",
+            "circular":false,
+            "x_start":94.0,
+            "y_start":194.0,
+            "x_end":309.0,
+            "y_end":107.0,
+            "color":{
+                "red":0.0,
+                "green":0.0,
+                "blue":0.0,
+                "alpha":1.0
+            },
+            "station_names":[
+            ]
+        }
+    ],
+    "stations":[
+    ]
+}

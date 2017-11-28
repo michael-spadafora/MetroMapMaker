@@ -95,17 +95,27 @@ public class SubwayLine extends Polyline{
 
         getPoints().clear();
 
-        getPoints().addAll(start.getCoordinates());
-
+        if (!circular) {
+            getPoints().addAll(start.getCoordinates());
+            start.setVisible(true);
+            start.getLabel().setVisible(true);
+            end.setVisible(true);
+            end.getLabel().setVisible(true);
+        }
 
 
         for (Station s: stations){
             getPoints().addAll(s.getCoordinates());
         }
 
-        getPoints().addAll(end.getCoordinates());
-
+        if (!circular) {
+            getPoints().addAll(end.getCoordinates());
+        }
         if (circular){
+            start.setVisible(false);
+            end.setVisible(false);
+            start.getLabel().setVisible(false);
+            end.getLabel().setVisible(false);
             Station startStat = stations.get(0);
             Station endStat = stations.get(stations.size()-1);
             circularConnector.startXProperty().unbind();
@@ -146,7 +156,7 @@ public class SubwayLine extends Polyline{
             fixPoints();
 
         }
-        if (stations.size()>0 && circular && (station.equals(stations.get(0)) || station.equals(stations.get(stations.size()-1)))){
+        if (stations.size()>0 && circular){// && (station.equals(stations.get(0)) || station.equals(stations.get(stations.size()-1)))){
             circular = false;
             circularConnector.setStrokeWidth(0);
             fixPoints();
@@ -201,5 +211,9 @@ public class SubwayLine extends Polyline{
 
     public Line getConnectorLine() {
         return circularConnector;
+    }
+
+    public void setCircular(boolean circular) {
+        this.circular = circular;
     }
 }

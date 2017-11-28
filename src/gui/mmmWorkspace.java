@@ -8,6 +8,7 @@ import djf.components.AppDataComponent;
 import djf.components.AppWorkspaceComponent;
 import djf.controller.AppFileController;
 import djf.ui.AppGUI;
+import djf.ui.AppMessageDialogSingleton;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
@@ -20,12 +21,16 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
 import properties_manager.PropertiesManager;
 
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import static css.mmmStyle.*;
+import static djf.settings.AppPropertyType.*;
 import static djf.settings.AppStartupConstants.*;
 import static djf.ui.AppGUI.CLASS_BORDERED_PANE;
 import static djf.ui.AppGUI.CLASS_FILE_BUTTON;
@@ -141,7 +146,7 @@ public class mmmWorkspace extends AppWorkspaceComponent {
         AppFileController fileController = gui.getFileController();
 
         exportButton.setOnAction( e -> {
-            fileController.processExportRequest();
+            handleExportRequest();
         });
 
         stationColorPicker.setOnAction( e-> {
@@ -713,5 +718,51 @@ public class mmmWorkspace extends AppWorkspaceComponent {
     public Pane getCanvas() {
         return canvas;
     }
+
+    public void handleExportRequest() {
+        // WE'LL NEED THIS TO GET CUSTOM STUFF
+        PropertiesManager props = PropertiesManager.getPropertiesManager();
+        try {
+            // MAYBE WE ALREADY KNOW THE FILE
+            // OTHERWISE WE NEED TO PROMPT THE USER
+
+                // PROMPT THE USER FOR A FILE NAME
+                FileChooser fc = new FileChooser();
+                fc.setInitialDirectory(new File(PATH_WORK));
+                fc.setTitle(props.getProperty(SAVE_WORK_TITLE));
+                fc.getExtensionFilters().addAll(
+                        new FileChooser.ExtensionFilter(props.getProperty(WORK_FILE_EXT_DESC), props.getProperty(WORK_FILE_EXT)));
+
+                File selectedFile = fc.showSaveDialog(app.getGUI().getWindow());
+                if (selectedFile != null) {
+                    exportWork(selectedFile);
+                }
+
+        } catch (IOException ioe) {
+            AppMessageDialogSingleton dialog = AppMessageDialogSingleton.getSingleton();
+            dialog.show(props.getProperty(LOAD_ERROR_TITLE), props.getProperty(LOAD_ERROR_MESSAGE));
+        }
+    }
+
+
+    private void exportWork(File selectedFile) throws IOException {
+        // SAVE IT TO A FILE
+        app.getFileComponent().exportData(app.getDataComponent(), selectedFile.getPath());
+
+        // MARK IT AS SAVED
+        //currentWorkFile = selectedFile;
+       // saved = true;
+
+        // TELL THE USER THE FILE HAS BEEN SAVED
+        AppMessageDialogSingleton dialog = AppMessageDialogSingleton.getSingleton();
+        PropertiesManager props = PropertiesManager.getPropertiesManager();
+        dialog.show("success","successfully exported");
+
+        // AND REFRESH THE GUI, WHICH WILL ENABLE AND DISABLE
+        // THE APPROPRIATE CONTROLS
+        //app.getGUI().updateToolbarControls(saved);
+    }
+
+
 }
 
