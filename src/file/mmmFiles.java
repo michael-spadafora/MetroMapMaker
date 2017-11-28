@@ -7,9 +7,14 @@ import djf.components.AppDataComponent;
 import djf.components.AppFileComponent;
 import gui.mmmWorkspace;
 import javafx.collections.ObservableList;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.Node;
+import javafx.scene.SnapshotParameters;
+import javafx.scene.image.WritableImage;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 
+import javax.imageio.ImageIO;
 import javax.json.*;
 import javax.json.stream.JsonGenerator;
 import javax.sound.sampled.Line;
@@ -105,6 +110,8 @@ public class mmmFiles implements AppFileComponent {
                 .add(JSON_STATIONS, stationArray)
                 .build();
 
+        filePath+=".json";
+
 
         Map<String, Object> properties = new HashMap<>(1);
         properties.put(JsonGenerator.PRETTY_PRINTING, true);
@@ -130,11 +137,11 @@ public class mmmFiles implements AppFileComponent {
 
     private JsonObject createStationJson(Node node) {
 
-
         Station station = (Station) node;
         String type = JSON_IS_STATION;
-        double x = station.getX();
-        double y = station.getY();
+        double x = station.getCenterX();
+        double y = station.getCenterY();
+
 
         double radius = station.getRadius();
         String name = station.getLabel().getText();
@@ -346,7 +353,7 @@ public class mmmFiles implements AppFileComponent {
     }
 
     @Override
-    public void exportData(AppDataComponent appDataComponent, String s) throws IOException {
+    public void exportData(AppDataComponent appDataComponent, String filePath) throws IOException {
         mmmData dataManager = (mmmData) appDataComponent;
 
         // FIRST THE BACKGROUND COLOR
@@ -358,14 +365,71 @@ public class mmmFiles implements AppFileComponent {
 
         for (Node node : elements) {
             if (node instanceof SubwayLine) {
-                JsonObject subwayJson = exportSubwayLineJson(node);
+                JsonObject subwayJson = createSubwayLineJson(node);
                 lineArrayBuilder.add(subwayJson);
             } else if (node instanceof Station) {
                 JsonObject stationJson = createStationJson(node);
                 stationArrayBuilder.add(stationJson);
             }
+//            else if (node instanceof DraggableImage){
+//        }
+        }
+
+
+
+        JsonArray lineArray = lineArrayBuilder.build();
+        JsonArray stationArray = stationArrayBuilder.build();
+
+        String fileName = filePath.substring(filePath.lastIndexOf("\\") + 1);
+
+        if (filePath.contains(".")){
+            String[] parts = filePath.split(".");
+            fileName = parts[0];
 
         }
+
+
+        JsonObject finalProduct = Json.createObjectBuilder()
+                .add(JSON_NAME, fileName)
+                .add(JSON_LINES,lineArray)
+                .add(JSON_STATIONS, stationArray)
+                .build();
+
+        String imagePath = filePath;
+        filePath+=".json";
+
+
+
+        Map<String, Object> properties = new HashMap<>(1);
+        properties.put(JsonGenerator.PRETTY_PRINTING, true);
+        JsonWriterFactory writerFactory = Json.createWriterFactory(properties);
+        StringWriter sw = new StringWriter();
+        JsonWriter jsonWriter = writerFactory.createWriter(sw);
+        jsonWriter.writeObject(finalProduct);
+        jsonWriter.close();
+
+
+        OutputStream os = new FileOutputStream(filePath);
+        JsonWriter jsonFileWriter = Json.createWriter(os);
+        jsonFileWriter.writeObject(finalProduct);
+        String prettyPrinted = sw.toString();
+        PrintWriter pw = new PrintWriter(filePath);
+        pw.write(prettyPrinted);
+        pw.close();
+
+
+
+        mmmWorkspace workspace = (mmmWorkspace)dataManager.getApp().getWorkspaceComponent();
+        Pane canvas = workspace.getCanvas();
+        WritableImage image = canvas.snapshot(new SnapshotParameters(), null);
+        File file = new File(imagePath+".png");
+        try {
+            ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", file);
+        }
+        catch(IOException ioe) {
+            ioe.printStackTrace();
+        }
+        
     }
 
     @Override
