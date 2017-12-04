@@ -134,6 +134,7 @@ public class mmmWorkspace extends AppWorkspaceComponent {
 
 
     public mmmWorkspace(AppTemplate initApp) {
+        canvas = new Pane();
         app = initApp;
         gui = app.getGUI();
         initLayout();
@@ -151,10 +152,6 @@ public class mmmWorkspace extends AppWorkspaceComponent {
         zoomOutButton.setOnAction( e-> {
             mapEditController.zoomOut();
         });
-
-
-
-
 
 
         AppFileController fileController = gui.getFileController();
@@ -243,7 +240,8 @@ public class mmmWorkspace extends AppWorkspaceComponent {
 
     }
 
-    private void initLayout() {
+    private void initLayout(){
+        canvas = new Pane();
         initTopToolbars();
         initSidePane();
         initFileToolbarStyle();
@@ -434,16 +432,28 @@ public class mmmWorkspace extends AppWorkspaceComponent {
         navigationBox.getChildren().add(navigationSubBox2);
         editToolbar.getChildren().add(navigationBox);
         /////////////
-        canvas = new Pane();
+
         workspace = new BorderPane();
 
         mmmData data = (mmmData) app.getDataComponent();
         data.setShapes(canvas.getChildren());
 
+        canvas.toBack();
 
-        ((BorderPane) workspace).setLeft(editToolbar);
         ((BorderPane) workspace).setCenter(canvas);
-        canvas.setBackground(new Background(new BackgroundFill(BLUE, null, null)));
+        ((BorderPane) workspace).setTop(app.getGUI().getTopToolbarPane());
+        ((BorderPane) workspace).setLeft(editToolbar);
+
+        initFileToolbarStyle();
+        ObservableList<Node> children = workspace.getChildren();
+
+        //children.set(0,children.get(1));
+        editToolbar.toFront();
+
+
+
+
+        //canvas.setBackground(new Background(new BackgroundFill(BLUE, null, null)));
 
         //activateWorkspace(app.getGUI().getAppPane());
 
@@ -709,9 +719,6 @@ public class mmmWorkspace extends AppWorkspaceComponent {
     }
 
     public String getSelectedStationName(){ return stationComboBox.getSelectionModel().getSelectedItem();}
-
-
-
 
     public ComboBox<String> getStationComboBox() {
         return stationComboBox;

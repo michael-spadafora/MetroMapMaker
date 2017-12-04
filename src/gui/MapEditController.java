@@ -195,10 +195,10 @@ public class MapEditController {
         double height = canvas.getHeight();
         Rectangle rectangle = new Rectangle();
 
-        rectangle.setX(canvas.getLayoutX());
-        rectangle.setY(canvas.getLayoutY());
-        rectangle.setWidth(width);
-        rectangle.setHeight(height);
+        rectangle.setX(52);
+        rectangle.setY(30);
+        rectangle.setWidth(1142);
+        rectangle.setHeight(687);
         canvas.setScaleX(canvas.getScaleX() * ZOOM_CONSTANT);
         canvas.setScaleY(canvas.getScaleY()* ZOOM_CONSTANT);
         canvas.setClip(rectangle);
