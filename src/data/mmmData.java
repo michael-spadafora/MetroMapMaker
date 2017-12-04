@@ -146,15 +146,18 @@ public class mmmData implements AppDataComponent {
         if (selectedElement instanceof SubwayLine)
         {
             workspace.setSelectedLineColor((Color) ((SubwayLine) selectedElement).getFill());
+            workspace.setSelectedLineWidth(((SubwayLine) selectedElement).getStrokeWidth());
 
         }
 
-        else if (selectedElement instanceof LineEnd){
+        else if (selectedElement instanceof LineEnd) {
             workspace.setSelectedLineColor((Color) ((LineEnd) selectedElement).getStroke());
+            workspace.setSelectedLineWidth(((LineEnd) selectedElement).getSubwayLine().getStrokeWidth());
         }
 
         else if (selectedElement instanceof Station){
             workspace.setSelectedStationColor((Color) ((Station) selectedElement).getFill());
+            workspace.setSelectedStationWidth(((Station) selectedElement).getRadius());
         }
         highlightShape((DraggableElement) element);
     }

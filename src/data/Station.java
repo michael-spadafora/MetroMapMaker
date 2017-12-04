@@ -19,8 +19,8 @@ public class Station extends Circle implements DraggableElement {
 
     public Station(){
         label = new Text ("default");
-        label.setX(200+10);
-        label.setY(300+10);
+        label.setX(200+this.getRadius()+10);
+        label.setY(300+this.getRadius()+10);
         subwayLines = new ArrayList<SubwayLine>();
         this.setCenterX(200);
         this.setCenterY(300);
@@ -36,19 +36,18 @@ public class Station extends Circle implements DraggableElement {
 
     public Station(String name){
         label = new Text (name);
+        this.setRadius(10);
         label.setX(200+10);
         label.setY(300+10);
         subwayLines = new ArrayList<SubwayLine>();
         this.setCenterX(200);
         this.setCenterY(300);
-        this.setRadius(10);
+
         setFill(Color.WHITE);
         setStroke(Color.BLACK);
         setStrokeWidth(2);
 
     }
-
-
 
     public void addSubwayLine(SubwayLine subLine){
         subwayLines.add(subLine);
@@ -127,5 +126,13 @@ public class Station extends Circle implements DraggableElement {
 
     public Double[] getCoordinates() {
         return new Double[]{getCenterX(), getCenterY()};
+    }
+
+
+    public void changeRadius(double r){
+        this.setRadius(r);
+        label.setX(this.getCenterX() + this.getRadius());
+        label.setY(this.getCenterY() + this.getRadius());
+
     }
 }

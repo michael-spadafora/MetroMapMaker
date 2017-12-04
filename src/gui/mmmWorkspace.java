@@ -141,6 +141,10 @@ public class mmmWorkspace extends AppWorkspaceComponent {
         initControllers();
     }
 
+    public Slider getLineThicknessSlider() {
+        return lineThicknessSlider;
+    }
+
     private void initControllers() {
 
         MapEditController mapEditController = new MapEditController(app);
@@ -151,6 +155,39 @@ public class mmmWorkspace extends AppWorkspaceComponent {
 
         zoomOutButton.setOnAction( e-> {
             mapEditController.zoomOut();
+        });
+
+        stationRadiusSlider.setMajorTickUnit(2);
+        stationRadiusSlider.setValue(10);
+        stationRadiusSlider.setMin(2);
+        stationRadiusSlider.setMax(30);
+
+        stationRadiusSlider.setOnMouseDragged( e-> {
+            double radBro = 0;
+            try{
+                radBro =  stationRadiusSlider.getValue();
+                getSelectedStation().changeRadius(radBro);
+            }
+            catch (Exception ex){
+
+            }
+        });
+
+        lineThicknessSlider.setMajorTickUnit(1);
+        lineThicknessSlider.setValue(6);
+        lineThicknessSlider.setMin(1);
+        lineThicknessSlider.setMax(10);
+
+
+        lineThicknessSlider.setOnMouseDragged( e-> {
+            int thicc = 0;
+            try{
+                thicc = (int) lineThicknessSlider.getValue();
+                getSelectedLine().setThickness(thicc);
+            }
+            catch (Exception ex){
+
+            }
         });
 
 
@@ -444,8 +481,8 @@ public class mmmWorkspace extends AppWorkspaceComponent {
         ((BorderPane) workspace).setTop(app.getGUI().getTopToolbarPane());
         ((BorderPane) workspace).setLeft(editToolbar);
 
-        initFileToolbarStyle();
-        ObservableList<Node> children = workspace.getChildren();
+        //initFileToolbarStyle();
+        //ObservableList<Node> children = workspace.getChildren();
 
         //children.set(0,children.get(1));
         editToolbar.toFront();
@@ -735,6 +772,7 @@ public class mmmWorkspace extends AppWorkspaceComponent {
 
     public void setSelectedLineColor(Color c){
         linesColorPicker.setValue(c);
+
     }
 
     public Pane getCanvas() {
@@ -786,5 +824,12 @@ public class mmmWorkspace extends AppWorkspaceComponent {
     }
 
 
+    public void setSelectedLineWidth(double selectedLineWidth) {
+        lineThicknessSlider.setValue(selectedLineWidth);
+    }
+
+    public void setSelectedStationWidth(double selectedStationWidth) {
+        stationRadiusSlider.setValue(selectedStationWidth);
+    }
 }
 

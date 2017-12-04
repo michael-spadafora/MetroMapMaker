@@ -224,4 +224,8 @@ public class SubwayLine extends Polyline{
     public void setCircular(boolean circular) {
         this.circular = circular;
     }
+
+    public void setThickness (int i){
+        this.setStrokeWidth(i);
+    }
 }

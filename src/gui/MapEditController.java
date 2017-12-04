@@ -191,19 +191,8 @@ public class MapEditController {
         Pane canvas = workspace.getCanvas();
         canvas.setBackground(new Background(new BackgroundFill(BLUE, null, null)));
 
-        double width = canvas.getWidth();
-        double height = canvas.getHeight();
-        Rectangle rectangle = new Rectangle();
-
-        rectangle.setX(52);
-        rectangle.setY(30);
-        rectangle.setWidth(1142);
-        rectangle.setHeight(687);
         canvas.setScaleX(canvas.getScaleX() * ZOOM_CONSTANT);
         canvas.setScaleY(canvas.getScaleY()* ZOOM_CONSTANT);
-        canvas.setClip(rectangle);
-        //canvas.setMaxHeight(10);
-        //workspace.resetWorkspace();
     }
 
     public void zoomOut(){
@@ -214,4 +203,10 @@ public class MapEditController {
 
         //workspace.resetWorkspace();
     }
+
+    public void changeLineThickness(){
+
+    }
+
+
 }
