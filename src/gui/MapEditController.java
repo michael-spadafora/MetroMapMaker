@@ -189,7 +189,7 @@ public class MapEditController {
     public void zoomIn(){
         mmmWorkspace workspace = (mmmWorkspace) app.getWorkspaceComponent();
         Pane canvas = workspace.getCanvas();
-        canvas.setBackground(new Background(new BackgroundFill(BLUE, null, null)));
+        //canvas.setBackground(new Background(new BackgroundFill(BLUE, null, null)));
 
         canvas.setScaleX(canvas.getScaleX() * ZOOM_CONSTANT);
         canvas.setScaleY(canvas.getScaleY()* ZOOM_CONSTANT);
@@ -204,9 +204,20 @@ public class MapEditController {
         //workspace.resetWorkspace();
     }
 
-    public void changeLineThickness(){
+    public void changeLineThickness(int i){
+        mmmWorkspace workspace = (mmmWorkspace) app.getWorkspaceComponent();
+        workspace.getSelectedLine().setStrokeWidth(i);
+    }
 
+    public void changeStationRadius(double d){
+        mmmWorkspace workspace = (mmmWorkspace) app.getWorkspaceComponent();
+        workspace.getSelectedStation().changeRadius(d);
     }
 
 
+    public void setBackgroundColor(Color color) {
+        //mmmWorkspace workspace = (mmmWorkspace) app.getWorkspaceComponent();
+        BackgroundFill bgfill = new BackgroundFill(color, null, null);
+        app.getGUI().getAppPane().setBackground(new Background(bgfill));
+    }
 }

@@ -147,7 +147,14 @@ public class mmmWorkspace extends AppWorkspaceComponent {
 
     private void initControllers() {
 
+
+
         MapEditController mapEditController = new MapEditController(app);
+
+        backgroundColorPicker.setOnAction( e-> {
+            Color color = backgroundColorPicker.getValue();
+            mapEditController.setBackgroundColor(color);
+        });
 
         zoomInButton.setOnAction( e-> {
             mapEditController.zoomIn();
@@ -166,7 +173,8 @@ public class mmmWorkspace extends AppWorkspaceComponent {
             double radBro = 0;
             try{
                 radBro =  stationRadiusSlider.getValue();
-                getSelectedStation().changeRadius(radBro);
+                mapEditController.changeStationRadius(radBro);
+               // getSelectedStation().changeRadius(radBro);
             }
             catch (Exception ex){
 
@@ -183,7 +191,8 @@ public class mmmWorkspace extends AppWorkspaceComponent {
             int thicc = 0;
             try{
                 thicc = (int) lineThicknessSlider.getValue();
-                getSelectedLine().setThickness(thicc);
+                mapEditController.changeLineThickness(thicc);
+                //getSelectedLine().setThickness(thicc);
             }
             catch (Exception ex){
 
