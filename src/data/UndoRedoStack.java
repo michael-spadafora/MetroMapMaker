@@ -1,6 +1,9 @@
 package data;
 
 
+import javafx.collections.ObservableList;
+import javafx.scene.Node;
+
 import java.util.Stack;
 
 /**
@@ -9,12 +12,14 @@ import java.util.Stack;
  */
 public class UndoRedoStack {
 
-    Stack<Transaction> undoStack;
-    Stack<Transaction> redoStack;
+    Stack<ObservableList<Node>> undoStack;
+    Stack<ObservableList<Node>> redoStack;
+    mmmData data;
 
-    public UndoRedoStack() {
-        undoStack = new Stack<Transaction>();
-        redoStack = new Stack<Transaction>();
+    public UndoRedoStack(mmmData data) {
+        undoStack = new Stack<ObservableList<Node>>();
+        redoStack = new Stack<ObservableList<Node>>();
+        this.data = data;
     }
 
     public boolean canUndo() {
@@ -25,22 +30,23 @@ public class UndoRedoStack {
         return !redoStack.isEmpty();
     }
 
-    public void addTransaction(Transaction transaction) {
+    public void addTransaction(ObservableList<Node> transaction) {
         undoStack.push(transaction);
-        redoStack = new Stack<Transaction>();
+        redoStack = new Stack<ObservableList<Node>>();
         //  transaction.doAction();
     }
 
     public void undoTransaction() {
-        Transaction transaction = undoStack.pop();
-        transaction.undoAction();
+        ObservableList<Node> transaction = undoStack.pop();
+        //transaction.undoAction()
+        data.setShapes(transaction);
         redoStack.push(transaction);
 
     }
 
     public void redoTransaction() {
-        Transaction transaction = redoStack.pop();
-        transaction.doAction();
+        ObservableList<Node> transaction = redoStack.pop();
+        data.setShapes(transaction);
         undoStack.push(transaction);
     }
 

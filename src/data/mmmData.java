@@ -40,9 +40,10 @@ public class mmmData implements AppDataComponent {
     public mmmData(AppTemplate initApp) {
         // KEEP THE APP FOR LATER
         app = initApp;
-        undoRedoStack = new UndoRedoStack();
+        undoRedoStack = new UndoRedoStack(this);
         selectedElement = null;
         state = SELECTING_SHAPE;
+  
 
 
 

@@ -34,6 +34,7 @@ import static djf.settings.AppPropertyType.*;
 import static djf.settings.AppStartupConstants.*;
 import static djf.ui.AppGUI.CLASS_BORDERED_PANE;
 import static djf.ui.AppGUI.CLASS_FILE_BUTTON;
+import static javafx.scene.paint.Color.BLUE;
 
 public class mmmWorkspace extends AppWorkspaceComponent {
 
@@ -129,6 +130,9 @@ public class mmmWorkspace extends AppWorkspaceComponent {
     Button importButton;
 
 
+
+
+
     public mmmWorkspace(AppTemplate initApp) {
         app = initApp;
         gui = app.getGUI();
@@ -138,10 +142,20 @@ public class mmmWorkspace extends AppWorkspaceComponent {
 
     private void initControllers() {
 
-
-
-
         MapEditController mapEditController = new MapEditController(app);
+
+        zoomInButton.setOnAction( e-> {
+            mapEditController.zoomIn();
+        });
+
+        zoomOutButton.setOnAction( e-> {
+            mapEditController.zoomOut();
+        });
+
+
+
+
+
 
         AppFileController fileController = gui.getFileController();
 
@@ -429,6 +443,7 @@ public class mmmWorkspace extends AppWorkspaceComponent {
 
         ((BorderPane) workspace).setLeft(editToolbar);
         ((BorderPane) workspace).setCenter(canvas);
+        canvas.setBackground(new Background(new BackgroundFill(BLUE, null, null)));
 
         //activateWorkspace(app.getGUI().getAppPane());
 

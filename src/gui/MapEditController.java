@@ -8,7 +8,12 @@ import djf.ui.AppYesNoCancelDialogSingleton;
 import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 
 import javax.sound.sampled.Line;
 import java.util.ArrayList;
@@ -16,11 +21,13 @@ import java.util.ArrayList;
 import static data.mmmState.ADDING_STATION_TO_LINE;
 import static data.mmmState.REMOVING_STATION_FROM_LINE;
 import static djf.ui.AppYesNoCancelDialogSingleton.YES;
+import static javafx.scene.paint.Color.BLUE;
 
 
 public class MapEditController {
     AppTemplate app;
     mmmData data;
+    final double ZOOM_CONSTANT = 1.1;
    //mmmWorkspace workspace;
 
     public MapEditController(AppTemplate app) {
@@ -176,5 +183,35 @@ public class MapEditController {
         if (line!= null) {
             line.setColor(value);
         }
+    }
+
+
+    public void zoomIn(){
+        mmmWorkspace workspace = (mmmWorkspace) app.getWorkspaceComponent();
+        Pane canvas = workspace.getCanvas();
+        canvas.setBackground(new Background(new BackgroundFill(BLUE, null, null)));
+
+        double width = canvas.getWidth();
+        double height = canvas.getHeight();
+        Rectangle rectangle = new Rectangle();
+
+        rectangle.setX(canvas.getLayoutX());
+        rectangle.setY(canvas.getLayoutY());
+        rectangle.setWidth(width);
+        rectangle.setHeight(height);
+        canvas.setScaleX(canvas.getScaleX() * ZOOM_CONSTANT);
+        canvas.setScaleY(canvas.getScaleY()* ZOOM_CONSTANT);
+        canvas.setClip(rectangle);
+        //canvas.setMaxHeight(10);
+        //workspace.resetWorkspace();
+    }
+
+    public void zoomOut(){
+        mmmWorkspace workspace = (mmmWorkspace) app.getWorkspaceComponent();
+        Pane canvas = workspace.getCanvas();
+        canvas.setScaleX(canvas.getScaleX() * (1/ZOOM_CONSTANT));
+        canvas.setScaleY(canvas.getScaleY()* (1/ZOOM_CONSTANT));
+
+        //workspace.resetWorkspace();
     }
 }
