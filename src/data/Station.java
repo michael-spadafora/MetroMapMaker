@@ -50,6 +50,8 @@ public class Station extends Circle implements DraggableElement {
         setStrokeWidth(2);
         currentOrbitState = -1;
         orbitLabel();
+
+
     }
 
     public void orbitLabel(){
@@ -82,6 +84,16 @@ public class Station extends Circle implements DraggableElement {
 
     }
 
+    public void rotateLabel(){
+        double rotation = label.getRotate() + 90;
+        if (rotation == 180 || rotation == 0){
+            label.setRotate(0);
+        }
+        else {
+            label.setRotate(rotation);
+        }
+    }
+
     public void addSubwayLine(SubwayLine subLine){
         subwayLines.add(subLine);
     }
@@ -105,9 +117,11 @@ public class Station extends Circle implements DraggableElement {
         double newY = getCenterY() + diffY;
         setCenterX(newX);
         setCenterY(newY);
-        double[] newLocs = getNewLabelLocation(newX, newY);
-        label.setX(newLocs[0]);
-        label.setY(newLocs[1]);
+        currentOrbitState--;
+        orbitLabel();
+        //double[] newLocs = getNewLabelLocation(newX, newY);
+        //label.setX(newLocs[0]);
+       //label.setY(newLocs[1]);
         startCenterX = x;
         startCenterY = y;
 
@@ -166,8 +180,8 @@ public class Station extends Circle implements DraggableElement {
         this.setRadius(r);
         currentOrbitState--;
         orbitLabel();
-        label.setX(this.getCenterX() + this.getRadius());
-        label.setY(this.getCenterY() + this.getRadius());
+        //label.setX(this.getCenterX() + this.getRadius());
+        //label.setY(this.getCenterY() + this.getRadius());
 
     }
 }

@@ -151,6 +151,9 @@ public class mmmWorkspace extends AppWorkspaceComponent {
 
         MapEditController mapEditController = new MapEditController(app);
 
+        rotateStationLabel.setOnAction( e->{
+            mapEditController.rotateSelectedStationLabel();
+        });
         moveStationLabel.setOnAction( e-> {
             mapEditController.orbitSelectedStationLabel();
         });

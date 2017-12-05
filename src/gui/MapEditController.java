@@ -223,6 +223,22 @@ public class MapEditController {
 
     public void orbitSelectedStationLabel() {
         mmmWorkspace workspace = (mmmWorkspace) app.getWorkspaceComponent();
-        workspace.getSelectedStation().orbitLabel();
+        try {
+            workspace.getSelectedStation().orbitLabel();
+        }
+        catch (NullPointerException ex){
+
+        }
+    }
+
+    public void rotateSelectedStationLabel() {
+        mmmWorkspace workspace = (mmmWorkspace) app.getWorkspaceComponent();
+        try {
+            workspace.getSelectedStation().rotateLabel();
+        }
+        catch (NullPointerException ex){
+
+        }
+
     }
 }
