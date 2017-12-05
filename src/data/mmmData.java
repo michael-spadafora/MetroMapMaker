@@ -28,6 +28,8 @@ public class mmmData implements AppDataComponent {
     ObservableList<Node> elements;
     mmmState state;
 
+    ArrayList<Line> gridLines;
+
 
 
     public DraggableElement getSelectedElement() {
@@ -43,7 +45,7 @@ public class mmmData implements AppDataComponent {
         undoRedoStack = new UndoRedoStack(this);
         selectedElement = null;
         state = SELECTING_SHAPE;
-  
+        gridLines = new ArrayList<>();
 
 
 
@@ -286,5 +288,17 @@ public class mmmData implements AppDataComponent {
         catch (Exception ex){
 
         }
+    }
+
+    public void showGrid(ArrayList<Line> gridlines){
+        if (this.gridLines.isEmpty()){
+            this.gridLines = gridlines;
+            elements.addAll(gridlines);
+        }
+        else {
+            elements.removeAll(gridLines);
+            gridLines.clear();
+        }
+
     }
 }

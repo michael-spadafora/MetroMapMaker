@@ -13,9 +13,10 @@ import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 
-import javax.sound.sampled.Line;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import static data.mmmState.ADDING_STATION_TO_LINE;
@@ -239,6 +240,47 @@ public class MapEditController {
         catch (NullPointerException ex){
 
         }
+
+    }
+
+    public void showGrid() {
+        mmmWorkspace workspace = (mmmWorkspace) app.getWorkspaceComponent();
+        double height = workspace.getCanvas().getHeight();
+        double width = workspace.getCanvas().getWidth();
+
+        double top = workspace.getCanvas().getTranslateX() + workspace.getCanvas().getLayoutX();
+        double left = workspace.getCanvas().getLayoutY() ;//+ workspace.getCanvas().getTranslateY();
+
+        ArrayList<Line> lines = new ArrayList<>();
+
+        //does the horizontal linez
+        for (int i = 0; i < height; i+=20){
+            Line gridline = new Line();
+            gridline.setStartX(0);
+            gridline.setStartY(i);
+
+            gridline.setEndX(width);
+            gridline.setEndY(i);
+
+            lines.add(gridline);
+        }
+
+        for (int i = 0; i < width; i +=20) {
+            Line gridline = new Line();
+
+            gridline.setStartX(i);
+            gridline.setStartY(0);
+
+            gridline.setEndX(i);
+            gridline.setEndY(0+height);
+
+            lines.add(gridline);
+
+        }
+
+        data.showGrid(lines);
+
+
 
     }
 }

@@ -20,6 +20,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Line;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import properties_manager.PropertiesManager;
@@ -130,6 +131,8 @@ public class mmmWorkspace extends AppWorkspaceComponent {
     Button importButton;
 
 
+    ArrayList<Line> gridLines;
+
 
 
 
@@ -151,6 +154,9 @@ public class mmmWorkspace extends AppWorkspaceComponent {
 
         MapEditController mapEditController = new MapEditController(app);
 
+        showGrid.setOnAction( e-> {
+            mapEditController.showGrid();
+        });
         rotateStationLabel.setOnAction( e->{
             mapEditController.rotateSelectedStationLabel();
         });
@@ -299,6 +305,16 @@ public class mmmWorkspace extends AppWorkspaceComponent {
         initSidePane();
         initFileToolbarStyle();
     }
+
+    /*public void showGridLines(ArrayList<Line> lines){
+        gridLines = lines;
+        mmmData data = (mmmData) app.getDataComponent();
+        for (Line line: gridLines){
+
+
+        }
+
+    }*/
 
     private void initSidePane() {
         AppFileController fileController = app.getGUI().getFileController();
