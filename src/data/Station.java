@@ -11,6 +11,9 @@ public class Station extends Circle implements DraggableElement {
     Text label;
     private double startCenterX;
     private double startCenterY;
+    private int currentOrbitState = 0;
+    private double horizDisplace = 10;
+    private double verticalDisplace = 10;
 
 
     public ArrayList<SubwayLine> getSubwayLines() {
@@ -37,15 +40,45 @@ public class Station extends Circle implements DraggableElement {
     public Station(String name){
         label = new Text (name);
         this.setRadius(10);
-        label.setX(200+10);
-        label.setY(300+10);
         subwayLines = new ArrayList<SubwayLine>();
         this.setCenterX(200);
         this.setCenterY(300);
+        verticalDisplace = 10+(label.getLayoutBounds().getHeight()/2);
 
         setFill(Color.WHITE);
         setStroke(Color.BLACK);
         setStrokeWidth(2);
+        currentOrbitState = -1;
+        orbitLabel();
+    }
+
+    public void orbitLabel(){
+        currentOrbitState = (currentOrbitState+1) %4;
+        double radius = getRadius();
+
+        if (currentOrbitState == 0){
+            horizDisplace = radius;
+            verticalDisplace = radius+(label.getLayoutBounds().getHeight()/2);
+        }
+
+        if (currentOrbitState == 1){
+            horizDisplace = -radius-label.getLayoutBounds().getWidth()-1;
+            verticalDisplace = radius+(label.getLayoutBounds().getHeight()/2);
+           // verticalDisplace = 1209381023;
+        }
+
+        if (currentOrbitState == 2){
+            horizDisplace = -radius-label.getLayoutBounds().getWidth();
+            verticalDisplace = -radius;//-label.getLayoutBounds().getHeight();
+        }
+
+        if (currentOrbitState == 3){
+            horizDisplace = radius;
+            verticalDisplace = -radius;//-label.getLayoutBounds().getHeight();
+        }
+
+        label.setX(this.getCenterX() + horizDisplace);
+        label.setY(this.getCenterY()+ verticalDisplace);
 
     }
 
@@ -131,6 +164,8 @@ public class Station extends Circle implements DraggableElement {
 
     public void changeRadius(double r){
         this.setRadius(r);
+        currentOrbitState--;
+        orbitLabel();
         label.setX(this.getCenterX() + this.getRadius());
         label.setY(this.getCenterY() + this.getRadius());
 

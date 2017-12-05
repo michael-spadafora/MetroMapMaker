@@ -151,6 +151,10 @@ public class mmmWorkspace extends AppWorkspaceComponent {
 
         MapEditController mapEditController = new MapEditController(app);
 
+        moveStationLabel.setOnAction( e-> {
+            mapEditController.orbitSelectedStationLabel();
+        });
+
         backgroundColorPicker.setOnAction( e-> {
             Color color = backgroundColorPicker.getValue();
             mapEditController.setBackgroundColor(color);
@@ -362,8 +366,8 @@ public class mmmWorkspace extends AppWorkspaceComponent {
         snapToGridButton = initChildButton(stationSubBox2a, "snap to Grid", false);
 
         stationSubBox2b = new FlowPane();
-        moveStationLabel = initChildButton(stationSubBox2b, "Move Label", true);
-        rotateStationLabel = initChildButton(stationSubBox2b, "Rotate label", true);
+        moveStationLabel = initChildButton(stationSubBox2b, "Move Label", false);
+        rotateStationLabel = initChildButton(stationSubBox2b, "Rotate label", false);
 
 
 

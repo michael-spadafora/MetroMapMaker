@@ -106,8 +106,8 @@ public class mmmData implements AppDataComponent {
     public void addStation(Station stat){
         elements.add(stat);
         elements.add(stat.getLabel());
-        stat.getLabel().setX(stat.getCenterX()+10);
-        stat.getLabel().setY(stat.getCenterY()+10);
+        //stat.getLabel().setX(stat.getCenterX()+10);
+        //stat.getLabel().setY(stat.getCenterY()+10);
     }
 
     public void addText(Text text){
@@ -231,7 +231,6 @@ public class mmmData implements AppDataComponent {
         }
         return null;
     }
-
 
     public Station getStationFromString(String s) {
         for (Node node: elements){

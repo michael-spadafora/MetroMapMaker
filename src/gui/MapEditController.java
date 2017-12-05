@@ -189,11 +189,11 @@ public class MapEditController {
     public void zoomIn(){
         mmmWorkspace workspace = (mmmWorkspace) app.getWorkspaceComponent();
         Pane canvas = workspace.getCanvas();
-        //canvas.setBackground(new Background(new BackgroundFill(BLUE, null, null)));
+    canvas.setBackground(new Background(new BackgroundFill(BLUE, null, null)));
 
         canvas.setScaleX(canvas.getScaleX() * ZOOM_CONSTANT);
         canvas.setScaleY(canvas.getScaleY()* ZOOM_CONSTANT);
-    }
+}
 
     public void zoomOut(){
         mmmWorkspace workspace = (mmmWorkspace) app.getWorkspaceComponent();
@@ -219,5 +219,10 @@ public class MapEditController {
         //mmmWorkspace workspace = (mmmWorkspace) app.getWorkspaceComponent();
         BackgroundFill bgfill = new BackgroundFill(color, null, null);
         app.getGUI().getAppPane().setBackground(new Background(bgfill));
+    }
+
+    public void orbitSelectedStationLabel() {
+        mmmWorkspace workspace = (mmmWorkspace) app.getWorkspaceComponent();
+        workspace.getSelectedStation().orbitLabel();
     }
 }
