@@ -34,6 +34,7 @@ public class MapEditController {
     AppTemplate app;
     mmmData data;
     final double ZOOM_CONSTANT = 1.1;
+    ArrayList<Line> lines;
    //mmmWorkspace workspace;
 
     public MapEditController(AppTemplate app) {
@@ -250,13 +251,20 @@ public class MapEditController {
 
     public void showGrid() {
         mmmWorkspace workspace = (mmmWorkspace) app.getWorkspaceComponent();
-        double height = workspace.getCanvas().getHeight();
-        double width = workspace.getCanvas().getWidth();
+        double height = workspace.getCanvas().getMaxHeight();
+        double width = workspace.getCanvas().getMaxWidth();
+
+        if (height == -1){
+            height = workspace.getCanvas().getHeight();
+        }
+        if (width == -1){
+            width = workspace.getCanvas().getWidth();
+        }
 
         double top = workspace.getCanvas().getTranslateX() + workspace.getCanvas().getLayoutX();
         double left = workspace.getCanvas().getLayoutY() ;//+ workspace.getCanvas().getTranslateY();
 
-        ArrayList<Line> lines = new ArrayList<>();
+        ArrayList<Line> linez = new ArrayList<>();
 
         //does the horizontal linez
         for (int i = 0; i < height; i+=20){
@@ -267,7 +275,7 @@ public class MapEditController {
             gridline.setEndX(width);
             gridline.setEndY(i);
 
-            lines.add(gridline);
+            linez.add(gridline);
         }
 
         for (int i = 0; i < width; i +=20) {
@@ -279,11 +287,13 @@ public class MapEditController {
             gridline.setEndX(i);
             gridline.setEndY(0+height);
 
-            lines.add(gridline);
+            linez.add(gridline);
 
         }
 
-        data.showGrid(lines);
+        this.lines = linez;
+
+        data.showGrid(this.lines);
 
 
 
@@ -342,6 +352,8 @@ public class MapEditController {
         canvas.setBackground(new Background(new BackgroundFill(BLUE, null, null)));
 
         //double minehgith = canvas.getLayoutBounds().getHeight();
+
+
         canvas.setMinHeight(canvas.getLayoutBounds().getHeight() * ZOOM_CONSTANT);
         canvas.setMinWidth(canvas.getLayoutBounds().getWidth()* ZOOM_CONSTANT);
 
@@ -350,6 +362,10 @@ public class MapEditController {
         canvas.setMaxHeight(canvas.getLayoutBounds().getHeight() * ZOOM_CONSTANT);
         canvas.setMaxWidth(canvas.getLayoutBounds().getWidth()* ZOOM_CONSTANT);
 
+
+
+        data.showGrid(lines);//calling it twice redraws it
+        showGrid();
 
 
     }
@@ -364,6 +380,9 @@ public class MapEditController {
 
         canvas.setMaxHeight(canvas.getLayoutBounds().getHeight() * (1/ZOOM_CONSTANT));
         canvas.setMaxWidth(canvas.getLayoutBounds().getWidth()* (1/ZOOM_CONSTANT));
+
+        data.showGrid(lines);
+        showGrid();
     }
 
     public void addImage() {

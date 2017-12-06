@@ -11,6 +11,7 @@ import javafx.scene.effect.DropShadow;
 import javafx.scene.effect.Effect;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Text;
@@ -29,6 +30,7 @@ public class mmmData implements AppDataComponent {
     mmmState state;
 
     ArrayList<Line> gridLines;
+    ArrayList<Node> elementsHidden;
 
 
 
@@ -46,6 +48,7 @@ public class mmmData implements AppDataComponent {
         selectedElement = null;
         state = SELECTING_SHAPE;
         gridLines = new ArrayList<>();
+        elementsHidden = new ArrayList<>();
 
 
 
@@ -57,6 +60,14 @@ public class mmmData implements AppDataComponent {
         dropShadowEffect.setBlurType(BlurType.GAUSSIAN);
         dropShadowEffect.setRadius(5);
         highlightedEffect = dropShadowEffect;
+
+    }
+
+    public void hideElements(){
+        mmmWorkspace workspace = (mmmWorkspace) app.getWorkspaceComponent();
+        Pane canvas = workspace.getCanvas();
+
+        //for (int i = elements.si)
 
     }
 
