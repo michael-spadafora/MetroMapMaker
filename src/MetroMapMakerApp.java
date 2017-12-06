@@ -53,6 +53,9 @@ public class MetroMapMakerApp extends AppTemplate{
         ens.init(primaryStage);
         LineSingleton ls = LineSingleton.getSingleton();
         ls.init(primaryStage);
+        LearnMoreSingleton learnMoreSingleton = LearnMoreSingleton.getInstance();
+        learnMoreSingleton.init(primaryStage);
+
         //AppYesNoCancelDialogSingleton appYesNoCancelDialogSingleton = AppYesNoCancelDialogSingleton.getSingleton();
         //appYesNoCancelDialogSingleton.init(primaryStage);
         String name = "";

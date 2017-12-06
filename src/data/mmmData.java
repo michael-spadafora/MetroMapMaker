@@ -196,9 +196,18 @@ public class mmmData implements AppDataComponent {
 
     public void removeSelectedElement() {
         if (selectedElement instanceof  Station){
-             elements.remove(((Station) selectedElement).getLabel());
+            elements.remove(((Station) selectedElement).getLabel());
+            elements.remove(selectedElement);
         }
-        elements.remove(selectedElement);
+
+        if (selectedElement instanceof LineEnd){
+            removeSelectedLine();
+        }
+
+        if (selectedElement instanceof DraggableImage || selectedElement instanceof DraggableText){
+            elements.remove(selectedElement);
+        }
+
     }
 
     public void removeSelectedLine(){

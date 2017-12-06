@@ -7,8 +7,10 @@ import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -387,5 +389,46 @@ public class MapEditController {
             DraggableText text = new DraggableText(s);
             data.addElement(text);
         }
+    }
+
+    public void removeSelectedElement() {
+        data.removeSelectedElement();
+    }
+
+    public void setBackgroundImage() {
+
+        FileChooser fc = new FileChooser();
+        fc.setInitialDirectory(new File(PATH_WORK));
+        fc.setTitle("");
+
+        File selectedFile = fc.showOpenDialog(app.getGUI().getWindow());
+
+        mmmWorkspace workspace = (mmmWorkspace) app.getWorkspaceComponent();
+
+        Image bgImage = new Image("file:" + selectedFile.getAbsolutePath());
+        BackgroundImage backgroundImage =  new BackgroundImage(bgImage, null,null,null,null);
+        workspace.getCanvas().setBackground(new Background(backgroundImage));
+
+
+    }
+
+    public void moveLeft() {
+        data.addElement(new Station());
+        fix this stuff
+    }
+
+    public void moveUp() {
+        data.addElement(new Station());
+        fix this stuff
+    }
+
+    public void moveDown() {
+        data.addElement(new Station());
+        fix this stuff
+    }
+
+    public void moveRight() {
+        data.addElement(new Station());
+        fix this stuff
     }
 }

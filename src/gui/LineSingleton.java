@@ -160,4 +160,5 @@ public class LineSingleton extends Stage {
         textField.setText("");
         showAndWait();
     }
+
 }
