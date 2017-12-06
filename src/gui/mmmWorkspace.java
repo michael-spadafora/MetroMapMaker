@@ -365,8 +365,13 @@ public class mmmWorkspace extends AppWorkspaceComponent {
     private void initSidePane() {
         AppFileController fileController = app.getGUI().getFileController();
         ((Button)(gui.getFileToolbar().getChildren().get(0))).setOnAction(e->{
-            activateWorkspace(app.getGUI().getAppPane());
+            activateSidebar();
             fileController.handleNewRequest();
+        });
+
+        ((Button)(gui.getFileToolbar().getChildren().get(1))).setOnAction(e->{
+            activateSidebar();
+            fileController.handleLoadRequest();
         });
         editToolbar = new VBox();
         lineBox = new VBox();
@@ -563,10 +568,10 @@ public class mmmWorkspace extends AppWorkspaceComponent {
         //ObservableList<Node> children = workspace.getChildren();
 
         //children.set(0,children.get(1));
-        editToolbar.toFront();
+        //editToolbar.toFront();
 
-
-
+        editToolbar.setDisable(true);
+        editToolbar.setOpacity(0);
 
         //canvas.setBackground(new Background(new BackgroundFill(BLUE, null, null)));
 
@@ -609,6 +614,7 @@ public class mmmWorkspace extends AppWorkspaceComponent {
 
         topToolbar.getChildren().add(undoRedoToolbar);
 
+        //((BorderPane) workspace).setTop(app.getGUI().getTopToolbarPane());
 
         aboutButton.setAlignment(Pos.CENTER_RIGHT);
 
@@ -908,6 +914,11 @@ public class mmmWorkspace extends AppWorkspaceComponent {
 
     public void setSelectedStationWidth(double selectedStationWidth) {
         stationRadiusSlider.setValue(selectedStationWidth);
+    }
+
+    public void activateSidebar() {
+        editToolbar.setOpacity(1);
+        editToolbar.setDisable(false);
     }
 }
 

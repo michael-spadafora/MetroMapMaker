@@ -3,6 +3,7 @@ package gui;
 import data.*;
 import djf.AppTemplate;
 import djf.ui.AppYesNoCancelDialogSingleton;
+import javafx.beans.property.DoubleProperty;
 import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -413,22 +414,27 @@ public class MapEditController {
     }
 
     public void moveLeft() {
-        data.addElement(new Station());
-        fix this stuff
+        mmmWorkspace workspace = (mmmWorkspace) app.getWorkspaceComponent();
+        workspace.getCanvas().setTranslateX(workspace.getCanvas().getTranslateX() + 100);
+       // data.addElement(new Station());
+       //fix this stuff
     }
 
     public void moveUp() {
-        data.addElement(new Station());
-        fix this stuff
+        mmmWorkspace workspace = (mmmWorkspace) app.getWorkspaceComponent();
+        workspace.getCanvas().setTranslateY(workspace.getCanvas().getTranslateY() + 100);
+       // fix this stuff
     }
 
     public void moveDown() {
-        data.addElement(new Station());
-        fix this stuff
+        mmmWorkspace workspace = (mmmWorkspace) app.getWorkspaceComponent();
+        workspace.getCanvas().setTranslateY(workspace.getCanvas().getTranslateY() - 100);
+       // fix this stuff
     }
 
     public void moveRight() {
-        data.addElement(new Station());
-        fix this stuff
+        mmmWorkspace workspace = (mmmWorkspace) app.getWorkspaceComponent();
+        workspace.getCanvas().setTranslateX(workspace.getCanvas().getTranslateX() - 100);
+       // fix this stuff
     }
 }

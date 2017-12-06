@@ -93,8 +93,10 @@ public class MetroMapMakerApp extends AppTemplate{
                 // NOW OPEN UP THE WINDOW
                 primaryStage.show();
 
+                this.getWorkspaceComponent().activateWorkspace(getGUI().getAppPane());
+
                 if (welc.getWillMakeNew() || welc.isLoadedFile()){
-                    this.getWorkspaceComponent().activateWorkspace(getGUI().getAppPane());
+                    ((mmmWorkspace)(this.getWorkspaceComponent())).activateSidebar();
                 }
             }
 
