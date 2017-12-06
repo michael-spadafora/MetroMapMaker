@@ -378,4 +378,14 @@ public class MapEditController {
         data.addElement(newImage);
 
     }
+
+    public void addLabel() {
+        EnterNameSingleton ens = EnterNameSingleton.getSingleton();
+        ens.show("blahblah");
+        if (ens.getSelection() == "Confirm"){
+            String s = ens.getEntered();
+            DraggableText text = new DraggableText(s);
+            data.addElement(text);
+        }
+    }
 }

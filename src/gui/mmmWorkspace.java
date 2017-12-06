@@ -154,6 +154,9 @@ public class mmmWorkspace extends AppWorkspaceComponent {
 
         MapEditController mapEditController = new MapEditController(app);
 
+        addLabelButton.setOnAction( e->{
+            mapEditController.addLabel();
+        });
 
 
         addImageButton.setOnAction( e-> {

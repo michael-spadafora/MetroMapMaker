@@ -118,9 +118,6 @@ public class mmmData implements AppDataComponent {
 
     public DraggableElement selectTopShape(int x, int y) {
         DraggableElement shape = getTopShape(x, y);
-        // if (shape == selectedShape) {
-        //    return shape;
-        // }
 
         if (selectedElement != null) {
             unhighlightShape(selectedElement);
@@ -169,7 +166,7 @@ public class mmmData implements AppDataComponent {
         workspace.emptyComboBoxes();
 
         for (int i = elements.size() - 1; i >= 0; i--) {
-            if (!(elements.get(i) instanceof Text) && !(elements.get(i) instanceof SubwayLine) && !(elements.get(i) instanceof Line)){
+            if (!(elements.get(i) instanceof Text && !(elements.get(i) instanceof DraggableText)) && !(elements.get(i) instanceof SubwayLine) && !(elements.get(i) instanceof Line)){
             DraggableElement shape = (DraggableElement) elements.get(i);
             Node element = (Node) shape;
                 if (element.contains(x,y)){
@@ -264,6 +261,10 @@ public class mmmData implements AppDataComponent {
 
         else if (node instanceof DraggableImage){
             addImage((DraggableImage) node);
+        }
+
+        else if (node instanceof DraggableText){
+            addText((DraggableText) node);
         }
 
         fixStationPriority();

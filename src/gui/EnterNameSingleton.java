@@ -26,6 +26,10 @@ public class EnterNameSingleton extends Stage{
     private EnterNameSingleton() {
     }
 
+    public String getEntered(){
+        return textfield.getText();
+    }
+
     public String getSelection() {
         return selection;
     }
@@ -60,9 +64,19 @@ public class EnterNameSingleton extends Stage{
     }
 
     public void show(boolean whatever){
+        topText = new Text("Enter a name");
         selection = "nulllllll";
         textfield.setText("");
         showAndWait();
 
     }
+
+    public void show(String topLabel){
+        topText = new Text("Enter word for label");
+        selection = "nulllllll";
+        textfield.setText("");
+        showAndWait();
+    }
+
+
 }

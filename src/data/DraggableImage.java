@@ -36,7 +36,6 @@ public class DraggableImage  extends DraggableRectangle {
             Alert alert;
             alert = new Alert(Alert.AlertType.WARNING, "no image chosen");
             alert.showAndWait();
-
         }
     }
 
