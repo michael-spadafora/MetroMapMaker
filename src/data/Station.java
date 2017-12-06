@@ -184,4 +184,15 @@ public class Station extends Circle implements DraggableElement {
         //label.setY(this.getCenterY() + this.getRadius());
 
     }
+
+    public void fixAllLines(){
+        for(SubwayLine s: subwayLines){
+            s.fixPoints();
+        }
+    }
+
+    public void fixLabel(){
+        currentOrbitState--;
+        orbitLabel();
+    }
 }

@@ -1,8 +1,6 @@
 package gui;
 
-import data.Station;
-import data.SubwayLine;
-import data.mmmData;
+import data.*;
 import djf.AppTemplate;
 import djf.ui.AppYesNoCancelDialogSingleton;
 import javafx.scene.Cursor;
@@ -13,14 +11,18 @@ import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.FileChooser;
 
+import java.io.File;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import static data.mmmState.ADDING_STATION_TO_LINE;
 import static data.mmmState.REMOVING_STATION_FROM_LINE;
+import static djf.settings.AppStartupConstants.PATH_WORK;
 import static djf.ui.AppYesNoCancelDialogSingleton.YES;
 import static javafx.scene.paint.Color.BLUE;
 
@@ -190,7 +192,7 @@ public class MapEditController {
     public void zoomIn(){
         mmmWorkspace workspace = (mmmWorkspace) app.getWorkspaceComponent();
         Pane canvas = workspace.getCanvas();
-    canvas.setBackground(new Background(new BackgroundFill(BLUE, null, null)));
+        //canvas.setBackground(new Background(new BackgroundFill(BLUE, null, null)));
 
         canvas.setScaleX(canvas.getScaleX() * ZOOM_CONSTANT);
         canvas.setScaleY(canvas.getScaleY()* ZOOM_CONSTANT);
@@ -281,6 +283,99 @@ public class MapEditController {
         data.showGrid(lines);
 
 
+
+    }
+
+    public void snapToGrid() {
+        mmmWorkspace workspace = (mmmWorkspace) app.getWorkspaceComponent();
+        DraggableElement element = data.getSelectedElement();
+        if (element instanceof LineEnd || element instanceof Station){
+            double xloc = ((Circle)element).getCenterX();
+            double yloc = ((Circle)element).getCenterY();
+
+            double xRemainder = xloc % 20;
+            double yRemainder = yloc % 20;
+
+            double newXLoc;
+            double newYLoc;
+
+
+            if (xRemainder < 10){
+                newXLoc = xloc -xRemainder;
+                //newYLoc = yloc - yRemainder;
+            }
+            else {
+                newXLoc = xloc + (20-xRemainder);
+            }
+
+            if (yRemainder < 10){
+                newYLoc = yloc -yRemainder;
+                //newYLoc = yloc - yRemainder;
+            }
+            else {
+                newYLoc = yloc + (20-yRemainder);
+            }
+
+            ((Circle)element).setCenterX(newXLoc);
+            ((Circle)element).setCenterY(newYLoc);
+
+            if (element instanceof Station){
+                ((Station) element).fixAllLines();
+            }
+
+            if (element instanceof LineEnd){
+                ((LineEnd) element).getSubwayLine().fixPoints();
+            }
+
+        }
+
+
+    }
+
+
+    public void enlargeMap() {
+        mmmWorkspace workspace = (mmmWorkspace) app.getWorkspaceComponent();
+        Pane canvas = workspace.getCanvas();
+        canvas.setBackground(new Background(new BackgroundFill(BLUE, null, null)));
+
+        //double minehgith = canvas.getLayoutBounds().getHeight();
+        canvas.setMinHeight(canvas.getLayoutBounds().getHeight() * ZOOM_CONSTANT);
+        canvas.setMinWidth(canvas.getLayoutBounds().getWidth()* ZOOM_CONSTANT);
+
+
+
+        canvas.setMaxHeight(canvas.getLayoutBounds().getHeight() * ZOOM_CONSTANT);
+        canvas.setMaxWidth(canvas.getLayoutBounds().getWidth()* ZOOM_CONSTANT);
+
+
+
+    }
+
+    public void shrinkMap() {
+        mmmWorkspace workspace = (mmmWorkspace) app.getWorkspaceComponent();
+        Pane canvas = workspace.getCanvas();
+        //canvas.setBackground(new Background(new BackgroundFill(BLUE, null, null)));
+
+        canvas.setMinHeight(canvas.getLayoutBounds().getHeight() * (1/ZOOM_CONSTANT));
+        canvas.setMinWidth(canvas.getLayoutBounds().getWidth()* (1/ZOOM_CONSTANT));
+
+        canvas.setMaxHeight(canvas.getLayoutBounds().getHeight() * (1/ZOOM_CONSTANT));
+        canvas.setMaxWidth(canvas.getLayoutBounds().getWidth()* (1/ZOOM_CONSTANT));
+    }
+
+    public void addImage() {
+
+        FileChooser fc = new FileChooser();
+        fc.setInitialDirectory(new File(PATH_WORK));
+        fc.setTitle("");
+
+        File selectedFile = fc.showOpenDialog(app.getGUI().getWindow());
+        DraggableImage newImage = new DraggableImage(selectedFile);
+
+        //newImage.setX(100);
+       // newImage.setY(100);
+
+        data.addElement(newImage);
 
     }
 }

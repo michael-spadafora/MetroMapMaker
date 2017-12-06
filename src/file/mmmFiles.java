@@ -347,6 +347,7 @@ public class mmmFiles implements AppFileComponent {
         stat.getLabel().setText(jsonNode.getString(JSON_NAME));
         stat.setCenterX(getDataAsDouble(jsonNode, JSON_X));
         stat.setCenterY(getDataAsDouble(jsonNode, JSON_Y));
+        stat.fixLabel();
 
         return stat;
     }

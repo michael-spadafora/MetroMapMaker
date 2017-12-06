@@ -262,14 +262,15 @@ public class mmmData implements AppDataComponent {
             addStation((Station) node);
         }
 
-        else if (node instanceof ImageView){
-            addImage((ImageView) node);
+        else if (node instanceof DraggableImage){
+            addImage((DraggableImage) node);
         }
 
         fixStationPriority();
     }
 
-    private void addImage(ImageView img) {
+    private void addImage(DraggableImage img) {
+        elements.add(img);
     }
 
     public void fixStationPriority(){
@@ -293,12 +294,11 @@ public class mmmData implements AppDataComponent {
     public void showGrid(ArrayList<Line> gridlines){
         if (this.gridLines.isEmpty()){
             this.gridLines = gridlines;
-            elements.addAll(gridlines);
+            elements.addAll(0, gridlines);
         }
         else {
             elements.removeAll(gridLines);
             gridLines.clear();
         }
-
     }
 }

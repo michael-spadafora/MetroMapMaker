@@ -48,7 +48,7 @@ public class DraggableImage  extends DraggableRectangle {
         return file;
     }
 
-    DraggableImage(File selectedFile) {
+    public DraggableImage(File selectedFile) {
         file = selectedFile;
         try {
 
@@ -60,21 +60,15 @@ public class DraggableImage  extends DraggableRectangle {
             heightProperty().set(image.getHeight());
             widthProperty().set(image.getWidth());
 
+            ImagePattern pattern = new ImagePattern(image);
+            this.setFill(pattern);
+
         } catch (Exception ex) {
             System.out.print("");
 
         }
 
     }
-
-
-    public void start(int x, int y) {
-        startX = x;
-        startY = y;
-
-
-    }
-
 
     public String getShapeType() {
         return "image";

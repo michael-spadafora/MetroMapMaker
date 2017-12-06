@@ -154,6 +154,23 @@ public class mmmWorkspace extends AppWorkspaceComponent {
 
         MapEditController mapEditController = new MapEditController(app);
 
+
+
+        addImageButton.setOnAction( e-> {
+            mapEditController.addImage();
+        });
+        biggerMapButton.setOnAction( e-> {
+            mapEditController.enlargeMap();
+
+        });
+        smallerMapButton.setOnAction(e-> {
+            mapEditController.shrinkMap();
+        });
+
+        snapToGridButton.setOnAction( e->{
+            mapEditController.snapToGrid();
+        });
+
         showGrid.setOnAction( e-> {
             mapEditController.showGrid();
         });
