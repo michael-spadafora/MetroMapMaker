@@ -22,6 +22,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
@@ -157,6 +158,10 @@ public class mmmWorkspace extends AppWorkspaceComponent {
 
         MapEditController mapEditController = new MapEditController(app);
 
+        fontColorPicker.setOnAction(e->{
+            mapEditController.changeCurrentItemFontColor();
+        });
+        
         stationListButton.setOnAction(e->{
             mapEditController.listAllStations();
         });
@@ -920,6 +925,14 @@ public class mmmWorkspace extends AppWorkspaceComponent {
     public void activateSidebar() {
         editToolbar.setOpacity(1);
         editToolbar.setDisable(false);
+    }
+
+    public void setSelectedTextColor(Paint selectedTextColor) {
+        fontColorPicker.setValue((Color) selectedTextColor);
+    }
+
+    public ColorPicker getFontColorPicker() {
+        return fontColorPicker;
     }
 }
 

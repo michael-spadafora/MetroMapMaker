@@ -460,8 +460,6 @@ public class MapEditController {
             workspace.getCanvas().setTranslateY(newLoc);
         }
 
-
-       // fix this stuff
     }
 
     public void moveDown() {
@@ -494,6 +492,27 @@ public class MapEditController {
     public void listAllStations() {
         mmmWorkspace workspace = (mmmWorkspace) app.getWorkspaceComponent();
         DisplayAllStationsOnLineSingleton.getInstance().show(workspace.getSelectedLine());
+
+    }
+
+    public void changeCurrentItemFontColor() {
+        mmmWorkspace workspace = (mmmWorkspace) app.getWorkspaceComponent();
+        DraggableElement element = data.getSelectedElement();
+        Color newColor = workspace.getFontColorPicker().getValue();
+
+        if (element instanceof Station){
+            ((Station) element).getLabel().setFill(newColor);
+        }
+
+        if (element instanceof LineEnd){ ;
+            ((LineEnd) element).getSubwayLine().getStart().getLabel().setFill(newColor);
+            ((LineEnd) element).getSubwayLine().getEnd().getLabel().setFill(newColor);
+        }
+
+        if (element instanceof  DraggableText){
+            ((DraggableText) element).setFill(newColor);
+        }
+
 
     }
 }

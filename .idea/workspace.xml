@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4e1fb8db-1583-436d-b92f-c9996587c59a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/gui/DisplayAllStationsOnLineSingleton.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Metro Map Maker/gui/MapEditController.class" afterPath="$PROJECT_DIR$/out/production/Metro Map Maker/gui/MapEditController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MetroMapMakerApp.java" afterPath="$PROJECT_DIR$/src/MetroMapMakerApp.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/data/mmmData.java" afterPath="$PROJECT_DIR$/src/data/mmmData.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gui/MapEditController.java" afterPath="$PROJECT_DIR$/src/gui/MapEditController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gui/mmmWorkspace.java" afterPath="$PROJECT_DIR$/src/gui/mmmWorkspace.java" />
     </list>
@@ -22,8 +20,8 @@
       <file leaf-file-name="MapEditController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/gui/MapEditController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="239">
-              <caret line="444" column="71" lean-forward="false" selection-start-line="444" selection-start-column="71" selection-end-line="444" selection-end-column="71" />
+            <state relative-caret-position="290">
+              <caret line="514" column="0" lean-forward="true" selection-start-line="514" selection-start-column="0" selection-end-line="514" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#MapEditController#0;class#MapEditController#0" expanded="false" />
@@ -49,7 +47,45 @@
                 <element signature="method#addImage#0;class#MapEditController#0" expanded="false" />
                 <element signature="method#addLabel#0;class#MapEditController#0" expanded="false" />
                 <element signature="method#setBackgroundImage#0;class#MapEditController#0" expanded="false" />
+                <element signature="method#moveLeft#0;class#MapEditController#0" expanded="false" />
+                <element signature="method#moveUp#0;class#MapEditController#0" expanded="false" />
+                <element signature="method#moveDown#0;class#MapEditController#0" expanded="false" />
+                <element signature="method#moveRight#0;class#MapEditController#0" expanded="false" />
                 <element signature="method#listAllStations#0;class#MapEditController#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mmmWorkspace.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/gui/mmmWorkspace.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="213">
+              <caret line="933" column="22" lean-forward="true" selection-start-line="933" selection-start-column="11" selection-end-line="933" selection-end-column="22" />
+              <folding>
+                <element signature="e#6464#6772#0" expanded="false" />
+                <element signature="e#6994#7297#0" expanded="false" />
+                <element signature="method#initLayout#0;class#mmmWorkspace#0" expanded="false" />
+                <element signature="method#initSidePane#0;class#mmmWorkspace#0" expanded="false" />
+                <element signature="e#17833#17858#0" expanded="false" />
+                <element signature="method#initTopToolbars#0;class#mmmWorkspace#0" expanded="false" />
+                <element signature="method#initChildButton#0;class#mmmWorkspace#0" expanded="false" />
+                <element signature="method#initChildButton#1;class#mmmWorkspace#0" expanded="false" />
+                <element signature="method#resetWorkspace#0;class#mmmWorkspace#0" expanded="false" />
+                <element signature="method#updateLineComboBox#0;class#mmmWorkspace#0" expanded="false" />
+                <element signature="method#updateStationComboBox#0;class#mmmWorkspace#0" expanded="false" />
+                <element signature="method#emptyComboBoxes#0;class#mmmWorkspace#0" expanded="false" />
+                <element signature="method#reloadWorkspace#0;class#mmmWorkspace#0" expanded="false" />
+                <element signature="method#initFileToolbarStyle#0;class#mmmWorkspace#0" expanded="false" />
+                <element signature="method#getSelectedLine#0;class#mmmWorkspace#0" expanded="false" />
+                <element signature="method#getSelectedStation#0;class#mmmWorkspace#0" expanded="false" />
+                <element signature="method#setSelectedLineColor#0;class#mmmWorkspace#0" expanded="false" />
+                <element signature="method#handleExportRequest#0;class#mmmWorkspace#0" expanded="false" />
+                <element signature="method#exportWork#0;class#mmmWorkspace#0" expanded="false" />
+                <element signature="e#30343#30344#0" expanded="true" />
+                <element signature="e#30410#30411#0" expanded="true" />
+                <element signature="e#30457#30458#0" expanded="true" />
+                <element signature="e#30495#30496#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -58,15 +94,14 @@
       <file leaf-file-name="mmmData.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/data/mmmData.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="50" column="43" lean-forward="true" selection-start-line="50" selection-start-column="43" selection-end-line="50" selection-end-column="43" />
+            <state relative-caret-position="715">
+              <caret line="177" column="81" lean-forward="false" selection-start-line="177" selection-start-column="81" selection-end-line="177" selection-end-column="81" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#resetData#0;class#mmmData#0" expanded="false" />
                 <element signature="method#addSubwayLine#0;class#mmmData#0" expanded="false" />
                 <element signature="method#addStation#0;class#mmmData#0" expanded="false" />
                 <element signature="method#selectTopShape#0;class#mmmData#0" expanded="false" />
-                <element signature="method#setSelectedElement#0;class#mmmData#0" expanded="false" />
                 <element signature="method#getTopShape#0;class#mmmData#0" expanded="false" />
                 <element signature="method#removeSelectedElement#0;class#mmmData#0" expanded="false" />
                 <element signature="method#removeSelectedLine#0;class#mmmData#0" expanded="false" />
@@ -105,8 +140,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>WORK_FILE_EXT_DESC</find>
-      <find>resetData</find>
       <find>newBut</find>
       <find>reset</find>
       <find>HAS_EXPORT</find>
@@ -135,6 +168,8 @@
       <find>show</find>
       <find>stationListButton</find>
       <find>shrin</find>
+      <find>select</find>
+      <find>colorPicker</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -174,10 +209,10 @@
         <option value="$PROJECT_DIR$/src/data/DraggableText.java" />
         <option value="$PROJECT_DIR$/src/gui/LineSingleton.java" />
         <option value="$PROJECT_DIR$/src/gui/LearnMoreSingleton.java" />
-        <option value="$PROJECT_DIR$/src/data/mmmData.java" />
         <option value="$PROJECT_DIR$/src/MetroMapMakerApp.java" />
-        <option value="$PROJECT_DIR$/src/gui/mmmWorkspace.java" />
         <option value="$PROJECT_DIR$/src/gui/DisplayAllStationsOnLineSingleton.java" />
+        <option value="$PROJECT_DIR$/src/data/mmmData.java" />
+        <option value="$PROJECT_DIR$/src/gui/mmmWorkspace.java" />
         <option value="$PROJECT_DIR$/src/gui/MapEditController.java" />
       </list>
     </option>
@@ -413,12 +448,12 @@
       <workItem from="1512410657136" duration="10338000" />
       <workItem from="1512443328623" duration="12214000" />
       <workItem from="1512538685135" duration="8187000" />
-      <workItem from="1512598698908" duration="10952000" />
+      <workItem from="1512598698908" duration="12136000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="171116000" />
+    <option name="totallyTimeSpent" value="172300000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -514,7 +549,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/gui/mmmWorkspace.java</url>
-          <line>255</line>
+          <line>260</line>
           <properties />
           <option name="timeStamp" value="132" />
         </line-breakpoint>
@@ -550,13 +585,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/gui/mmmWorkspace.java</url>
-          <line>617</line>
+          <line>622</line>
           <properties />
           <option name="timeStamp" value="194" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/gui/MapEditController.java</url>
-          <line>477</line>
+          <line>475</line>
           <properties />
           <option name="timeStamp" value="212" />
         </line-breakpoint>
@@ -566,8 +601,14 @@
           <properties />
           <option name="timeStamp" value="213" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/data/mmmData.java</url>
+          <line>148</line>
+          <properties />
+          <option name="timeStamp" value="214" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="214" />
+      <option name="time" value="215" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -924,8 +965,8 @@
         <state relative-caret-position="292">
           <caret line="77" column="22" lean-forward="true" selection-start-line="77" selection-start-column="22" selection-end-line="77" selection-end-column="22" />
           <folding>
-            <element signature="e#679#680#0" expanded="true" />
-            <element signature="e#721#722#0" expanded="true" />
+            <element signature="e#679#680#0" expanded="false" />
+            <element signature="e#721#722#0" expanded="false" />
             <element signature="method#show#0;class#EnterNameSingleton#0" expanded="false" />
           </folding>
         </state>
@@ -951,15 +992,46 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/data/UndoRedoStack.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="42" column="34" lean-forward="false" selection-start-line="42" selection-start-column="23" selection-end-line="42" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/data/mmmData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="715">
+          <caret line="177" column="81" lean-forward="false" selection-start-line="177" selection-start-column="81" selection-end-line="177" selection-end-column="81" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#resetData#0;class#mmmData#0" expanded="false" />
+            <element signature="method#addSubwayLine#0;class#mmmData#0" expanded="false" />
+            <element signature="method#addStation#0;class#mmmData#0" expanded="false" />
+            <element signature="method#selectTopShape#0;class#mmmData#0" expanded="false" />
+            <element signature="method#getTopShape#0;class#mmmData#0" expanded="false" />
+            <element signature="method#removeSelectedElement#0;class#mmmData#0" expanded="false" />
+            <element signature="method#removeSelectedLine#0;class#mmmData#0" expanded="false" />
+            <element signature="method#getLineFromString#0;class#mmmData#0" expanded="false" />
+            <element signature="method#getStationFromString#0;class#mmmData#0" expanded="false" />
+            <element signature="method#removeSelectedStation#0;class#mmmData#0" expanded="false" />
+            <element signature="method#addElement#0;class#mmmData#0" expanded="false" />
+            <element signature="method#fixStationPriority#0;class#mmmData#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/gui/mmmWorkspace.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="122">
-          <caret line="394" column="45" lean-forward="true" selection-start-line="394" selection-start-column="45" selection-end-line="394" selection-end-column="45" />
+        <state relative-caret-position="213">
+          <caret line="933" column="22" lean-forward="true" selection-start-line="933" selection-start-column="11" selection-end-line="933" selection-end-column="22" />
           <folding>
-            <element signature="e#6309#6617#0" expanded="false" />
-            <element signature="e#6839#7142#0" expanded="false" />
+            <element signature="e#6464#6772#0" expanded="false" />
+            <element signature="e#6994#7297#0" expanded="false" />
             <element signature="method#initLayout#0;class#mmmWorkspace#0" expanded="false" />
-            <element signature="e#17678#17703#0" expanded="false" />
+            <element signature="method#initSidePane#0;class#mmmWorkspace#0" expanded="false" />
+            <element signature="e#17833#17858#0" expanded="false" />
             <element signature="method#initTopToolbars#0;class#mmmWorkspace#0" expanded="false" />
             <element signature="method#initChildButton#0;class#mmmWorkspace#0" expanded="false" />
             <element signature="method#initChildButton#1;class#mmmWorkspace#0" expanded="false" />
@@ -974,45 +1046,18 @@
             <element signature="method#setSelectedLineColor#0;class#mmmWorkspace#0" expanded="false" />
             <element signature="method#handleExportRequest#0;class#mmmWorkspace#0" expanded="false" />
             <element signature="method#exportWork#0;class#mmmWorkspace#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/data/UndoRedoStack.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="42" column="34" lean-forward="false" selection-start-line="42" selection-start-column="23" selection-end-line="42" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/data/mmmData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="50" column="43" lean-forward="true" selection-start-line="50" selection-start-column="43" selection-end-line="50" selection-end-column="43" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#resetData#0;class#mmmData#0" expanded="false" />
-            <element signature="method#addSubwayLine#0;class#mmmData#0" expanded="false" />
-            <element signature="method#addStation#0;class#mmmData#0" expanded="false" />
-            <element signature="method#selectTopShape#0;class#mmmData#0" expanded="false" />
-            <element signature="method#setSelectedElement#0;class#mmmData#0" expanded="false" />
-            <element signature="method#getTopShape#0;class#mmmData#0" expanded="false" />
-            <element signature="method#removeSelectedElement#0;class#mmmData#0" expanded="false" />
-            <element signature="method#removeSelectedLine#0;class#mmmData#0" expanded="false" />
-            <element signature="method#getLineFromString#0;class#mmmData#0" expanded="false" />
-            <element signature="method#getStationFromString#0;class#mmmData#0" expanded="false" />
-            <element signature="method#removeSelectedStation#0;class#mmmData#0" expanded="false" />
-            <element signature="method#addElement#0;class#mmmData#0" expanded="false" />
-            <element signature="method#fixStationPriority#0;class#mmmData#0" expanded="false" />
+            <element signature="e#30343#30344#0" expanded="true" />
+            <element signature="e#30410#30411#0" expanded="true" />
+            <element signature="e#30457#30458#0" expanded="true" />
+            <element signature="e#30495#30496#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/gui/MapEditController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="444" column="71" lean-forward="false" selection-start-line="444" selection-start-column="71" selection-end-line="444" selection-end-column="71" />
+        <state relative-caret-position="290">
+          <caret line="514" column="0" lean-forward="true" selection-start-line="514" selection-start-column="0" selection-end-line="514" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#MapEditController#0;class#MapEditController#0" expanded="false" />
@@ -1038,6 +1083,10 @@
             <element signature="method#addImage#0;class#MapEditController#0" expanded="false" />
             <element signature="method#addLabel#0;class#MapEditController#0" expanded="false" />
             <element signature="method#setBackgroundImage#0;class#MapEditController#0" expanded="false" />
+            <element signature="method#moveLeft#0;class#MapEditController#0" expanded="false" />
+            <element signature="method#moveUp#0;class#MapEditController#0" expanded="false" />
+            <element signature="method#moveDown#0;class#MapEditController#0" expanded="false" />
+            <element signature="method#moveRight#0;class#MapEditController#0" expanded="false" />
             <element signature="method#listAllStations#0;class#MapEditController#0" expanded="false" />
           </folding>
         </state>
