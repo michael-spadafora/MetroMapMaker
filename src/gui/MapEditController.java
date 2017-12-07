@@ -200,14 +200,20 @@ public class MapEditController {
 
         canvas.setScaleX(canvas.getScaleX() * ZOOM_CONSTANT);
         canvas.setScaleY(canvas.getScaleY()* ZOOM_CONSTANT);
+
+        canvas.setTranslateY(0);
+        canvas.setTranslateX(0);
 }
 
     public void zoomOut(){
         mmmWorkspace workspace = (mmmWorkspace) app.getWorkspaceComponent();
         Pane canvas = workspace.getCanvas();
+
         canvas.setScaleX(canvas.getScaleX() * (1/ZOOM_CONSTANT));
         canvas.setScaleY(canvas.getScaleY()* (1/ZOOM_CONSTANT));
 
+        canvas.setTranslateY(0);
+        canvas.setTranslateX(0);
         //workspace.resetWorkspace();
     }
 
@@ -364,7 +370,7 @@ public class MapEditController {
 
 
 
-        data.showGrid(lines);//calling it twice redraws it
+        showGrid();//calling it twice redraws it
         showGrid();
 
 
@@ -381,7 +387,7 @@ public class MapEditController {
         canvas.setMaxHeight(canvas.getLayoutBounds().getHeight() * (1/ZOOM_CONSTANT));
         canvas.setMaxWidth(canvas.getLayoutBounds().getWidth()* (1/ZOOM_CONSTANT));
 
-        data.showGrid(lines);
+        showGrid();
         showGrid();
     }
 
@@ -433,27 +439,61 @@ public class MapEditController {
     }
 
     public void moveLeft() {
+
         mmmWorkspace workspace = (mmmWorkspace) app.getWorkspaceComponent();
-        workspace.getCanvas().setTranslateX(workspace.getCanvas().getTranslateX() + 100);
+        double newLoc = workspace.getCanvas().getTranslateX() + 100;
+        double workspaceWidth = workspace.getWorkspace().getWidth()-500;
+        if (newLoc<workspaceWidth/2) {
+            workspace.getCanvas().setTranslateX(newLoc);
+        }
+
+
        // data.addElement(new Station());
        //fix this stuff
     }
 
     public void moveUp() {
         mmmWorkspace workspace = (mmmWorkspace) app.getWorkspaceComponent();
-        workspace.getCanvas().setTranslateY(workspace.getCanvas().getTranslateY() + 100);
+        double newLoc = workspace.getCanvas().getTranslateY() + 100;
+        double workspaceHeight = workspace.getWorkspace().getHeight();
+        if (newLoc<workspaceHeight/2) {
+            workspace.getCanvas().setTranslateY(newLoc);
+        }
+
+
        // fix this stuff
     }
 
     public void moveDown() {
         mmmWorkspace workspace = (mmmWorkspace) app.getWorkspaceComponent();
-        workspace.getCanvas().setTranslateY(workspace.getCanvas().getTranslateY() - 100);
+        double newLoc = workspace.getCanvas().getTranslateY() - 100;
+        double workspaceHeight = workspace.getWorkspace().getHeight();
+        if (newLoc>-workspaceHeight/2) {
+            workspace.getCanvas().setTranslateY(newLoc);
+        }
+
+
+
+        //if (workspace.getCanvas().getTranslateY() < 0){
+            //workspace.getCanvas().setTranslateY((canvasHeight)/3 +100);
+        //}//
+
+
        // fix this stuff
     }
 
     public void moveRight() {
         mmmWorkspace workspace = (mmmWorkspace) app.getWorkspaceComponent();
-        workspace.getCanvas().setTranslateX(workspace.getCanvas().getTranslateX() - 100);
-       // fix this stuff
+        double newLoc = workspace.getCanvas().getTranslateX() - 100;
+        double workspaceWidth = workspace.getWorkspace().getWidth()+50;
+        if (newLoc>-workspaceWidth/2) {
+            workspace.getCanvas().setTranslateX(newLoc);
+        }
+    }
+
+    public void listAllStations() {
+        mmmWorkspace workspace = (mmmWorkspace) app.getWorkspaceComponent();
+        DisplayAllStationsOnLineSingleton.getInstance().show(workspace.getSelectedLine());
+
     }
 }

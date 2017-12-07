@@ -157,6 +157,10 @@ public class mmmWorkspace extends AppWorkspaceComponent {
 
         MapEditController mapEditController = new MapEditController(app);
 
+        stationListButton.setOnAction(e->{
+            mapEditController.listAllStations();
+        });
+
         app.getGUI().getAppPane().setOnKeyPressed(event -> {
             KeyCode code = event.getCode();
             switch (code){
@@ -286,9 +290,6 @@ public class mmmWorkspace extends AppWorkspaceComponent {
             mapEditController.processEditLine();
         });
 
-        stationListButton.setOnAction(e-> {
-            mapEditController.processAddLine();
-        });
 
         addStationsToLineButton.setOnAction(e-> {
             mapEditController.processAddStationToLine();
@@ -391,7 +392,7 @@ public class mmmWorkspace extends AppWorkspaceComponent {
         lineSubBox3 = new FlowPane();
         addStationsToLineButton = initChildButton(lineSubBox3, "addStation.png", "Adds a station to this line", false);
         removeStationsFromLineButton = initChildButton(lineSubBox3, "removeStation.png", "Removes a station from this line", false);
-        stationListButton = initChildButton(lineSubBox3, "list all stations", true);
+        stationListButton = initChildButton(lineSubBox3, "list all stations", false);
 
 
         linesColorPicker.setPrefWidth(30);
