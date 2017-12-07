@@ -9,6 +9,7 @@ import javafx.stage.Stage;
 import properties_manager.PropertiesManager;
 import static djf.settings.AppPropertyType.*;
 import static djf.settings.AppStartupConstants.APP_PROPERTIES_FILE_NAME;
+import static djf.settings.AppStartupConstants.PATH_WORK;
 
 import java.io.File;
 import java.util.Locale;
@@ -99,6 +100,13 @@ public class MetroMapMakerApp extends AppTemplate{
 
                 if (welc.getWillMakeNew() || welc.isLoadedFile()){
                     ((mmmWorkspace)(this.getWorkspaceComponent())).activateSidebar();
+
+                    if (welc.isLoadedFile()){
+                        String filename = welc.getSelectedFileName();
+                        filename = PATH_WORK+filename+ " Metro.json";
+
+                        fileComponent.loadData(dataComponent,filename);
+                    }
                 }
             }
 

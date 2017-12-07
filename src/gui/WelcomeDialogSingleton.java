@@ -12,11 +12,16 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.io.File;
+import java.io.FilenameFilter;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
 
 import static djf.settings.AppStartupConstants.FILE_PROTOCOL;
 import static djf.settings.AppStartupConstants.PATH_IMAGES;
+import static djf.settings.AppStartupConstants.PATH_WORK;
 
 
 public class WelcomeDialogSingleton extends Stage {
@@ -36,6 +41,12 @@ public class WelcomeDialogSingleton extends Stage {
     Button newButton;
     private boolean willMakeNew = false;
     private boolean loadedFile = false;
+
+    public String getSelectedFileName() {
+        return selectedFileName;
+    }
+
+    private String selectedFileName;
 
     public boolean isLoadedFile() {
         return loadedFile;
@@ -60,9 +71,28 @@ public class WelcomeDialogSingleton extends Stage {
         recentLabels = new ArrayList<String>();
         this.setTitle("Welcome to Metro Map Maker");
 
+            File directory = new File(PATH_WORK);
+            //boolean directory = file.isDirectory();
 
-        for (int i = 0; i<6;i++){
-            recentLabels.add("Placeholder");
+            File[] matchingFiles = directory.listFiles(new FilenameFilter() {
+                @Override
+                public boolean accept(File directory, String name) {
+                    return name.endsWith("json");
+                }
+            });
+
+            Arrays.sort(matchingFiles, new Comparator<File>(){
+                public int compare(File f1, File f2)
+                {
+                    return Long.valueOf(f1.lastModified()).compareTo(f2.lastModified());
+                }
+            });
+
+        for (int i = 0 ; i <matchingFiles.length && i<6; i++){
+            String fileName = matchingFiles[i].toString();
+            fileName = fileName.substring(0, fileName.length()-11);
+            fileName = fileName.substring(7);
+            recentLabels.add(fileName);
         }
 
         recentWorks = new ArrayList<Button>();
@@ -75,11 +105,12 @@ public class WelcomeDialogSingleton extends Stage {
         recentPane.getChildren().add(recentLabel);
         newButton = new Button("Create new map");
 
-        for (int i = 0; i< 6; i++){
+        for (int i = 0; i< 6 && i < matchingFiles.length; i++){
             Button b = new Button(recentLabels.get(i));
             b.setOnAction( e->{
                 this.close();
                 loadedFile = true;
+                selectedFileName = b.getText();
             });
             recentWorks.add(b);
         }
