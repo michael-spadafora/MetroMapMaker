@@ -2,15 +2,12 @@ package data;
 
 import djf.AppTemplate;
 import djf.components.AppDataComponent;
-import gui.LineEnd;
 import gui.mmmWorkspace;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import javafx.scene.effect.BlurType;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.effect.Effect;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;

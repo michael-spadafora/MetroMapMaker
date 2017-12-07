@@ -3,9 +3,7 @@ package gui;
 import data.*;
 import djf.AppTemplate;
 import javafx.scene.Cursor;
-import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.shape.Shape;
 
 import static data.mmmState.*;
 

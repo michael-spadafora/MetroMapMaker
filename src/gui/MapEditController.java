@@ -3,11 +3,9 @@ package gui;
 import data.*;
 import djf.AppTemplate;
 import djf.ui.AppYesNoCancelDialogSingleton;
-import javafx.beans.property.DoubleProperty;
 import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
@@ -16,11 +14,9 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
-import javafx.scene.shape.Rectangle;
 import javafx.stage.FileChooser;
 
 import java.io.File;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import static data.mmmState.ADDING_STATION_TO_LINE;
@@ -513,6 +509,26 @@ public class MapEditController {
             ((DraggableText) element).setFill(newColor);
         }
 
+
+    }
+
+    public void boldText() {
+        mmmWorkspace workspace = (mmmWorkspace) app.getWorkspaceComponent();
+        DraggableElement element = data.getSelectedElement();
+
+        if (element instanceof LineEnd){
+            ((LineEnd) element).bolden();
+        }
+
+    }
+
+    public void italicText() {
+        mmmWorkspace workspace = (mmmWorkspace) app.getWorkspaceComponent();
+        DraggableElement element = data.getSelectedElement();
+
+        if (element instanceof LineEnd){
+            ((LineEnd) element).italisize();
+        }
 
     }
 }

@@ -1,8 +1,6 @@
 package data;
 
 import djf.ui.AppMessageDialogSingleton;
-import gui.LineEnd;
-import javafx.scene.Node;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Polyline;

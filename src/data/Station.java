@@ -5,6 +5,10 @@ import javafx.scene.shape.Circle;
 
 
 import java.util.ArrayList;
+
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 public class Station extends Circle implements DraggableElement {
     ArrayList<SubwayLine> subwayLines;
@@ -194,5 +198,53 @@ public class Station extends Circle implements DraggableElement {
     public void fixLabel(){
         currentOrbitState--;
         orbitLabel();
+    }
+
+    public void italisize() {
+
+        Font font = label.getFont();
+        FontPosture posture;
+        FontWeight weight;
+        if (font.getStyle().equals("Regular") || font.getStyle().equals("Bold")){
+            posture = FontPosture.ITALIC;
+        }
+        else {
+            posture = FontPosture.REGULAR;
+        }
+
+        if (font.getStyle().equals("Regular") || font.getStyle().equals("Italic")){
+            weight = FontWeight.NORMAL;
+        }
+        else {
+            weight = FontWeight.BOLD;
+        }
+
+        label.setFont(Font.font(label.getFont().getFamily(), weight, posture, label.getFont().getSize()));
+
+
+    }
+
+    public void bolden() {
+
+        Font font = label.getFont();
+        FontWeight weight;
+        FontPosture posture;
+        if (font.getStyle().equals("Regular") || font.getStyle().equals("Italic")){
+            weight = FontWeight.BOLD;
+        }
+        else {
+            weight = FontWeight.NORMAL;
+        }
+
+        if (font.getStyle().equals("Regular") || font.getStyle().equals("Bold")){
+            posture = FontPosture.REGULAR;
+        }
+        else {
+            posture = FontPosture.ITALIC;
+        }
+
+        label.setFont(Font.font(label.getFont().getFamily(), weight, posture, label.getFont().getSize()));
+
+
     }
 }

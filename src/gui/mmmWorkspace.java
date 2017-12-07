@@ -158,6 +158,13 @@ public class mmmWorkspace extends AppWorkspaceComponent {
 
         MapEditController mapEditController = new MapEditController(app);
 
+        italicButton.setOnAction(e->{
+            mapEditController.italicText();
+        });
+        boldButton.setOnAction(e-> {{
+                mapEditController.boldText();
+        }});
+
         fontColorPicker.setOnAction(e->{
             mapEditController.changeCurrentItemFontColor();
         });

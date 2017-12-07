@@ -143,6 +143,53 @@ public class DraggableText extends Text implements DraggableElement {
         return "(x,y): (" + x + "," + y + ")";
     }
 
+    public void italisize() {
+
+        Font font = this.getFont();
+        FontPosture posture;
+        FontWeight weight;
+        if (font.getStyle().equals("Regular") || font.getStyle().equals("Bold")){
+            posture = FontPosture.ITALIC;
+        }
+        else {
+            posture = FontPosture.REGULAR;
+        }
+
+        if (font.getStyle().equals("Regular") || font.getStyle().equals("Italic")){
+            weight = FontWeight.NORMAL;
+        }
+        else {
+            weight = FontWeight.BOLD;
+        }
+
+        this.setFont(Font.font(this.getFont().getFamily(), weight, posture, this.getFont().getSize()));
+
+
+    }
+
+    public void bolden() {
+
+        Font font = this.getFont();
+        FontWeight weight;
+        FontPosture posture;
+        if (font.getStyle().equals("Regular") || font.getStyle().equals("Italic")){
+            weight = FontWeight.BOLD;
+        }
+        else {
+            weight = FontWeight.NORMAL;
+        }
+
+        if (font.getStyle().equals("Regular") || font.getStyle().equals("Bold")){
+            posture = FontPosture.REGULAR;
+        }
+        else {
+            posture = FontPosture.ITALIC;
+        }
+
+        this.setFont(Font.font(this.getFont().getFamily(), weight, posture, this.getFont().getSize()));
+
+
+    }
 
 
 
