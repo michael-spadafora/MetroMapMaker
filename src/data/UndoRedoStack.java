@@ -1,6 +1,7 @@
 package data;
 
 
+import gui.mmmWorkspace;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
 
@@ -12,13 +13,13 @@ import java.util.Stack;
  */
 public class UndoRedoStack {
 
-    Stack<ObservableList<Node>> undoStack;
-    Stack<ObservableList<Node>> redoStack;
+    Stack<Transaction> undoStack;
+    Stack<Transaction> redoStack;
     mmmData data;
 
     public UndoRedoStack(mmmData data) {
-        undoStack = new Stack<ObservableList<Node>>();
-        redoStack = new Stack<ObservableList<Node>>();
+        undoStack = new Stack<Transaction>();
+        redoStack = new Stack<Transaction>();
         this.data = data;
     }
 
@@ -30,24 +31,33 @@ public class UndoRedoStack {
         return !redoStack.isEmpty();
     }
 
-    public void addTransaction(ObservableList<Node> transaction) {
+    public void addTransaction(Transaction transaction) {
         undoStack.push(transaction);
-        redoStack = new Stack<ObservableList<Node>>();
+        redoStack = new Stack<Transaction>();
+        ((mmmWorkspace)data.getApp().getWorkspaceComponent()).getMapEditController().fixUndoRedoButtons();
         //  transaction.doAction();
     }
 
     public void undoTransaction() {
-        ObservableList<Node> transaction = undoStack.pop();
-        //transaction.undoAction()
-        data.setShapes(transaction);
+        Transaction transaction = undoStack.pop();
+        transaction.undoAction();
         redoStack.push(transaction);
+        ((mmmWorkspace)data.getApp().getWorkspaceComponent()).getMapEditController().fixUndoRedoButtons();
 
     }
 
     public void redoTransaction() {
-        ObservableList<Node> transaction = redoStack.pop();
-        data.setShapes(transaction);
+        Transaction transaction = redoStack.pop();
+        transaction.doAction();
         undoStack.push(transaction);
+        ((mmmWorkspace)data.getApp().getWorkspaceComponent()).getMapEditController().fixUndoRedoButtons();
+    }
+
+    public boolean undoIsEmpty(){
+        return undoStack.isEmpty();
+    }
+    public boolean redoIsEmpty(){
+        return redoStack.isEmpty();
     }
 
 }

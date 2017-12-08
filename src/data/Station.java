@@ -19,6 +19,37 @@ public class Station extends Circle implements DraggableElement {
     private double horizDisplace = 10;
     private double verticalDisplace = 10;
 
+    public void setSubwayLines(ArrayList<SubwayLine> subwayLines) {
+        this.subwayLines = subwayLines;
+    }
+
+    public void setLabel(Text label) {
+        this.label = label;
+    }
+
+    public double getStartCenterX() {
+        return startCenterX;
+    }
+
+    public void setStartCenterX(double startCenterX) {
+        this.startCenterX = startCenterX;
+    }
+
+    public double getStartCenterY() {
+        return startCenterY;
+    }
+
+    public void setStartCenterY(double startCenterY) {
+        this.startCenterY = startCenterY;
+    }
+
+    public int getCurrentOrbitState() {
+        return currentOrbitState;
+    }
+
+    public void setCurrentOrbitState(int currentOrbitState) {
+        this.currentOrbitState = currentOrbitState;
+    }
 
     public ArrayList<SubwayLine> getSubwayLines() {
         return subwayLines;
@@ -289,5 +320,30 @@ public class Station extends Circle implements DraggableElement {
         }
 
         label.setFont(Font.font(selectedItem, weight, posture, font.getSize()));
+    }
+
+    @Override
+    public Station clone(){
+
+        Station clonedStation = new Station(this.getLabel().getText());
+        /*ArrayList<SubwayLine> subwayLines;
+        Text label;
+        private double startCenterX;
+        private double startCenterY;
+        private int currentOrbitState = 0;
+        private double horizDisplace = 10;
+        private double verticalDisplace = 10;*/
+
+        clonedStation.setCurrentOrbitState(this.currentOrbitState);
+        clonedStation.setCenterX(this.getCenterX());
+        clonedStation.setCenterY(this.getCenterY());
+        clonedStation.setRadius(this.getRadius());
+        Color c = (Color) this.getFill();
+        clonedStation.setFill(Color.color(c.getRed(), c.getGreen(), c.getBlue()));
+        clonedStation.getLabel().setFont(this.getLabel().getFont());
+        //clonedStation.setSubwayLines();
+
+        return clonedStation;
+
     }
 }

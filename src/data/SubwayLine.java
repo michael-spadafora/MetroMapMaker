@@ -7,7 +7,7 @@ import javafx.scene.shape.Polyline;
 
 import java.util.ArrayList;
 
-public class SubwayLine extends Polyline{
+public class SubwayLine extends Polyline implements DraggableElement{
     ArrayList<Station> stations;
     LineEnd start;
     LineEnd end;
@@ -225,5 +225,45 @@ public class SubwayLine extends Polyline{
 
     public void setThickness (int i){
         this.setStrokeWidth(i);
+    }
+
+    @Override
+    public void start(int x, int y) {
+
+    }
+
+    @Override
+    public void drag(int x, int y) {
+
+    }
+
+    @Override
+    public double getX() {
+        return 0;
+    }
+
+    @Override
+    public double getY() {
+        return 0;
+    }
+
+    @Override
+    public double getWidth() {
+        return 0;
+    }
+
+    @Override
+    public double getHeight() {
+        return 0;
+    }
+
+    @Override
+    public void setLocationAndSize(double initX, double initY, double initWidth, double initHeight) {
+
+    }
+
+    @Override
+    public String getElementType() {
+        return null;
     }
 }

@@ -221,7 +221,8 @@ public class mmmData implements AppDataComponent {
         this.state = state;
     }
 
-    public void removeSelectedElement() {
+    public DraggableElement removeSelectedElement() {
+        DraggableElement element = selectedElement;
         if (selectedElement instanceof  Station){
             elements.remove(((Station) selectedElement).getLabel());
             elements.remove(selectedElement);
@@ -235,9 +236,17 @@ public class mmmData implements AppDataComponent {
             elements.remove(selectedElement);
         }
 
+        return selectedElement;
+
     }
 
-    public void removeSelectedLine(){
+    public void addLineEnd(LineEnd end){
+        SubwayLine line = end.getSubwayLine();
+        addSubwayLine(line);
+
+    }
+
+    public SubwayLine removeSelectedLine(){
         mmmWorkspace workspace = (mmmWorkspace) app.getWorkspaceComponent();
         SubwayLine line = workspace.getSelectedLine();
         LineEnd start = line.getStart();
@@ -250,6 +259,8 @@ public class mmmData implements AppDataComponent {
         elements.remove(end.getLabel());
         elements.remove(end);
         elements.remove(connector);
+
+        return line;
     }
 
     public ObservableList<Node> getElements() {
@@ -285,10 +296,15 @@ public class mmmData implements AppDataComponent {
 
     }
 
-    public void addElement(Node node){
+    public void addElement(DraggableElement node){
+
         if (node instanceof SubwayLine){
             addSubwayLine((SubwayLine) node);
 
+        }
+
+        else if (node instanceof  LineEnd){
+            addLineEnd((LineEnd) node);
         }
 
         else if (node instanceof Station){
@@ -302,6 +318,7 @@ public class mmmData implements AppDataComponent {
         else if (node instanceof DraggableText){
             addText((DraggableText) node);
         }
+
 
         fixStationPriority();
     }
@@ -338,4 +355,36 @@ public class mmmData implements AppDataComponent {
             gridLines.clear();
         }
     }
+
+    public void removeElement(DraggableElement element) {
+
+        if (selectedElement instanceof  Station){
+            elements.remove(((Station) selectedElement).getLabel());
+            elements.remove(selectedElement);
+        }
+
+        if (selectedElement instanceof LineEnd){
+            removeSelectedLine();
+        }
+
+        if (selectedElement instanceof DraggableImage || selectedElement instanceof DraggableText){
+            elements.remove(selectedElement);
+        }
+
+        elements.remove(element);
+
+    }
+
+
+    public void removeLine(SubwayLine line) {
+        elements.remove(line.getStart().getLabel());
+        elements.remove(line.getEnd().getLabel());
+        elements.remove(line.getStart());
+        elements.remove(line.getConnectorLine());
+        elements.remove(line.getEnd());
+        elements.remove(line);
+    }
+
+
+
 }

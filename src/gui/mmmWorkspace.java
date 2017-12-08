@@ -1,9 +1,7 @@
 package gui;
 
 import com.sun.org.apache.xerces.internal.impl.PropertyManager;
-import data.Station;
-import data.SubwayLine;
-import data.mmmData;
+import data.*;
 import djf.AppTemplate;
 import djf.components.AppDataComponent;
 import djf.components.AppWorkspaceComponent;
@@ -120,7 +118,7 @@ public class mmmWorkspace extends AppWorkspaceComponent {
     Button smallerMapButton;
 
 
-
+    MapEditController mapEditController;
 
 
     VBox editToolbar;
@@ -142,13 +140,15 @@ public class mmmWorkspace extends AppWorkspaceComponent {
 
     ArrayList<Line> gridLines;
 
+    double oldThickness;
+    double newThickness;
 
 
 
     public mmmWorkspace(AppTemplate initApp) {
         canvas = new Pane();
         canvasWrapper = new Pane();
-        canvasWrapper.getChildren().add(canvas);
+
         app = initApp;
         gui = app.getGUI();
         initLayout();
@@ -185,12 +185,26 @@ public class mmmWorkspace extends AppWorkspaceComponent {
         return lineThicknessSlider;
     }
 
+    public MapEditController getMapEditController() {
+        return mapEditController;
+    }
+
     private void initControllers() {
 
 
         fontClassComboBox.getItems().addAll(Font.getFamilies());
 
-        MapEditController mapEditController = new MapEditController(app);
+        mapEditController = new MapEditController(app);
+
+        undoButton.setOnAction( e-> {
+            mapEditController.getUndoRedoStack().undoTransaction();
+            mapEditController.fixUndoRedoButtons();
+        });
+
+        redoButton.setOnAction( e-> {
+            mapEditController.getUndoRedoStack().redoTransaction();
+            mapEditController.fixUndoRedoButtons();
+        });
 
         fontClassComboBox.setOnAction( e-> {
             mapEditController.changeFontFamily((String)fontClassComboBox.getSelectionModel().getSelectedItem());
@@ -310,6 +324,17 @@ public class mmmWorkspace extends AppWorkspaceComponent {
             }
         });
 
+        stationRadiusSlider.setOnMousePressed( e->{
+            oldThickness = getSelectedStation().getRadius();
+        });
+
+        stationRadiusSlider.setOnMouseReleased( e->{
+            newThickness = getSelectedStation().getRadius();
+            Transaction t = new StationRadiusTransaction(getSelectedStation(), oldThickness, newThickness);
+            mapEditController.getUndoRedoStack().addTransaction(t);
+
+        });
+
         lineThicknessSlider.setMajorTickUnit(1);
         lineThicknessSlider.setValue(6);
         lineThicknessSlider.setMin(1);
@@ -317,15 +342,25 @@ public class mmmWorkspace extends AppWorkspaceComponent {
 
 
         lineThicknessSlider.setOnMouseDragged( e-> {
-            int thicc = 0;
+            double thicc = 0;
             try{
-                thicc = (int) lineThicknessSlider.getValue();
+                thicc = lineThicknessSlider.getValue();
                 mapEditController.changeLineThickness(thicc);
                 //getSelectedLine().setThickness(thicc);
             }
             catch (Exception ex){
 
             }
+        });
+
+        lineThicknessSlider.setOnMousePressed( e->{
+            oldThickness = getSelectedLine().getStrokeWidth();
+        });
+
+        lineThicknessSlider.setOnMouseReleased( e->{
+            newThickness = getSelectedLine().getStrokeWidth();
+            Transaction t = new LineThicknessTransaction(getSelectedLine(), oldThickness, newThickness);
+            mapEditController.getUndoRedoStack().addTransaction(t);
         });
 
 
@@ -626,16 +661,17 @@ public class mmmWorkspace extends AppWorkspaceComponent {
         data.setShapes(canvas.getChildren());
 
         //canvas.toBack();
-
+        ((BorderPane) workspace).setCenter(canvas);
         ((BorderPane) workspace).setCenter(canvasWrapper);
+        canvasWrapper.getChildren().add(canvas);
         ((BorderPane) workspace).setTop(app.getGUI().getTopToolbarPane());
         ((BorderPane) workspace).setLeft(editToolbar);
 
-        //initFileToolbarStyle();
-        //ObservableList<Node> children = workspace.getChildren();
+        //canvasWrapper.setBorder(new Border(new BorderStroke(Color.BLACK,
+              //  BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderStroke.THICK)));
 
-        //children.set(0,children.get(1));
-        //editToolbar.toFront();
+        canvas.setMinWidth(1137);
+        canvas.setMinHeight(683);
 
         editToolbar.setDisable(true);
         editToolbar.setOpacity(0);
@@ -1006,6 +1042,16 @@ public class mmmWorkspace extends AppWorkspaceComponent {
 
     public void setSelectedTextFamily(String selectedTextFamily) {
         fontClassComboBox.getSelectionModel().select(selectedTextFamily);
+    }
+
+
+
+    public void activateUndoButton(boolean b) {
+        undoButton.setDisable(b);
+    }
+
+    public void activateRedoButton(boolean b) {
+        redoButton.setDisable(b);
     }
 }
 

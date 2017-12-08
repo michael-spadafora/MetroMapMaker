@@ -55,6 +55,8 @@ public class MapEditController {
             mmmWorkspace workspace = (mmmWorkspace) app.getWorkspaceComponent();
             workspace.updateLineComboBox(data.getElements());
             workspace.getLinesComboBox().getSelectionModel().select(temp.getStart().getLabel().getText());
+            Transaction transaction = new AddLineTransaction(data, temp);
+            undoRedoStack.addTransaction(transaction);
         }
 
 
@@ -67,9 +69,14 @@ public class MapEditController {
         appYesNoCancelDialogSingleton.show("Line remove", "Are you sure you want to remove this line?");
         String selection = appYesNoCancelDialogSingleton.getSelection();
         if (selection.equals(YES)){
-        data.removeSelectedLine();
-        mmmWorkspace workspace = (mmmWorkspace) app.getWorkspaceComponent();
-        workspace.updateLineComboBox(data.getElements());}
+            SubwayLine line = data.removeSelectedLine();
+            mmmWorkspace workspace = (mmmWorkspace) app.getWorkspaceComponent();
+            workspace.updateLineComboBox(data.getElements());
+            Transaction transaction = new RemoveLineTransaction(data, line);
+            undoRedoStack.addTransaction(transaction);
+        }
+
+
         //workspace.
 
     }
@@ -124,9 +131,11 @@ public class MapEditController {
        if (ens.getSelection().equals("Confirm")){
 
 
-       String name = ens.getName();
+        String name = ens.getName();
         Station stat = new Station(name);
         data.addStation(stat);
+        Transaction transaction = new NewElementTransaction(data, stat);
+        undoRedoStack.addTransaction(transaction);
 
 
         //data.addText(stat.getLabel());
@@ -220,7 +229,7 @@ public class MapEditController {
         //workspace.resetWorkspace();
     }
 
-    public void changeLineThickness(int i){
+    public void changeLineThickness(double i){
         mmmWorkspace workspace = (mmmWorkspace) app.getWorkspaceComponent();
         workspace.getSelectedLine().setStrokeWidth(i);
     }
@@ -230,17 +239,25 @@ public class MapEditController {
         workspace.getSelectedStation().changeRadius(d);
     }
 
-
     public void setBackgroundColor(Color color) {
-        //mmmWorkspace workspace = (mmmWorkspace) app.getWorkspaceComponent();
+
+        mmmWorkspace workspace = (mmmWorkspace) app.getWorkspaceComponent();
+        Background oldBackground = workspace.getCanvas().getBackground();
         BackgroundFill bgfill = new BackgroundFill(color, null, null);
-        app.getGUI().getAppPane().setBackground(new Background(bgfill));
+        Background newBackground = new Background(bgfill);
+        workspace.getCanvas().setBackground(newBackground);
+
+        ChangeBackgroundTransaction transaction = new ChangeBackgroundTransaction(data, oldBackground, newBackground);
+        undoRedoStack.addTransaction(transaction);
+
     }
 
     public void orbitSelectedStationLabel() {
         mmmWorkspace workspace = (mmmWorkspace) app.getWorkspaceComponent();
         try {
             workspace.getSelectedStation().orbitLabel();
+            Transaction t = new OrbitStationLabelTransaction(workspace.getSelectedStation());
+            undoRedoStack.addTransaction(t);
         }
         catch (NullPointerException ex){
 
@@ -251,6 +268,8 @@ public class MapEditController {
         mmmWorkspace workspace = (mmmWorkspace) app.getWorkspaceComponent();
         try {
             workspace.getSelectedStation().rotateLabel();
+            Transaction t = new RotateStationLabelTransaction(workspace.getSelectedStation());
+            undoRedoStack.addTransaction(t);
         }
         catch (NullPointerException ex){
 
@@ -354,11 +373,10 @@ public class MapEditController {
 
     }
 
-
     public void enlargeMap() {
         mmmWorkspace workspace = (mmmWorkspace) app.getWorkspaceComponent();
         Pane canvas = workspace.getCanvas();
-        canvas.setBackground(new Background(new BackgroundFill(BLUE, null, null)));
+        //canvas.setBackground(new Background(new BackgroundFill(BLUE, null, null)));
 
         //double minehgith = canvas.getLayoutBounds().getHeight();
 
@@ -437,6 +455,8 @@ public class MapEditController {
 
         data.addElement(newImage);
 
+        Transaction t = new NewElementTransaction(data,newImage);
+
     }
 
     public void addLabel() {
@@ -446,15 +466,20 @@ public class MapEditController {
             String s = ens.getEntered();
             DraggableText text = new DraggableText(s);
             data.addElement(text);
+            Transaction t = new NewElementTransaction(data, text);
+            undoRedoStack.addTransaction(t);
         }
+
+
     }
 
     public void removeSelectedElement() {
-        data.removeSelectedElement();
+        DraggableElement element = data.removeSelectedElement();
+        Transaction transaction = new RemoveElementTransaction(data, element );
+        undoRedoStack.addTransaction(transaction);
     }
 
     public void setBackgroundImage() {
-
         FileChooser fc = new FileChooser();
         fc.setInitialDirectory(new File(PATH_WORK));
         fc.setTitle("");
@@ -462,11 +487,13 @@ public class MapEditController {
         File selectedFile = fc.showOpenDialog(app.getGUI().getWindow());
 
         mmmWorkspace workspace = (mmmWorkspace) app.getWorkspaceComponent();
-
+        Background oldBackground = workspace.getCanvas().getBackground();
         Image bgImage = new Image("file:" + selectedFile.getAbsolutePath());
         BackgroundImage backgroundImage =  new BackgroundImage(bgImage, null,null,null,null);
         workspace.getCanvas().setBackground(new Background(backgroundImage));
 
+        ChangeBackgroundTransaction transaction = new ChangeBackgroundTransaction(data, oldBackground, new Background(backgroundImage));
+        undoRedoStack.addTransaction(transaction);
 
     }
 
@@ -524,7 +551,6 @@ public class MapEditController {
     public void listAllStations() {
         mmmWorkspace workspace = (mmmWorkspace) app.getWorkspaceComponent();
         DisplayAllStationsOnLineSingleton.getInstance().show(workspace.getSelectedLine());
-
     }
 
     public void changeCurrentItemFontColor() {
@@ -613,5 +639,15 @@ public class MapEditController {
             ((DraggableText) element).changeFontFamily(selectedItem);
         }
 
+    }
+
+    public void fixUndoRedoButtons() {
+        mmmWorkspace workspace = (mmmWorkspace) app.getWorkspaceComponent();
+        workspace.activateUndoButton(undoRedoStack.undoIsEmpty());
+        workspace.activateRedoButton(undoRedoStack.redoIsEmpty());
+    }
+
+    public UndoRedoStack getUndoRedoStack() {
+        return undoRedoStack;
     }
 }
