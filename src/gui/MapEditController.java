@@ -89,12 +89,28 @@ public class MapEditController {
 
         ls.show(line.getStart().getLabel().getText(), (Color) line.getStroke(), line.isCircular());
 
+
+        String oldName, newName;
+        Color oldColor, newColor;
+        boolean oldCircular, newCircular;
+
+        oldName = line.getStart().getLabel().getText();
+        oldColor = (Color) line.getStroke();
+        oldCircular = line.isCircular();
+
         if (ls.getSelection().equals("Confirm")){
             line.setName(ls.getLineName());
             line.setColor(ls.getSelectedColor());
             line.setCircular(ls.getCircularCheckbox().isSelected());
             workspace.updateLineComboBox(data.getElements());
             line.fixPoints();
+
+            newName = line.getStart().getLabel().getText();
+            newColor = (Color) line.getStroke();
+            newCircular = line.isCircular();
+
+            Transaction t = new EditLineTransaction(line, oldName, newName, oldColor, newColor, oldCircular, newCircular);
+            undoRedoStack.addTransaction(t);
         }
 
     }
@@ -120,6 +136,9 @@ public class MapEditController {
         for (SubwayLine line: lines){
             line.removeStation(workspace.getSelectedStation());
         }
+
+        Transaction t = new RemoveElementTransaction(data, workspace.getSelectedStation());
+        undoRedoStack.addTransaction(t);
         data.removeSelectedStation();
         workspace.updateStationComboBox(data.getElements());
 
@@ -386,7 +405,10 @@ public class MapEditController {
         //canvas.setBackground(new Background(new BackgroundFill(BLUE, null, null)));
 
         //double minehgith = canvas.getLayoutBounds().getHeight();
+        double oldWidth,oldHeight, newWidth, newHeight;
 
+        oldWidth =canvas.getWidth();
+        oldHeight = canvas.getHeight();
 
         canvas.setMinHeight(canvas.getLayoutBounds().getHeight() * ZOOM_CONSTANT);
         canvas.setMinWidth(canvas.getLayoutBounds().getWidth()* ZOOM_CONSTANT);
@@ -396,7 +418,11 @@ public class MapEditController {
         canvas.setMaxHeight(canvas.getLayoutBounds().getHeight() * ZOOM_CONSTANT);
         canvas.setMaxWidth(canvas.getLayoutBounds().getWidth()* ZOOM_CONSTANT);
 
+        newWidth =canvas.getMaxWidth();
+        newHeight = canvas.getMaxHeight();
 
+        Transaction t = new ChangeMapSizeTransaction(canvas, oldWidth, oldHeight, newWidth, newHeight);
+        undoRedoStack.addTransaction(t);
 
         canvas.setTranslateX(0);
         canvas.setTranslateY(0);
@@ -411,6 +437,10 @@ public class MapEditController {
         mmmWorkspace workspace = (mmmWorkspace) app.getWorkspaceComponent();
         Pane canvas = workspace.getCanvas();
         //canvas.setBackground(new Background(new BackgroundFill(BLUE, null, null)));
+
+        double oldWidth,oldHeight, newWidth, newHeight;
+        oldWidth =canvas.getWidth();
+        oldHeight = canvas.getHeight();
 
         double height = canvas.getLayoutBounds().getHeight() * (1/ZOOM_CONSTANT);
         double width = canvas.getLayoutBounds().getWidth()* (1/ZOOM_CONSTANT);
@@ -427,6 +457,9 @@ public class MapEditController {
 
         canvas.setMaxHeight(height);
         canvas.setMaxWidth(width);
+
+        newWidth =width;
+        newHeight = height;
 
         Rectangle clipRectangle = new Rectangle();
         clipRectangle.widthProperty().bind(canvas.widthProperty().multiply(canvas.scaleXProperty()));
@@ -446,6 +479,9 @@ public class MapEditController {
 
         showGrid();
         showGrid();
+
+        Transaction t = new ChangeMapSizeTransaction(canvas, oldWidth, oldHeight, newWidth, newHeight);
+        undoRedoStack.addTransaction(t);
     }
 
     public void addImage() {
@@ -484,6 +520,13 @@ public class MapEditController {
         DraggableElement element = data.removeSelectedElement();
         Transaction transaction = new RemoveElementTransaction(data, element );
         undoRedoStack.addTransaction(transaction);
+
+        if (element instanceof Station){
+            for (SubwayLine line: ((Station) element).getSubwayLines()){
+                line.removeStation((Station) element);
+                line.fixPoints();
+            }
+        }
     }
 
     public void setBackgroundImage() {

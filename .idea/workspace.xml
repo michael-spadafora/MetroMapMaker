@@ -2,10 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4e1fb8db-1583-436d-b92f-c9996587c59a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/data/EditLineTransaction.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/data/FontEditTransaction.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/data/AddStationToLineTransaction.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/data/ChangeMapSizeTransaction.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/data/RemoveStationFromLineTransaction.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Metro Map Maker/data/RemoveElementTransaction.class" afterPath="$PROJECT_DIR$/out/production/Metro Map Maker/data/RemoveElementTransaction.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Metro Map Maker/gui/CanvasController.class" afterPath="$PROJECT_DIR$/out/production/Metro Map Maker/gui/CanvasController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Metro Map Maker/gui/MapEditController.class" afterPath="$PROJECT_DIR$/out/production/Metro Map Maker/gui/MapEditController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/data/EditLineTransaction.java" afterPath="$PROJECT_DIR$/src/data/EditLineTransaction.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/data/RemoveElementTransaction.java" afterPath="$PROJECT_DIR$/src/data/RemoveElementTransaction.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gui/CanvasController.java" afterPath="$PROJECT_DIR$/src/gui/CanvasController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gui/MapEditController.java" afterPath="$PROJECT_DIR$/src/gui/MapEditController.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -21,10 +27,11 @@
       <file leaf-file-name="MapEditController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/gui/MapEditController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="224">
-              <caret line="96" column="29" lean-forward="true" selection-start-line="96" selection-start-column="29" selection-end-line="96" selection-end-column="29" />
+            <state relative-caret-position="275">
+              <caret line="109" column="38" lean-forward="true" selection-start-line="109" selection-start-column="38" selection-end-line="109" selection-end-column="38" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="method#MapEditController#0;class#MapEditController#0" expanded="false" />
                 <element signature="method#processAddLine#0;class#MapEditController#0" expanded="false" />
                 <element signature="method#processRemoveLine#0;class#MapEditController#0" expanded="false" />
                 <element signature="method#processAddStationToLine#0;class#MapEditController#0" expanded="false" />
@@ -49,24 +56,66 @@
                 <element signature="method#addImage#0;class#MapEditController#0" expanded="false" />
                 <element signature="method#addLabel#0;class#MapEditController#0" expanded="false" />
                 <element signature="method#removeSelectedElement#0;class#MapEditController#0" expanded="false" />
+                <element signature="method#setBackgroundImage#0;class#MapEditController#0" expanded="false" />
                 <element signature="method#moveLeft#0;class#MapEditController#0" expanded="false" />
                 <element signature="method#moveUp#0;class#MapEditController#0" expanded="false" />
                 <element signature="method#moveDown#0;class#MapEditController#0" expanded="false" />
                 <element signature="method#moveRight#0;class#MapEditController#0" expanded="false" />
                 <element signature="method#listAllStations#0;class#MapEditController#0" expanded="false" />
                 <element signature="method#changeCurrentItemFontColor#0;class#MapEditController#0" expanded="false" />
+                <element signature="method#boldText#0;class#MapEditController#0" expanded="false" />
                 <element signature="method#italicText#0;class#MapEditController#0" expanded="false" />
+                <element signature="method#changeFontSize#0;class#MapEditController#0" expanded="false" />
+                <element signature="method#changeFontFamily#0;class#MapEditController#0" expanded="false" />
                 <element signature="method#fixUndoRedoButtons#0;class#MapEditController#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EditLineTransaction.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/data/EditLineTransaction.java">
+      <file leaf-file-name="SubwayLine.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/data/SubwayLine.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="291">
-              <caret line="24" column="38" lean-forward="true" selection-start-line="24" selection-start-column="38" selection-end-line="24" selection-end-column="38" />
+            <state relative-caret-position="225">
+              <caret line="77" column="24" lean-forward="true" selection-start-line="76" selection-start-column="30" selection-end-line="77" selection-end-column="24" />
+              <folding>
+                <element signature="method#SubwayLine#0;class#SubwayLine#0" expanded="false" />
+                <element signature="method#SubwayLine#1;class#SubwayLine#0" expanded="false" />
+                <element signature="method#setName#0;class#SubwayLine#0" expanded="false" />
+                <element signature="method#addStations#0;class#SubwayLine#0" expanded="false" />
+                <element signature="method#fixPoints#0;class#SubwayLine#0" expanded="false" />
+                <element signature="method#setColor#0;class#SubwayLine#0" expanded="false" />
+                <element signature="method#getClosestStationIndex#0;class#SubwayLine#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CanvasController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/gui/CanvasController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="311">
+              <caret line="105" column="54" lean-forward="false" selection-start-line="105" selection-start-column="54" selection-end-line="105" selection-end-column="54" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AddStationToLineTransaction.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/data/AddStationToLineTransaction.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="14" column="23" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="23" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RemoveStationFromLineTransaction.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/data/RemoveStationFromLineTransaction.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="20" column="30" lean-forward="false" selection-start-line="20" selection-start-column="30" selection-end-line="20" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -87,9 +136,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>circular</find>
-      <find>canvas</find>
-      <find>canvasWra</find>
       <find>setBorder</find>
       <find>horizDisplace</find>
       <find>shrink</find>
@@ -117,6 +163,9 @@
       <find>BLUE</find>
       <find>fixLabel</find>
       <find>editLine</find>
+      <find>removeselectedEle</find>
+      <find>add</find>
+      <find>addStation</find>
     </findStrings>
     <dirStrings>
       <dir>C:\Users\mike spad\Desktop\cse219 final project\Metro Map Maker\src\data</dir>
@@ -164,7 +213,6 @@
         <option value="$PROJECT_DIR$/src/data/AddLineTransaction.java" />
         <option value="$PROJECT_DIR$/src/data/UndoRedoStack.java" />
         <option value="$PROJECT_DIR$/src/data/RemoveLineTransaction.java" />
-        <option value="$PROJECT_DIR$/src/data/SubwayLine.java" />
         <option value="$PROJECT_DIR$/src/data/ChangeBackgroundTransaction.java" />
         <option value="$PROJECT_DIR$/src/data/mmmData.java" />
         <option value="$PROJECT_DIR$/src/data/LineThicknessTransaction.java" />
@@ -172,15 +220,19 @@
         <option value="$PROJECT_DIR$/src/gui/mmmWorkspace.java" />
         <option value="$PROJECT_DIR$/src/data/rotateStationLabelTransaction.java" />
         <option value="$PROJECT_DIR$/src/data/OrbitStationLabelTransaction.java" />
-        <option value="$PROJECT_DIR$/src/data/RemoveElementTransaction.java" />
         <option value="$PROJECT_DIR$/src/data/Station.java" />
-        <option value="$PROJECT_DIR$/src/gui/CanvasController.java" />
         <option value="$PROJECT_DIR$/src/data/DraggableElement.java" />
         <option value="$PROJECT_DIR$/src/data/MoveElementTransaction.java" />
         <option value="$PROJECT_DIR$/src/data/LineEnd.java" />
         <option value="$PROJECT_DIR$/src/data/FontEditTransaction.java" />
-        <option value="$PROJECT_DIR$/src/gui/MapEditController.java" />
         <option value="$PROJECT_DIR$/src/data/EditLineTransaction.java" />
+        <option value="$PROJECT_DIR$/src/data/RemoveElementTransaction.java" />
+        <option value="$PROJECT_DIR$/src/data/ChangeMapSizeTransaction.java" />
+        <option value="$PROJECT_DIR$/src/gui/MapEditController.java" />
+        <option value="$PROJECT_DIR$/src/data/AddStationToLineTransaction.java" />
+        <option value="$PROJECT_DIR$/src/data/RemoveStationFromLineTransaction.java" />
+        <option value="$PROJECT_DIR$/src/gui/CanvasController.java" />
+        <option value="$PROJECT_DIR$/src/data/SubwayLine.java" />
       </list>
     </option>
   </component>
@@ -421,12 +473,12 @@
       <workItem from="1512443328623" duration="12214000" />
       <workItem from="1512538685135" duration="8187000" />
       <workItem from="1512598698908" duration="46106000" />
-      <workItem from="1512723753088" duration="337000" />
+      <workItem from="1512723753088" duration="2551000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="206607000" />
+    <option name="totallyTimeSpent" value="208821000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -516,7 +568,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/gui/CanvasController.java</url>
-          <line>85</line>
+          <line>88</line>
           <properties />
           <option name="timeStamp" value="113" />
         </line-breakpoint>
@@ -558,13 +610,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/gui/MapEditController.java</url>
-          <line>541</line>
+          <line>584</line>
           <properties />
           <option name="timeStamp" value="212" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/gui/MapEditController.java</url>
-          <line>203</line>
+          <line>222</line>
           <properties />
           <option name="timeStamp" value="213" />
         </line-breakpoint>
@@ -594,7 +646,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/gui/MapEditController.java</url>
-          <line>699</line>
+          <line>742</line>
           <properties />
           <option name="timeStamp" value="242" />
         </line-breakpoint>
@@ -604,8 +656,14 @@
           <properties />
           <option name="timeStamp" value="255" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/gui/CanvasController.java</url>
+          <line>104</line>
+          <properties />
+          <option name="timeStamp" value="259" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="256" />
+      <option name="time" value="260" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -614,27 +672,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/.idea/vcs.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/uiDesigner.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/modules.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.idea/misc.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -668,6 +705,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="113">
           <caret line="629" column="0" lean-forward="false" selection-start-line="629" selection-start-column="0" selection-end-line="629" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -883,8 +921,8 @@
         <state relative-caret-position="187">
           <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
           <folding>
-            <element signature="e#282#283#0" expanded="true" />
-            <element signature="e#319#320#0" expanded="true" />
+            <element signature="e#282#283#0" expanded="false" />
+            <element signature="e#319#320#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -897,41 +935,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/data/SubwayLine.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="231" column="8" lean-forward="false" selection-start-line="231" selection-start-column="8" selection-end-line="231" selection-end-column="8" />
-          <folding>
-            <element signature="method#SubwayLine#0;class#SubwayLine#0" expanded="false" />
-            <element signature="method#SubwayLine#1;class#SubwayLine#0" expanded="false" />
-            <element signature="method#setName#0;class#SubwayLine#0" expanded="false" />
-            <element signature="method#addStations#0;class#SubwayLine#0" expanded="false" />
-            <element signature="method#addStation#0;class#SubwayLine#0" expanded="false" />
-            <element signature="method#fixPoints#0;class#SubwayLine#0" expanded="false" />
-            <element signature="method#setColor#0;class#SubwayLine#0" expanded="false" />
-            <element signature="method#getClosestStationIndex#0;class#SubwayLine#0" expanded="false" />
-            <element signature="e#6809#6810#0" expanded="true" />
-            <element signature="e#6833#6834#0" expanded="true" />
-            <element signature="e#6875#6876#0" expanded="true" />
-            <element signature="e#6899#6900#0" expanded="true" />
-            <element signature="e#6945#6946#0" expanded="true" />
-            <element signature="e#6969#6970#0" expanded="true" />
-            <element signature="e#7016#7017#0" expanded="true" />
-            <element signature="e#7040#7041#0" expanded="true" />
-            <element signature="e#7216#7217#0" expanded="true" />
-            <element signature="e#7243#7244#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/data/StationRadiusTransaction.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="15" column="28" lean-forward="true" selection-start-line="15" selection-start-column="28" selection-end-line="15" selection-end-column="28" />
           <folding>
-            <element signature="e#423#424#0" expanded="true" />
-            <element signature="e#469#470#0" expanded="true" />
-            <element signature="e#512#513#0" expanded="true" />
+            <element signature="e#423#424#0" expanded="false" />
+            <element signature="e#469#470#0" expanded="false" />
+            <element signature="e#512#513#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -951,10 +962,10 @@
         <state relative-caret-position="238">
           <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
           <folding>
-            <element signature="e#161#162#0" expanded="true" />
-            <element signature="e#199#200#0" expanded="true" />
-            <element signature="e#244#245#0" expanded="true" />
-            <element signature="e#280#281#0" expanded="true" />
+            <element signature="e#161#162#0" expanded="false" />
+            <element signature="e#199#200#0" expanded="false" />
+            <element signature="e#244#245#0" expanded="false" />
+            <element signature="e#280#281#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -964,8 +975,8 @@
         <state relative-caret-position="289">
           <caret line="17" column="30" lean-forward="true" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
           <folding>
-            <element signature="e#163#164#0" expanded="true" />
-            <element signature="e#201#202#0" expanded="true" />
+            <element signature="e#163#164#0" expanded="false" />
+            <element signature="e#201#202#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -975,19 +986,8 @@
         <state relative-caret-position="155">
           <caret line="10" column="30" lean-forward="true" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
           <folding>
-            <element signature="e#501#502#0" expanded="true" />
-            <element signature="e#550#551#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/data/RemoveElementTransaction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding>
-            <element signature="e#311#312#0" expanded="true" />
-            <element signature="e#354#355#0" expanded="true" />
+            <element signature="e#501#502#0" expanded="false" />
+            <element signature="e#550#551#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1030,10 +1030,10 @@
         <state relative-caret-position="311">
           <caret line="52" column="106" lean-forward="true" selection-start-line="52" selection-start-column="106" selection-end-line="52" selection-end-column="106" />
           <folding>
-            <element signature="e#1466#1467#0" expanded="true" />
-            <element signature="e#1508#1509#0" expanded="true" />
-            <element signature="e#1542#1543#0" expanded="true" />
-            <element signature="e#1584#1585#0" expanded="true" />
+            <element signature="e#1466#1467#0" expanded="false" />
+            <element signature="e#1508#1509#0" expanded="false" />
+            <element signature="e#1542#1543#0" expanded="false" />
+            <element signature="e#1584#1585#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1056,14 +1056,6 @@
             <element signature="method#getNewLabelLocation#0;class#LineEnd#0" expanded="false" />
             <element signature="method#setLocationAndSize#0;class#LineEnd#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/CanvasController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="56">
-          <caret line="138" column="32" lean-forward="true" selection-start-line="138" selection-start-column="32" selection-end-line="138" selection-end-column="32" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1106,12 +1098,45 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/data/EditLineTransaction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="246">
+          <caret line="26" column="32" lean-forward="true" selection-start-line="26" selection-start-column="32" selection-end-line="26" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/data/RemoveElementTransaction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="23" column="33" lean-forward="true" selection-start-line="23" selection-start-column="33" selection-end-line="23" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/data/ChangeMapSizeTransaction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="4" lean-forward="false" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/data/RemoveStationFromLineTransaction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="20" column="30" lean-forward="false" selection-start-line="20" selection-start-column="30" selection-end-line="20" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/gui/MapEditController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="96" column="29" lean-forward="true" selection-start-line="96" selection-start-column="29" selection-end-line="96" selection-end-column="29" />
+        <state relative-caret-position="275">
+          <caret line="109" column="38" lean-forward="true" selection-start-line="109" selection-start-column="38" selection-end-line="109" selection-end-column="38" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#MapEditController#0;class#MapEditController#0" expanded="false" />
             <element signature="method#processAddLine#0;class#MapEditController#0" expanded="false" />
             <element signature="method#processRemoveLine#0;class#MapEditController#0" expanded="false" />
             <element signature="method#processAddStationToLine#0;class#MapEditController#0" expanded="false" />
@@ -1136,23 +1161,51 @@
             <element signature="method#addImage#0;class#MapEditController#0" expanded="false" />
             <element signature="method#addLabel#0;class#MapEditController#0" expanded="false" />
             <element signature="method#removeSelectedElement#0;class#MapEditController#0" expanded="false" />
+            <element signature="method#setBackgroundImage#0;class#MapEditController#0" expanded="false" />
             <element signature="method#moveLeft#0;class#MapEditController#0" expanded="false" />
             <element signature="method#moveUp#0;class#MapEditController#0" expanded="false" />
             <element signature="method#moveDown#0;class#MapEditController#0" expanded="false" />
             <element signature="method#moveRight#0;class#MapEditController#0" expanded="false" />
             <element signature="method#listAllStations#0;class#MapEditController#0" expanded="false" />
             <element signature="method#changeCurrentItemFontColor#0;class#MapEditController#0" expanded="false" />
+            <element signature="method#boldText#0;class#MapEditController#0" expanded="false" />
             <element signature="method#italicText#0;class#MapEditController#0" expanded="false" />
+            <element signature="method#changeFontSize#0;class#MapEditController#0" expanded="false" />
+            <element signature="method#changeFontFamily#0;class#MapEditController#0" expanded="false" />
             <element signature="method#fixUndoRedoButtons#0;class#MapEditController#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/data/EditLineTransaction.java">
+    <entry file="file://$PROJECT_DIR$/src/gui/CanvasController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="24" column="38" lean-forward="true" selection-start-line="24" selection-start-column="38" selection-end-line="24" selection-end-column="38" />
+        <state relative-caret-position="311">
+          <caret line="105" column="54" lean-forward="false" selection-start-line="105" selection-start-column="54" selection-end-line="105" selection-end-column="54" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/data/AddStationToLineTransaction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="14" column="23" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/data/SubwayLine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="77" column="24" lean-forward="true" selection-start-line="76" selection-start-column="30" selection-end-line="77" selection-end-column="24" />
+          <folding>
+            <element signature="method#SubwayLine#0;class#SubwayLine#0" expanded="false" />
+            <element signature="method#SubwayLine#1;class#SubwayLine#0" expanded="false" />
+            <element signature="method#setName#0;class#SubwayLine#0" expanded="false" />
+            <element signature="method#addStations#0;class#SubwayLine#0" expanded="false" />
+            <element signature="method#fixPoints#0;class#SubwayLine#0" expanded="false" />
+            <element signature="method#setColor#0;class#SubwayLine#0" expanded="false" />
+            <element signature="method#getClosestStationIndex#0;class#SubwayLine#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

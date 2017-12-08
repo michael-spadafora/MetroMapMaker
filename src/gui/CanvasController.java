@@ -70,6 +70,9 @@ public class CanvasController {
                 if (subwayLine!=null) {
                     subwayLine.addStation((Station) shape);
                     ((Station) shape).addSubwayLine(subwayLine);
+
+                    Transaction t = new AddStationToLineTransaction(subwayLine, (Station) shape);
+                    workspace.getMapEditController().getUndoRedoStack().addTransaction(t);
                 }
 
             }
@@ -98,6 +101,9 @@ public class CanvasController {
                 if (subwayLine!=null) {
                     subwayLine.removeStation((Station) shape);
                     ((Station) shape).addSubwayLine(subwayLine);
+
+                    Transaction t = new RemoveStationFromLineTransaction((Station) shape, subwayLine);
+                    workspace.getMapEditController().getUndoRedoStack().addTransaction(t);
                 }
 
             }

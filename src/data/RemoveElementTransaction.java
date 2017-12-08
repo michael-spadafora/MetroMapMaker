@@ -18,6 +18,14 @@ public class RemoveElementTransaction implements Transaction{
     @Override
     public void undoAction() {
         data.addElement(element);
+        if (element instanceof  Station){
+            for (SubwayLine line: ((Station) element).getSubwayLines()){
+                line.addStation((Station) element);
+                line.fixPoints();
+            }
+        }
+
+
 
     }
 }
