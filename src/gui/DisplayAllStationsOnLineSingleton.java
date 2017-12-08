@@ -52,6 +52,23 @@ public class DisplayAllStationsOnLineSingleton extends Stage {
         showAndWait();
     }
 
+    public void show (Station from, Station to){
+        String s = "";
+        label.setText(from.getLabel().getText() + " to " +to.getLabel().getText());
+        if (to.getPath().size()==0){
+            s = "No path Found";
+        }
+        else{
+            for (Station stat: to.getPath()){
+                s+=stat.getLabel().getText() + "\n";
+            }
+
+            s+= "Total commute time: " + to.getPath().size()*3;
+        }
+        displayArea.setText(s);
+        showAndWait();
+    }
+
 
 
 }

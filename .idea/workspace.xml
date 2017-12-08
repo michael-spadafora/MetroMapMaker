@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4e1fb8db-1583-436d-b92f-c9996587c59a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/gui/FindRouteController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/data/Station.java" afterPath="$PROJECT_DIR$/src/data/Station.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/file/mmmFiles.java" afterPath="$PROJECT_DIR$/src/file/mmmFiles.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gui/MapEditController.java" afterPath="$PROJECT_DIR$/src/gui/MapEditController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gui/DisplayAllStationsOnLineSingleton.java" afterPath="$PROJECT_DIR$/src/gui/DisplayAllStationsOnLineSingleton.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gui/FindRouteController.java" afterPath="$PROJECT_DIR$/src/gui/FindRouteController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gui/mmmWorkspace.java" afterPath="$PROJECT_DIR$/src/gui/mmmWorkspace.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -22,7 +19,7 @@
       <file leaf-file-name="MapEditController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/gui/MapEditController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2420">
+            <state relative-caret-position="2267">
               <caret line="466" column="98" lean-forward="false" selection-start-line="466" selection-start-column="98" selection-end-line="466" selection-end-column="98" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -64,11 +61,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FindRouteController.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="FindRouteController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/gui/FindRouteController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="41" column="51" lean-forward="true" selection-start-line="41" selection-start-column="51" selection-end-line="41" selection-end-column="51" />
+            <state relative-caret-position="272">
+              <caret line="22" column="31" lean-forward="true" selection-start-line="22" selection-start-column="31" selection-end-line="22" selection-end-column="31" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -76,14 +73,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mmmWorkspace.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="mmmWorkspace.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/gui/mmmWorkspace.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="221" column="12" lean-forward="false" selection-start-line="221" selection-start-column="12" selection-end-line="221" selection-end-column="12" />
+            <state relative-caret-position="309">
+              <caret line="218" column="39" lean-forward="false" selection-start-line="218" selection-start-column="39" selection-end-line="218" selection-end-column="39" />
               <folding>
                 <element signature="method#handle#0;class#4227:5362" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DisplayAllStationsOnLineSingleton.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/gui/DisplayAllStationsOnLineSingleton.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="149">
+              <caret line="57" column="36" lean-forward="true" selection-start-line="57" selection-start-column="36" selection-end-line="57" selection-end-column="36" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -154,10 +161,10 @@
       <find>borderpane</find>
       <find>update</find>
       <find>work</find>
-      <find>canvas</find>
       <find>station</find>
       <find>Stat</find>
       <find>shrink</find>
+      <find>canvas</find>
     </findStrings>
     <dirStrings>
       <dir>C:\Users\mike spad\Desktop\cse219 final project\Metro Map Maker\src\data</dir>
@@ -189,7 +196,6 @@
         <option value="$PROJECT_DIR$/src/gui/AddLabelDialogSingleton.java" />
         <option value="$PROJECT_DIR$/src/gui/EnterNameSingleton.java" />
         <option value="$PROJECT_DIR$/src/gui/LearnMoreSingleton.java" />
-        <option value="$PROJECT_DIR$/src/gui/DisplayAllStationsOnLineSingleton.java" />
         <option value="$PROJECT_DIR$/src/MetroMapMakerApp.java" />
         <option value="$PROJECT_DIR$/src/gui/WelcomeDialogSingleton.java" />
         <option value="$PROJECT_DIR$/src/gui/LineEnd.java" />
@@ -223,8 +229,9 @@
         <option value="$PROJECT_DIR$/src/file/mmmFiles.java" />
         <option value="$PROJECT_DIR$/src/gui/MapEditController.java" />
         <option value="$PROJECT_DIR$/src/data/Station.java" />
-        <option value="$PROJECT_DIR$/src/gui/FindRouteController.java" />
         <option value="$PROJECT_DIR$/src/gui/mmmWorkspace.java" />
+        <option value="$PROJECT_DIR$/src/gui/DisplayAllStationsOnLineSingleton.java" />
+        <option value="$PROJECT_DIR$/src/gui/FindRouteController.java" />
       </list>
     </option>
   </component>
@@ -456,12 +463,12 @@
       <workItem from="1512443328623" duration="12214000" />
       <workItem from="1512538685135" duration="8187000" />
       <workItem from="1512598698908" duration="46106000" />
-      <workItem from="1512723753088" duration="8589000" />
+      <workItem from="1512723753088" duration="9087000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="214859000" />
+    <option name="totallyTimeSpent" value="215357000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -557,7 +564,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/gui/mmmWorkspace.java</url>
-          <line>377</line>
+          <line>380</line>
           <properties />
           <option name="timeStamp" value="132" />
         </line-breakpoint>
@@ -587,7 +594,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/gui/mmmWorkspace.java</url>
-          <line>754</line>
+          <line>757</line>
           <properties />
           <option name="timeStamp" value="194" />
         </line-breakpoint>
@@ -647,19 +654,19 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/gui/FindRouteController.java</url>
-          <line>24</line>
+          <line>22</line>
           <properties />
           <option name="timeStamp" value="263" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/gui/FindRouteController.java</url>
-          <line>28</line>
+          <line>26</line>
           <properties />
           <option name="timeStamp" value="264" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/gui/FindRouteController.java</url>
-          <line>31</line>
+          <line>29</line>
           <properties />
           <option name="timeStamp" value="265" />
         </line-breakpoint>
@@ -771,16 +778,6 @@
             <element signature="e#679#680#0" expanded="false" />
             <element signature="e#721#722#0" expanded="false" />
             <element signature="method#show#0;class#EnterNameSingleton#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/DisplayAllStationsOnLineSingleton.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="41" column="36" lean-forward="true" selection-start-line="41" selection-start-column="36" selection-end-line="41" selection-end-column="36" />
-          <folding>
-            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1141,19 +1138,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/FindRouteController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="41" column="51" lean-forward="true" selection-start-line="41" selection-start-column="51" selection-end-line="41" selection-end-column="51" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/gui/MapEditController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2420">
+        <state relative-caret-position="2267">
           <caret line="466" column="98" lean-forward="false" selection-start-line="466" selection-start-column="98" selection-end-line="466" selection-end-column="98" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1194,12 +1181,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/DisplayAllStationsOnLineSingleton.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="149">
+          <caret line="57" column="36" lean-forward="true" selection-start-line="57" selection-start-column="36" selection-end-line="57" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/gui/mmmWorkspace.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="221" column="12" lean-forward="false" selection-start-line="221" selection-start-column="12" selection-end-line="221" selection-end-column="12" />
+        <state relative-caret-position="309">
+          <caret line="218" column="39" lean-forward="false" selection-start-line="218" selection-start-column="39" selection-end-line="218" selection-end-column="39" />
           <folding>
             <element signature="method#handle#0;class#4227:5362" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/FindRouteController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="22" column="31" lean-forward="true" selection-start-line="22" selection-start-column="31" selection-end-line="22" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

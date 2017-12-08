@@ -219,6 +219,9 @@ public class mmmWorkspace extends AppWorkspaceComponent {
                 end.getPath().add(end);
             }
 
+            DisplayAllStationsOnLineSingleton displayAllStationsOnLineSingleton = DisplayAllStationsOnLineSingleton.getInstance();
+            displayAllStationsOnLineSingleton.show(start, end);
+
 
 
 

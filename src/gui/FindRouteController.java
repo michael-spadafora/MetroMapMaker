@@ -20,8 +20,6 @@ public class FindRouteController {
              return;
          }
 
-
-
          if (start.equals(destination)){
              return;
          }
