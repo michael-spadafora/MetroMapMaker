@@ -15,6 +15,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
 import javafx.stage.FileChooser;
 
 import java.io.File;
@@ -93,6 +94,7 @@ public class MapEditController {
             line.setColor(ls.getSelectedColor());
             line.setCircular(ls.getCircularCheckbox().isSelected());
             workspace.updateLineComboBox(data.getElements());
+            line.fixPoints();
         }
 
     }
@@ -582,15 +584,28 @@ public class MapEditController {
     public void boldText() {
         mmmWorkspace workspace = (mmmWorkspace) app.getWorkspaceComponent();
         DraggableElement element = data.getSelectedElement();
+        Font oldFont = null;
+        Font newFont = null;
 
         if (element instanceof LineEnd){
+            oldFont = ((LineEnd) element).getLabel().getFont();
             ((LineEnd) element).bolden();
+            newFont = ((LineEnd) element).getLabel().getFont();
         }
         if (element instanceof  Station){
+            oldFont = ((Station) element).getLabel().getFont();
             ((Station) element).bolden();
+            newFont = ((Station) element).getLabel().getFont();
         }
-        if (element instanceof  DraggableText){
+        if (element instanceof DraggableText){
+            oldFont = ((DraggableText) element).getFont();
             ((DraggableText) element).bolden();
+            newFont = ((DraggableText) element).getFont();
+        }
+
+        if (oldFont != null){
+            Transaction t = new FontEditTransaction(element, oldFont, newFont);
+            undoRedoStack.addTransaction(t);
         }
 
     }
@@ -598,34 +613,57 @@ public class MapEditController {
     public void italicText() {
         mmmWorkspace workspace = (mmmWorkspace) app.getWorkspaceComponent();
         DraggableElement element = data.getSelectedElement();
+        Font oldFont = null;
+        Font newFont = null;
 
         if (element instanceof LineEnd){
+            oldFont = ((LineEnd) element).getLabel().getFont();
             ((LineEnd) element).italisize();
+            newFont = ((LineEnd) element).getLabel().getFont();
         }
         if (element instanceof  Station){
+            oldFont = ((Station) element).getLabel().getFont();
             ((Station) element).italisize();
+            newFont = ((Station) element).getLabel().getFont();
         }
         if (element instanceof DraggableText){
+            oldFont = ((DraggableText) element).getFont();
             ((DraggableText) element).italisize();
+            newFont = ((DraggableText) element).getFont();
+        }
+
+        if (oldFont != null){
+            Transaction t = new FontEditTransaction(element, oldFont, newFont);
+            undoRedoStack.addTransaction(t);
         }
 
     }
 
-
     public void changeFontSize(double newSize) {
         mmmWorkspace workspace = (mmmWorkspace) app.getWorkspaceComponent();
         DraggableElement element = data.getSelectedElement();
-
+        Font oldFont = null;
+        Font newFont = null;
         if (element instanceof LineEnd){
+            oldFont = ((LineEnd) element).getLabel().getFont();
             ((LineEnd) element).changeFontSize(newSize);
+            newFont = ((LineEnd) element).getLabel().getFont();
         }
 
         if (element instanceof Station){
+            oldFont = ((Station) element).getLabel().getFont();
             ((Station)element).changeFontSize(newSize);
+            newFont = ((Station) element).getLabel().getFont();
         }
 
         if (element instanceof DraggableText){
+            oldFont = ((DraggableText) element).getFont();
             ((DraggableText) element).changeFontSize(newSize);
+            newFont = ((DraggableText) element).getFont();
+        }
+        if (oldFont != null){
+            Transaction t = new FontEditTransaction(element, oldFont, newFont);
+            undoRedoStack.addTransaction(t);
         }
 
     }
@@ -633,15 +671,27 @@ public class MapEditController {
     public void changeFontFamily(String selectedItem) {
         mmmWorkspace workspace = (mmmWorkspace) app.getWorkspaceComponent();
         DraggableElement element = data.getSelectedElement();
+        Font oldFont = null;
+        Font newFont = null;
 
         if (element instanceof Station){
+            oldFont = ((Station) element).getLabel().getFont();
             ((Station) element).changeFontFamily(selectedItem);
+            newFont = ((Station) element).getLabel().getFont();
         }
         if (element instanceof  LineEnd){
+            oldFont = ((LineEnd) element).getLabel().getFont();
             ((LineEnd) element).changeFontFamily(selectedItem);
+            newFont = ((LineEnd) element).getLabel().getFont();
         }
         if (element instanceof DraggableText){
+            oldFont = ((DraggableText) element).getFont();
             ((DraggableText) element).changeFontFamily(selectedItem);
+            newFont = ((DraggableText) element).getFont();
+        }
+        if (oldFont != null){
+            Transaction t = new FontEditTransaction(element, oldFont, newFont);
+            undoRedoStack.addTransaction(t);
         }
 
     }
