@@ -31,7 +31,7 @@ public class FindRouteController {
              if (startIndex > 0){
                  adjacentStations.add(line.getStations().get(startIndex-1));
              }
-             if (startIndex<line.getStations().size()-2){
+             if (startIndex<line.getStations().size()-1){
                  adjacentStations.add(line.getStations().get(startIndex+1));
              }
          }

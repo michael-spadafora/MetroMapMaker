@@ -63,7 +63,7 @@ public class DisplayAllStationsOnLineSingleton extends Stage {
                 s+=stat.getLabel().getText() + "\n";
             }
 
-            s+= "Total commute time: " + to.getPath().size()*3;
+            s+= "Total commute time: " + (to.getPath().size()*3 - 6);
         }
         displayArea.setText(s);
         showAndWait();
