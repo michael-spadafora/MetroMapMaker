@@ -130,6 +130,7 @@ public class mmmWorkspace extends AppWorkspaceComponent {
     HBox decorSubBox3;
     FlowPane decorSubBox4;
     FlowPane fontSubPane3;
+    Pane canvasWrapper;
     Pane canvas;
     Button editLineButton;
     Button stationListButton;
@@ -146,6 +147,8 @@ public class mmmWorkspace extends AppWorkspaceComponent {
 
     public mmmWorkspace(AppTemplate initApp) {
         canvas = new Pane();
+        canvasWrapper = new Pane();
+        canvasWrapper.getChildren().add(canvas);
         app = initApp;
         gui = app.getGUI();
         initLayout();
@@ -410,7 +413,7 @@ public class mmmWorkspace extends AppWorkspaceComponent {
     }
 
     private void initLayout(){
-        canvas = new Pane();
+        //canvas = new Pane();
         initTopToolbars();
         initSidePane();
         initFileToolbarStyle();
@@ -622,9 +625,9 @@ public class mmmWorkspace extends AppWorkspaceComponent {
         mmmData data = (mmmData) app.getDataComponent();
         data.setShapes(canvas.getChildren());
 
-        canvas.toBack();
+        //canvas.toBack();
 
-        ((BorderPane) workspace).setCenter(canvas);
+        ((BorderPane) workspace).setCenter(canvasWrapper);
         ((BorderPane) workspace).setTop(app.getGUI().getTopToolbarPane());
         ((BorderPane) workspace).setLeft(editToolbar);
 
@@ -643,6 +646,10 @@ public class mmmWorkspace extends AppWorkspaceComponent {
 
 
 
+    }
+
+    public Pane getCanvasWrapper(){
+        return canvasWrapper;
     }
 
     private void initTopToolbars() {

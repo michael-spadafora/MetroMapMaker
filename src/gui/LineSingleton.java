@@ -98,6 +98,7 @@ public class LineSingleton extends Stage {
         HBox infoBox = new HBox();
         infoBox.getChildren().add(textField);
         infoBox.getChildren().add(colorPicker);
+        infoBox.getChildren().add(circularCheckbox);
 
         messagePane = new VBox();
         messagePane.setAlignment(Pos.CENTER);
@@ -140,13 +141,15 @@ public class LineSingleton extends Stage {
      *
     // * @param message Message to appear inside the dialog.
      */
-    public void show(String currentName, Color currentColor) {
+    public void show(String currentName, Color currentColor, boolean isCircular) {
         selection = "null";
         setTitle("Edit Station");
+        circularCheckbox.setVisible(true);
         // SET THE DIALOG TITLE BAR TITLE
         //setTitle(title);
         textField.setText(currentName);
         colorPicker.setValue(currentColor);
+        circularCheckbox.setSelected(isCircular);
         messageLabel.setText("Edit station");
         showAndWait();
     }
@@ -157,7 +160,11 @@ public class LineSingleton extends Stage {
         colorPicker.setValue(Color.BLACK);
         messageLabel.setText("Enter name and choose a color");
         textField.setText("");
+        circularCheckbox.setVisible(false);
         showAndWait();
     }
 
+    public CheckBox getCircularCheckbox() {
+        return circularCheckbox;
+    }
 }

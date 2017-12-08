@@ -14,6 +14,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.FileChooser;
 
 import java.io.File;
@@ -78,14 +79,13 @@ public class MapEditController {
         mmmWorkspace workspace = (mmmWorkspace) app.getWorkspaceComponent();
         SubwayLine line = workspace.getSelectedLine();
 
-        ls.show(line.getStart().getLabel().getText(), (Color) line.getStroke());
+        ls.show(line.getStart().getLabel().getText(), (Color) line.getStroke(), line.isCircular());
 
         if (ls.getSelection().equals("Confirm")){
             line.setName(ls.getLineName());
             line.setColor(ls.getSelectedColor());
+            line.setCircular(ls.getCircularCheckbox().isSelected());
             workspace.updateLineComboBox(data.getElements());
-
-
         }
 
     }
@@ -189,7 +189,6 @@ public class MapEditController {
         }
     }
 
-
     public void zoomIn(){
         mmmWorkspace workspace = (mmmWorkspace) app.getWorkspaceComponent();
         Pane canvas = workspace.getCanvas();
@@ -206,8 +205,15 @@ public class MapEditController {
         mmmWorkspace workspace = (mmmWorkspace) app.getWorkspaceComponent();
         Pane canvas = workspace.getCanvas();
 
-        canvas.setScaleX(canvas.getScaleX() * (1/ZOOM_CONSTANT));
-        canvas.setScaleY(canvas.getScaleY()* (1/ZOOM_CONSTANT));
+        double width = canvas.getWidth() * canvas.getScaleX() * 1/ZOOM_CONSTANT;
+        double height = canvas.getHeight() * canvas.getScaleY()* (1/ZOOM_CONSTANT);
+
+        if (width>=200 && height>=200){
+            canvas.setScaleX(canvas.getScaleX() * (1/ZOOM_CONSTANT));
+            canvas.setScaleY(canvas.getScaleY()* (1/ZOOM_CONSTANT));
+        }
+
+
 
         canvas.setTranslateY(0);
         canvas.setTranslateX(0);
@@ -367,6 +373,9 @@ public class MapEditController {
 
 
 
+        canvas.setTranslateX(0);
+        canvas.setTranslateY(0);
+
         showGrid();//calling it twice redraws it
         showGrid();
 
@@ -394,7 +403,21 @@ public class MapEditController {
         canvas.setMaxHeight(height);
         canvas.setMaxWidth(width);
 
+        Rectangle clipRectangle = new Rectangle();
+        clipRectangle.widthProperty().bind(canvas.widthProperty().multiply(canvas.scaleXProperty()));
+        clipRectangle.heightProperty().bind(canvas.heightProperty().multiply(canvas.scaleYProperty()));
+        clipRectangle.xProperty().bind(canvas.layoutXProperty().add(canvas.translateXProperty()));
+        clipRectangle.yProperty().bind(canvas.layoutYProperty().add(canvas.translateYProperty()));
 
+        workspace.getCanvasWrapper().setClip(clipRectangle);
+       //lipRectangle.xProperty().bind(canvas.getLayoutX() + canvas.getTranslateX());
+       //lipRectangle.setY(100);
+       //lipRectangle.setHeight(300);
+       //lipRectangle.setWidth(400);
+
+
+        canvas.setTranslateX(0);
+        canvas.setTranslateY(0);
 
         showGrid();
         showGrid();

@@ -101,7 +101,7 @@ public class SubwayLine extends Polyline{
 
         getPoints().clear();
 
-        if (!circular) {
+        if (!circular || stations.size()<2) {
             getPoints().addAll(start.getCoordinates());
             start.setVisible(true);
             start.getLabel().setVisible(true);
