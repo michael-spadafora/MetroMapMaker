@@ -519,6 +519,12 @@ public class MapEditController {
         if (element instanceof LineEnd){
             ((LineEnd) element).bolden();
         }
+        if (element instanceof  Station){
+            ((Station) element).bolden();
+        }
+        if (element instanceof  DraggableText){
+            ((DraggableText) element).bolden();
+        }
 
     }
 
@@ -528,6 +534,47 @@ public class MapEditController {
 
         if (element instanceof LineEnd){
             ((LineEnd) element).italisize();
+        }
+        if (element instanceof  Station){
+            ((Station) element).italisize();
+        }
+        if (element instanceof DraggableText){
+            ((DraggableText) element).italisize();
+        }
+
+    }
+
+
+    public void changeFontSize(double newSize) {
+        mmmWorkspace workspace = (mmmWorkspace) app.getWorkspaceComponent();
+        DraggableElement element = data.getSelectedElement();
+
+        if (element instanceof LineEnd){
+            ((LineEnd) element).changeFontSize(newSize);
+        }
+
+        if (element instanceof Station){
+            ((Station)element).changeFontSize(newSize);
+        }
+
+        if (element instanceof DraggableText){
+            ((DraggableText) element).changeFontSize(newSize);
+        }
+
+    }
+
+    public void changeFontFamily(String selectedItem) {
+        mmmWorkspace workspace = (mmmWorkspace) app.getWorkspaceComponent();
+        DraggableElement element = data.getSelectedElement();
+
+        if (element instanceof Station){
+            ((Station) element).changeFontFamily(selectedItem);
+        }
+        if (element instanceof  LineEnd){
+            ((LineEnd) element).changeFontFamily(selectedItem);
+        }
+        if (element instanceof DraggableText){
+            ((DraggableText) element).changeFontFamily(selectedItem);
         }
 
     }

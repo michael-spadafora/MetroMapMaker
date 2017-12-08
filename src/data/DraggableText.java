@@ -191,6 +191,50 @@ public class DraggableText extends Text implements DraggableElement {
 
     }
 
+    public void changeFontSize(double newSize) {
+        Font font = getFont();
+        FontWeight weight;
+        FontPosture posture;
+        if (font.getStyle().equals("Regular") || font.getStyle().equals("Italic")){
+            weight = FontWeight.NORMAL;
+        }
+        else {
+            weight = FontWeight.BOLD;
+        }
+
+        if (font.getStyle().equals("Regular") || font.getStyle().equals("Bold")){
+            posture = FontPosture.REGULAR;
+        }
+        else {
+            posture = FontPosture.ITALIC;
+        }
+
+        setFont(Font.font(font.getFamily(), weight, posture, newSize));
+
+    }
+
+
+    public void changeFontFamily(String selectedItem) {
+        Font font = getFont();
+        FontWeight weight;
+        FontPosture posture;
+        if (font.getStyle().equals("Regular") || font.getStyle().equals("Italic")){
+            weight = FontWeight.NORMAL;
+        }
+        else {
+            weight = FontWeight.BOLD;
+        }
+
+        if (font.getStyle().equals("Regular") || font.getStyle().equals("Bold")){
+            posture = FontPosture.REGULAR;
+        }
+        else {
+            posture = FontPosture.ITALIC;
+        }
+
+        setFont(Font.font(selectedItem, weight, posture, font.getSize()));
+    }
+
 
 
 }

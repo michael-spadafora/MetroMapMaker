@@ -77,7 +77,12 @@ public class mmmData implements AppDataComponent {
     }
 
     public void highlightShape(DraggableElement shape) {
+        try{
         ((Node) (shape)).setEffect(highlightedEffect);
+        }
+        catch (Exception ex){
+
+        }
     }
 
     @Override
@@ -139,6 +144,8 @@ public class mmmData implements AppDataComponent {
         if (shape != null) {
             ((DraggableElement) shape).start(x, y);
         }
+
+        setSelectedElement((Node) selectedElement);
         return shape;
     }
 
@@ -156,23 +163,28 @@ public class mmmData implements AppDataComponent {
             workspace.setSelectedLineWidth(((SubwayLine) selectedElement).getStrokeWidth());
             workspace.setSelectedTextColor(((SubwayLine) selectedElement).getStart().getLabel().getFill());
 
-
         }
 
         else if (selectedElement instanceof LineEnd) {
             workspace.setSelectedLineColor((Color) ((LineEnd) selectedElement).getStroke());
             workspace.setSelectedLineWidth(((LineEnd) selectedElement).getSubwayLine().getStrokeWidth());
             workspace.setSelectedTextColor(((LineEnd) selectedElement).getLabel().getFill());
+            workspace.setSelectedTextSize((int)((LineEnd) selectedElement).getLabel().getFont().getSize());
+            workspace.setSelectedTextFamily(((LineEnd) selectedElement).getLabel().getFont().getFamily());
         }
 
         else if (selectedElement instanceof Station){
             workspace.setSelectedStationColor((Color) ((Station) selectedElement).getFill());
             workspace.setSelectedStationWidth(((Station) selectedElement).getRadius());
             workspace.setSelectedTextColor(((Station) selectedElement).getLabel().getFill());
+            workspace.setSelectedTextSize((int) ((Station) selectedElement).getLabel().getFont().getSize());
+            workspace.setSelectedTextFamily(((Station) selectedElement).getLabel().getFont().getFamily());
         }
 
         else if (selectedElement instanceof DraggableText){
             workspace.setSelectedTextColor(((DraggableText) selectedElement).getFill());
+            workspace.setSelectedTextSize((int) ((DraggableText) selectedElement).getFont().getSize());
+            workspace.setSelectedTextFamily(((DraggableText) selectedElement).getFont().getFamily());
         }
         highlightShape((DraggableElement) element);
     }

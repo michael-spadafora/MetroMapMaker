@@ -17,4 +17,5 @@ public interface DraggableElement {
     public double getHeight();
     public void setLocationAndSize(double initX, double initY, double initWidth, double initHeight);
     public String getElementType();
+
 }

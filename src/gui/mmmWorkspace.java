@@ -9,6 +9,7 @@ import djf.components.AppWorkspaceComponent;
 import djf.controller.AppFileController;
 import djf.ui.AppGUI;
 import djf.ui.AppMessageDialogSingleton;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -24,12 +25,11 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Line;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import properties_manager.PropertiesManager;
 
-
-import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -155,8 +155,29 @@ public class mmmWorkspace extends AppWorkspaceComponent {
     private void initControllers() {
 
 
+        fontClassComboBox.getItems().addAll(Font.getFamilies());
 
         MapEditController mapEditController = new MapEditController(app);
+
+        fontClassComboBox.setOnAction( e-> {
+            mapEditController.changeFontFamily((String)fontClassComboBox.getSelectionModel().getSelectedItem());
+        });
+
+        ArrayList<Integer> fontSizes = new ArrayList<>();
+
+        for (int i = 1; i<=24; i+=1){
+            fontSizes.add(2*i);
+        }
+
+        fontSizeComboBox.setItems(FXCollections.observableArrayList(fontSizes));
+        fontSizeComboBox.getSelectionModel().select(4);
+
+        fontSizeComboBox.setOnAction( e-> {
+
+
+
+            mapEditController.changeFontSize((int) fontSizeComboBox.getSelectionModel().getSelectedItem());
+        });
 
         italicButton.setOnAction(e->{
             mapEditController.italicText();
@@ -940,6 +961,14 @@ public class mmmWorkspace extends AppWorkspaceComponent {
 
     public ColorPicker getFontColorPicker() {
         return fontColorPicker;
+    }
+
+    public void setSelectedTextSize(int selectedTextSize) {
+        fontSizeComboBox.getSelectionModel().select(selectedTextSize/2 - 1);
+    }
+
+    public void setSelectedTextFamily(String selectedTextFamily) {
+        fontClassComboBox.getSelectionModel().select(selectedTextFamily);
     }
 }
 
