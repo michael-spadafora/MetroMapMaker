@@ -236,5 +236,11 @@ public class LineEnd extends Circle implements DraggableElement{
 
         label.setFont(Font.font(selectedItem, weight, posture, font.getSize()));
     }
+
+    public void fixLabel() {
+        label.setX(getCenterX()+10);
+        label.setY(getCenterY()+10);
+
+    }
 }
 

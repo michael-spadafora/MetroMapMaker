@@ -9,6 +9,7 @@ import static data.mmmState.*;
 
 public class CanvasController {
     AppTemplate app;
+    double oldx, oldy, newx, newy;
 
     public CanvasController(AppTemplate initApp) {
         app = initApp;
@@ -34,6 +35,8 @@ public class CanvasController {
             if (shape != null) {
                 scene.setCursor(Cursor.MOVE);
                 dataManager.setState(DRAGGING_SHAPE);
+                oldx = shape.getX();
+                oldy = shape.getY();
                 app.getGUI().updateToolbarControls(false);
             } else {
                 scene.setCursor(Cursor.DEFAULT);
@@ -136,10 +139,14 @@ public class CanvasController {
     public void processCanvasMouseRelease(int x, int y) {
         mmmData dataManager = (mmmData) app.getDataComponent();
        if (dataManager.isInState(mmmState.DRAGGING_SHAPE)) {
-            dataManager.setState(SELECTING_SHAPE);
-            Scene scene = app.getGUI().getPrimaryScene();
-            scene.setCursor(Cursor.DEFAULT);
-            app.getGUI().updateToolbarControls(false);
+           newx = dataManager.getSelectedElement().getX();
+           newy = dataManager.getSelectedElement().getY();
+           Transaction t = new MoveElementTransaction(oldx,oldy,newx,newy,dataManager.getSelectedElement());
+           ((mmmWorkspace)dataManager.getApp().getWorkspaceComponent()).getMapEditController().getUndoRedoStack().addTransaction(t);
+           dataManager.setState(SELECTING_SHAPE);
+           Scene scene = app.getGUI().getPrimaryScene();
+           scene.setCursor(Cursor.DEFAULT);
+           app.getGUI().updateToolbarControls(false);
         } else if (dataManager.isInState(mmmState.DRAGGING_NOTHING)) {
             dataManager.setState(SELECTING_SHAPE);
         }

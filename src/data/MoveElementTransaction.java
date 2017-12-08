@@ -2,6 +2,7 @@ package data;
 
 public class MoveElementTransaction implements Transaction {
     double oldx, oldy, newx, newy;
+    DraggableElement element;
 
     public MoveElementTransaction(double oldx, double oldy, double newx, double newy, DraggableElement element) {
         this.oldx = oldx;
@@ -11,17 +12,18 @@ public class MoveElementTransaction implements Transaction {
         this.element = element;
     }
 
-    DraggableElement element;
-
-    public MoveElementTransaction() {
+    @Override
+    public void doAction() {
         if (element instanceof Station){
             ((Station) element).setCenterX(newx);
             ((Station) element).setCenterY(newy);
+            ((Station) element).fixAllLines();
         }
 
         else if (element instanceof LineEnd){
             ((LineEnd) element).setCenterX(newx);
             ((LineEnd) element).setCenterY(newy);
+            ((LineEnd) element).getSubwayLine().fixPoints();
         }
 
         else if (element instanceof DraggableText){
@@ -32,10 +34,6 @@ public class MoveElementTransaction implements Transaction {
             ((DraggableImage) element).setX(newx);
             ((DraggableImage) element).setY(newy);
         }
-    }
-
-    @Override
-    public void doAction() {
 
     }
 
@@ -44,11 +42,15 @@ public class MoveElementTransaction implements Transaction {
         if (element instanceof Station){
             ((Station) element).setCenterX(oldx);
             ((Station) element).setCenterY(oldy);
+            ((Station) element).fixAllLines();
+            ((Station) element).fixLabel();
         }
 
         else if (element instanceof LineEnd){
             ((LineEnd) element).setCenterX(oldx);
             ((LineEnd) element).setCenterY(oldy);
+            ((LineEnd) element).getSubwayLine().fixPoints();
+            ((LineEnd)element).fixLabel();
         }
 
         else if (element instanceof DraggableText){

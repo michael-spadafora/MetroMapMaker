@@ -330,6 +330,7 @@ public class MapEditController {
     public void snapToGrid() {
         mmmWorkspace workspace = (mmmWorkspace) app.getWorkspaceComponent();
         DraggableElement element = data.getSelectedElement();
+
         if (element instanceof LineEnd || element instanceof Station){
             double xloc = ((Circle)element).getCenterX();
             double yloc = ((Circle)element).getCenterY();
@@ -339,6 +340,7 @@ public class MapEditController {
 
             double newXLoc;
             double newYLoc;
+
 
 
             if (xRemainder < 10){
@@ -367,6 +369,9 @@ public class MapEditController {
             if (element instanceof LineEnd){
                 ((LineEnd) element).getSubwayLine().fixPoints();
             }
+
+            Transaction t = new MoveElementTransaction(xloc, yloc, newXLoc, newYLoc, element);
+            undoRedoStack.addTransaction(t);
 
         }
 
