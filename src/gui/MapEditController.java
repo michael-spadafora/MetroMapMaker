@@ -462,6 +462,8 @@ public class MapEditController {
         newHeight = height;
 
         Rectangle clipRectangle = new Rectangle();
+        double xProp = canvas.getScaleX();
+        double yProp = canvas.getScaleY();
         clipRectangle.widthProperty().bind(canvas.widthProperty().multiply(canvas.scaleXProperty()));
         clipRectangle.heightProperty().bind(canvas.heightProperty().multiply(canvas.scaleYProperty()));
         clipRectangle.xProperty().bind(canvas.layoutXProperty().add(canvas.translateXProperty()));

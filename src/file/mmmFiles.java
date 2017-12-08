@@ -266,6 +266,7 @@ public class mmmFiles implements AppFileComponent {
 
         mmmWorkspace workspace = (mmmWorkspace) dataManager.getApp().getWorkspaceComponent();
         workspace.updateLineComboBox(dataManager.getElements());
+        workspace.updateStationComboBox(dataManager.getElements());
 
     }
 

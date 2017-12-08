@@ -192,9 +192,40 @@ public class mmmWorkspace extends AppWorkspaceComponent {
     private void initControllers() {
 
 
+
+
         fontClassComboBox.getItems().addAll(Font.getFamilies());
 
         mapEditController = new MapEditController(app);
+
+        findRouteButton.setOnAction(e->{
+            mmmData data = (mmmData) app.getDataComponent();
+            Station start = data.getStationFromString(fromComboBox.getSelectionModel().getSelectedItem());
+            Station end =  data.getStationFromString(toComboBox.getSelectionModel().getSelectedItem());
+            start.setPath(new ArrayList<>());
+            end.setPath(new ArrayList<>());
+
+            for (Node node: data.getElements()){
+                if (node instanceof Station){
+                    ((Station) node).setPath(new ArrayList<>());
+                }
+
+            }
+
+            FindRouteController findRouteController = new FindRouteController();
+            findRouteController.findRoute(start, end, new ArrayList<Station>());
+
+            if (end.getPath().size()!=0){
+                end.getPath().add(end);
+            }
+
+
+
+
+
+
+
+        });
 
         undoButton.setOnAction( e-> {
             mapEditController.getUndoRedoStack().undoTransaction();
@@ -798,6 +829,8 @@ public class mmmWorkspace extends AppWorkspaceComponent {
 
         stationComboBox.getItems().clear();
         stationComboBox.getItems().addAll(lines);
+        toComboBox.getItems().addAll(lines);
+        fromComboBox.getItems().addAll(lines);
         stationComboBox.getSelectionModel().select(0);
     }
 

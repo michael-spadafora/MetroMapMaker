@@ -13,6 +13,7 @@ import javafx.scene.text.Text;
 public class Station extends Circle implements DraggableElement {
     ArrayList<SubwayLine> subwayLines;
     Text label;
+    ArrayList<Station> path;
     private double startCenterX;
     private double startCenterY;
     private int currentOrbitState = 0;
@@ -21,6 +22,18 @@ public class Station extends Circle implements DraggableElement {
 
     public void setSubwayLines(ArrayList<SubwayLine> subwayLines) {
         this.subwayLines = subwayLines;
+    }
+
+    public ArrayList<Station> getPath() {
+        return path;
+    }
+
+    public void setPath(ArrayList<Station> path) {
+        this.path = new ArrayList<>();
+        for (Station stat: path){
+            this.path.add(stat);
+        }
+        this.path = path;
     }
 
     public void setLabel(Text label) {
@@ -66,6 +79,7 @@ public class Station extends Circle implements DraggableElement {
         setFill(Color.WHITE);
         setStroke(Color.BLACK);
         setStrokeWidth(2);
+        path = new ArrayList<>();
     }
 
     public Text getLabel() {
@@ -85,6 +99,8 @@ public class Station extends Circle implements DraggableElement {
         setStrokeWidth(2);
         currentOrbitState = -1;
         orbitLabel();
+
+        path = new ArrayList<>();
 
 
     }
