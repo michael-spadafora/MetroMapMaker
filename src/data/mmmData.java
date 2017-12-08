@@ -21,7 +21,6 @@ import static data.mmmState.SELECTING_SHAPE;
 public class mmmData implements AppDataComponent {
 
     Effect highlightedEffect;
-    UndoRedoStack undoRedoStack;
     AppTemplate app;
     ObservableList<Node> elements;
     mmmState state;
@@ -41,7 +40,7 @@ public class mmmData implements AppDataComponent {
     public mmmData(AppTemplate initApp) {
         // KEEP THE APP FOR LATER
         app = initApp;
-        undoRedoStack = new UndoRedoStack(this);
+        //undoRedoStack = new UndoRedoStack(this);
         selectedElement = null;
         state = SELECTING_SHAPE;
         gridLines = new ArrayList<>();

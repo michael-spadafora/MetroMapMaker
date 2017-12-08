@@ -1,5 +1,6 @@
 package gui;
 
+import com.sun.org.apache.xerces.internal.impl.PropertyManager;
 import data.Station;
 import data.SubwayLine;
 import data.mmmData;
@@ -9,6 +10,8 @@ import djf.components.AppWorkspaceComponent;
 import djf.controller.AppFileController;
 import djf.ui.AppGUI;
 import djf.ui.AppMessageDialogSingleton;
+import djf.ui.AppYesNoCancelDialogSingleton;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -28,6 +31,7 @@ import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
+import javafx.stage.WindowEvent;
 import properties_manager.PropertiesManager;
 
 import java.io.File;
@@ -146,6 +150,32 @@ public class mmmWorkspace extends AppWorkspaceComponent {
         gui = app.getGUI();
         initLayout();
         initControllers();
+        Platform.setImplicitExit(false);
+        app.getGUI().getWindow().setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent event) {
+                event.consume();
+                AppYesNoCancelDialogSingleton appYesNoCancelDialogSingleton = AppYesNoCancelDialogSingleton.getSingleton();
+                appYesNoCancelDialogSingleton.show("Save Work","Do you want to save your work?");
+                String selection = appYesNoCancelDialogSingleton.getSelection();
+                if(selection ==AppYesNoCancelDialogSingleton.YES)
+
+                {
+                    PropertiesManager props = PropertiesManager.getPropertiesManager();
+                    try {
+                        app.getFileComponent().saveData(app.getDataComponent(), props.getProperty(SAVE_WORK_TITLE));
+                        app.getGUI().getWindow().close();
+                    } catch (Exception ex) {
+                        System.out.print("ioexception");
+                    }
+                }
+                if(selection ==AppYesNoCancelDialogSingleton.NO)
+
+                {
+                    app.getGUI().getWindow().close();
+                }
+            }
+        });
     }
 
     public Slider getLineThicknessSlider() {

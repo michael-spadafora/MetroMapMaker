@@ -31,13 +31,14 @@ public class MapEditController {
     mmmData data;
     final double ZOOM_CONSTANT = 1.1;
     ArrayList<Line> lines;
+    UndoRedoStack undoRedoStack;
    //mmmWorkspace workspace;
 
     public MapEditController(AppTemplate app) {
         this.app = app;
         data = (mmmData) app.getDataComponent();
+        undoRedoStack = new UndoRedoStack(data);
         //workspace = (mmmWorkspace) app.getWorkspaceComponent();
-
     }
 
     public void processAddLine() {
@@ -377,11 +378,23 @@ public class MapEditController {
         Pane canvas = workspace.getCanvas();
         //canvas.setBackground(new Background(new BackgroundFill(BLUE, null, null)));
 
-        canvas.setMinHeight(canvas.getLayoutBounds().getHeight() * (1/ZOOM_CONSTANT));
-        canvas.setMinWidth(canvas.getLayoutBounds().getWidth()* (1/ZOOM_CONSTANT));
+        double height = canvas.getLayoutBounds().getHeight() * (1/ZOOM_CONSTANT);
+        double width = canvas.getLayoutBounds().getWidth()* (1/ZOOM_CONSTANT);
 
-        canvas.setMaxHeight(canvas.getLayoutBounds().getHeight() * (1/ZOOM_CONSTANT));
-        canvas.setMaxWidth(canvas.getLayoutBounds().getWidth()* (1/ZOOM_CONSTANT));
+
+        if (height<200){
+            height = 200;
+        }
+        if (width<200){
+            width = 200;
+        }
+        canvas.setMinHeight(height);
+        canvas.setMinWidth(width);
+
+        canvas.setMaxHeight(height);
+        canvas.setMaxWidth(width);
+
+
 
         showGrid();
         showGrid();

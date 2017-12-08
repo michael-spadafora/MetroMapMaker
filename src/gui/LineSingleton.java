@@ -5,10 +5,7 @@ import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ColorPicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -28,6 +25,7 @@ public class LineSingleton extends Stage {
     String selection;
     ColorPicker colorPicker;
     TextField textField;
+    CheckBox circularCheckbox;
 
     // CONSTANT CHOICES
 
@@ -70,6 +68,7 @@ public class LineSingleton extends Stage {
         messageLabel = new Label();
         colorPicker = new ColorPicker();
         textField = new TextField();
+        circularCheckbox = new CheckBox("Circular");
 
         // YES, NO, AND CANCEL BUTTONS
         yesButton = new Button("Confirm");
