@@ -89,7 +89,7 @@ public class WelcomeDialogSingleton extends Stage {
             });
 
         for (int i = 0 ; i <matchingFiles.length && i<6; i++){
-            String fileName = matchingFiles[i].toString();
+            String fileName = matchingFiles[matchingFiles.length- 1  - i].toString();
             fileName = fileName.substring(0, fileName.length()-11);
             fileName = fileName.substring(7);
             recentLabels.add(fileName);

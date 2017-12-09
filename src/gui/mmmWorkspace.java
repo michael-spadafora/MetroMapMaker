@@ -162,20 +162,25 @@ public class mmmWorkspace extends AppWorkspaceComponent {
                 appYesNoCancelDialogSingleton.show("Save Work","Do you want to save your work?");
                 String selection = appYesNoCancelDialogSingleton.getSelection();
                 if(selection ==AppYesNoCancelDialogSingleton.YES)
-
                 {
                     PropertiesManager props = PropertiesManager.getPropertiesManager();
                     try {
-                        app.getFileComponent().saveData(app.getDataComponent(), props.getProperty(SAVE_WORK_TITLE));
-                        app.getGUI().getWindow().close();
+                        //String filepath =
+                        //app.getFileComponent().saveData(app.getDataComponent(), filepath);
+                        //app.getGUI().getFileController().handleSaveRequest();
+                        String pathname = app.getGUI().getWindow().getTitle();
+                        pathname = pathname.substring(pathname.indexOf("r")+11);
+                        //String newPathname = pathname.substring(pathname.indexOf("r"));
+                        pathname = PATH_WORK+ pathname;//+ " Metro.json";
+                        app.getFileComponent().saveData(app.getDataComponent(), pathname);
+                        System.exit(1);
                     } catch (Exception ex) {
                         System.out.print("ioexception");
                     }
                 }
                 if(selection ==AppYesNoCancelDialogSingleton.NO)
-
                 {
-                    app.getGUI().getWindow().close();
+                    System.exit(2);
                 }
             }
         });

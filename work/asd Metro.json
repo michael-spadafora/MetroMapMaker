@@ -1,21 +1,21 @@
 
 {
-    "name":"Save your work",
+    "name":"asd",
     "lines":[
     ],
     "stations":[
     ],
     "images":[
         {
-            "x":-803.0,
-            "y":141.0,
+            "x":671.0,
+            "y":36.0,
             "path":"file:C:\\Users\\mike spad\\Desktop\\cse219 final project\\Metro Map Maker\\work\\thailand Metro.png"
         }
     ],
     "text":[
         {
-            "x":225.0,
-            "y":109.0,
+            "x":267.0,
+            "y":149.0,
             "text":"asdfasdf",
             "font":{
                 "family":"System",
