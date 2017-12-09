@@ -210,9 +210,10 @@ public class mmmFiles implements AppFileComponent {
             ((mmmData) data).addStation(stat);
         }
 
-//        for (DraggableImage image: images){
-//            ((mmmData) data).addElement(image);
-//        }
+        for (DraggableImage image: images){
+            ((mmmData) data).addElement(image);
+        }
+
         for (DraggableText text: texts){
             ((mmmData) data).addElement(text);
         }
@@ -416,7 +417,7 @@ public class mmmFiles implements AppFileComponent {
         String path = jsonObject.getString(JSON_PATH);
         File file = new File(path);
 
-        DraggableImage image = new DraggableImage(file);
+        DraggableImage image = new DraggableImage(path);
         image.setX(x);
         image.setY(y);
 

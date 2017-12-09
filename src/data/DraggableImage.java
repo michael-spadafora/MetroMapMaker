@@ -16,12 +16,14 @@ public class DraggableImage  extends DraggableRectangle {
         super();
     }
 
-    //public setImage(String newPath)
-    DraggableImage(String newPath) {
+    public  DraggableImage(String newPath) {
 
         try {
 
-            path = newPath;
+            //path = "file:" + newPath;
+            path =  newPath;
+
+
 
             Image image = new Image(path);//new Image(path);
             // ImageView iv = new ImageView();
@@ -29,9 +31,10 @@ public class DraggableImage  extends DraggableRectangle {
             heightProperty().set(image.getHeight());
             widthProperty().set(image.getWidth());
 
-            DraggableRectangle rect = new DraggableRectangle();
+            //DraggableRectangle rect = new DraggableRectangle();
             ImagePattern pattern = new ImagePattern(image);
-            rect.setFill(pattern);
+            this.setFill(pattern);
+
         } catch (Exception ex) {
             Alert alert;
             alert = new Alert(Alert.AlertType.WARNING, "no image chosen");
@@ -52,7 +55,9 @@ public class DraggableImage  extends DraggableRectangle {
         try {
 
             path = "file:" + selectedFile.getAbsolutePath();
-
+            //path =  selectedFile.getAbsolutePath();
+            File file = new File(path);
+            boolean exists = file.exists();
             Image image = new Image(path);//new Image(path);
             // ImageView iv = new ImageView();
             //iv.setImage(image);
