@@ -43,6 +43,9 @@ public class DisplayAllStationsOnLineSingleton extends Stage {
     }
 
     public void show (SubwayLine subwayLine){
+        if (subwayLine== null){
+            return;
+        }
         String s = "";
         label.setText(subwayLine.getName());
         for (Station station:subwayLine.getStations()) {

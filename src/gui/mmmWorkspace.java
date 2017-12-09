@@ -202,27 +202,29 @@ public class mmmWorkspace extends AppWorkspaceComponent {
             mmmData data = (mmmData) app.getDataComponent();
             Station start = data.getStationFromString(fromComboBox.getSelectionModel().getSelectedItem());
             Station end =  data.getStationFromString(toComboBox.getSelectionModel().getSelectedItem());
-            start.setPath(new ArrayList<>());
-            end.setPath(new ArrayList<>());
 
-            for (Node node: data.getElements()){
-                if (node instanceof Station){
-                    ((Station) node).setPath(new ArrayList<>());
+            if (start != null && end != null) {
+                start.setPath(new ArrayList<>());
+                end.setPath(new ArrayList<>());
+
+                for (Node node : data.getElements()) {
+                    if (node instanceof Station) {
+                        ((Station) node).setPath(new ArrayList<>());
+                    }
+
                 }
 
+                FindRouteController findRouteController = new FindRouteController();
+                findRouteController.findRoute(start, end, new ArrayList<Station>());
+
+                if (end.getPath().size() != 0) {
+                    end.getPath().add(end);
+                }
+
+                DisplayAllStationsOnLineSingleton displayAllStationsOnLineSingleton = DisplayAllStationsOnLineSingleton.getInstance();
+                displayAllStationsOnLineSingleton.show(start, end);
+
             }
-
-            FindRouteController findRouteController = new FindRouteController();
-            findRouteController.findRoute(start, end, new ArrayList<Station>());
-
-            if (end.getPath().size()!=0){
-                end.getPath().add(end);
-            }
-
-            DisplayAllStationsOnLineSingleton displayAllStationsOnLineSingleton = DisplayAllStationsOnLineSingleton.getInstance();
-            displayAllStationsOnLineSingleton.show(start, end);
-
-
 
 
 

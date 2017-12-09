@@ -65,13 +65,17 @@ public class MapEditController {
 
     public void processRemoveLine() {
 
+        mmmWorkspace workspace = (mmmWorkspace) app.getWorkspaceComponent();
+        if (workspace.getSelectedLine()== null){
+            return;
+        }
+
         AppYesNoCancelDialogSingleton appYesNoCancelDialogSingleton = AppYesNoCancelDialogSingleton.getSingleton();
 
         appYesNoCancelDialogSingleton.show("Line remove", "Are you sure you want to remove this line?");
         String selection = appYesNoCancelDialogSingleton.getSelection();
         if (selection.equals(YES)){
             SubwayLine line = data.removeSelectedLine();
-            mmmWorkspace workspace = (mmmWorkspace) app.getWorkspaceComponent();
             workspace.updateLineComboBox(data.getElements());
             Transaction transaction = new RemoveLineTransaction(data, line);
             undoRedoStack.addTransaction(transaction);
@@ -83,9 +87,14 @@ public class MapEditController {
     }
 
     public void processEditLine() {
+
         LineSingleton ls = LineSingleton.getSingleton();
         mmmWorkspace workspace = (mmmWorkspace) app.getWorkspaceComponent();
         SubwayLine line = workspace.getSelectedLine();
+
+        if (line == null){
+            return;
+        }
 
         ls.show(line.getStart().getLabel().getText(), (Color) line.getStroke(), line.isCircular());
 
@@ -124,6 +133,9 @@ public class MapEditController {
     }
 
     public void processRemoveStationFromLine() {
+        if (((mmmWorkspace) app.getWorkspaceComponent()).getSelectedStation() == null){
+            return;
+        }
         Scene scene = app.getGUI().getPrimaryScene();
         scene.setCursor(Cursor.CROSSHAIR);
         data.setState(REMOVING_STATION_FROM_LINE);
@@ -131,6 +143,9 @@ public class MapEditController {
 
     public void processRemoveStation() {
         mmmWorkspace workspace = (mmmWorkspace) app.getWorkspaceComponent();
+        if (workspace.getSelectedStation()==null){
+            return;
+        }
         ArrayList<SubwayLine> lines = workspace.getSelectedStation().getSubwayLines();
 
         for (SubwayLine line: lines){
