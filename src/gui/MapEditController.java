@@ -551,13 +551,16 @@ public class MapEditController {
 
     public void moveLeft() {
 
-        mmmWorkspace workspace = (mmmWorkspace) app.getWorkspaceComponent();
-        double newLoc = workspace.getCanvas().getTranslateX() + 100;
-        double workspaceWidth = workspace.getWorkspace().getWidth()-500;
-        if (newLoc<workspaceWidth/2) {
-            workspace.getCanvas().setTranslateX(newLoc);
-        }
 
+
+        mmmWorkspace workspace = (mmmWorkspace) app.getWorkspaceComponent();
+        if(workspace.getCanvas().getHeight() > 683) {
+            double newLoc = workspace.getCanvas().getTranslateX() + 100;
+            double workspaceWidth = workspace.getWorkspace().getWidth() - 500;
+            if (newLoc < workspaceWidth / 2) {
+                workspace.getCanvas().setTranslateX(newLoc);
+            }
+        }
 
        // data.addElement(new Station());
        //fix this stuff
@@ -565,23 +568,26 @@ public class MapEditController {
 
     public void moveUp() {
         mmmWorkspace workspace = (mmmWorkspace) app.getWorkspaceComponent();
-        double newLoc = workspace.getCanvas().getTranslateY() + 100;
-        double workspaceHeight = workspace.getWorkspace().getHeight();
-        if (newLoc<workspaceHeight/2) {
-            workspace.getCanvas().setTranslateY(newLoc);
-        }
+        if(workspace.getCanvas().getHeight() > 683) {
 
+            double newLoc = workspace.getCanvas().getTranslateY() + 100;
+            double workspaceHeight = workspace.getWorkspace().getHeight();
+            if (newLoc < workspaceHeight / 2) {
+                workspace.getCanvas().setTranslateY(newLoc);
+            }
+        }
     }
 
     public void moveDown() {
         mmmWorkspace workspace = (mmmWorkspace) app.getWorkspaceComponent();
-        double newLoc = workspace.getCanvas().getTranslateY() - 100;
-        double workspaceHeight = workspace.getWorkspace().getHeight();
-        if (newLoc>-workspaceHeight/2) {
-            workspace.getCanvas().setTranslateY(newLoc);
+        if(workspace.getCanvas().getHeight() > 683) {
+            double newLoc = workspace.getCanvas().getTranslateY() - 100;
+            double workspaceHeight = workspace.getWorkspace().getHeight();
+            if (newLoc > -workspaceHeight / 2) {
+                workspace.getCanvas().setTranslateY(newLoc);
+            }
+
         }
-
-
 
         //if (workspace.getCanvas().getTranslateY() < 0){
             //workspace.getCanvas().setTranslateY((canvasHeight)/3 +100);
@@ -593,11 +599,14 @@ public class MapEditController {
 
     public void moveRight() {
         mmmWorkspace workspace = (mmmWorkspace) app.getWorkspaceComponent();
+        if(workspace.getCanvas().getHeight() > 683) {
         double newLoc = workspace.getCanvas().getTranslateX() - 100;
         double workspaceWidth = workspace.getWorkspace().getWidth()+50;
         if (newLoc>-workspaceWidth/2) {
             workspace.getCanvas().setTranslateX(newLoc);
         }
+        }
+
     }
 
     public void listAllStations() {

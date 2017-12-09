@@ -1,0 +1,27 @@
+
+{
+    "name":"imageTextTest",
+    "lines":[
+    ],
+    "stations":[
+    ],
+    "images":[
+        {
+            "x":9.0,
+            "y":170.0,
+            "path":"file:C:\\Users\\mike spad\\Desktop\\cse219 final project\\Metro Map Maker\\work\\thailand Metro.png"
+        }
+    ],
+    "text":[
+        {
+            "x":225.0,
+            "y":109.0,
+            "text":"asdfasdf",
+            "font":{
+                "family":"System",
+                "style":"Regular",
+                "size":12.0
+            }
+        }
+    ]
+}

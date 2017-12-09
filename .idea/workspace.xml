@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4e1fb8db-1583-436d-b92f-c9996587c59a" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gui/DisplayAllStationsOnLineSingleton.java" afterPath="$PROJECT_DIR$/src/gui/DisplayAllStationsOnLineSingleton.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gui/FindRouteController.java" afterPath="$PROJECT_DIR$/src/gui/FindRouteController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Metro Map Maker/gui/DisplayAllStationsOnLineSingleton.class" afterPath="$PROJECT_DIR$/out/production/Metro Map Maker/gui/DisplayAllStationsOnLineSingleton.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/file/mmmFiles.java" afterPath="$PROJECT_DIR$/src/file/mmmFiles.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gui/MapEditController.java" afterPath="$PROJECT_DIR$/src/gui/MapEditController.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -18,8 +20,8 @@
       <file leaf-file-name="MapEditController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/gui/MapEditController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2267">
-              <caret line="466" column="98" lean-forward="false" selection-start-line="466" selection-start-column="98" selection-end-line="466" selection-end-column="98" />
+            <state relative-caret-position="141">
+              <caret line="495" column="48" lean-forward="false" selection-start-line="495" selection-start-column="48" selection-end-line="495" selection-end-column="48" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#MapEditController#0;class#MapEditController#0" expanded="false" />
@@ -41,7 +43,7 @@
                 <element signature="method#showGrid#0;class#MapEditController#0" expanded="false" />
                 <element signature="method#snapToGrid#0;class#MapEditController#0" expanded="false" />
                 <element signature="method#enlargeMap#0;class#MapEditController#0" expanded="false" />
-                <element signature="method#addImage#0;class#MapEditController#0" expanded="false" />
+                <element signature="method#shrinkMap#0;class#MapEditController#0" expanded="false" />
                 <element signature="method#addLabel#0;class#MapEditController#0" expanded="false" />
                 <element signature="method#removeSelectedElement#0;class#MapEditController#0" expanded="false" />
                 <element signature="method#setBackgroundImage#0;class#MapEditController#0" expanded="false" />
@@ -60,60 +62,54 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FindRouteController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/gui/FindRouteController.java">
+      <file leaf-file-name="mmmFiles.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/file/mmmFiles.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="33" column="55" lean-forward="false" selection-start-line="33" selection-start-column="55" selection-end-line="33" selection-end-column="55" />
+            <state relative-caret-position="131">
+              <caret line="416" column="0" lean-forward="false" selection-start-line="416" selection-start-column="0" selection-end-line="416" selection-end-column="0" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="method#createTextJson#0;class#mmmFiles#0" expanded="false" />
+                <element signature="method#createFontJson#0;class#mmmFiles#0" expanded="false" />
+                <element signature="method#createImageJson#0;class#mmmFiles#0" expanded="false" />
+                <element signature="method#createStationJson#0;class#mmmFiles#0" expanded="false" />
+                <element signature="method#createSubwayLineJson#0;class#mmmFiles#0" expanded="false" />
+                <element signature="method#makeJsonColorObject#0;class#mmmFiles#0" expanded="false" />
+                <element signature="method#loadText#0;class#mmmFiles#0" expanded="false" />
+                <element signature="method#getFontFromJson#0;class#mmmFiles#0" expanded="false" />
+                <element signature="method#loadNode#0;class#mmmFiles#0" expanded="false" />
+                <element signature="method#loadLine#0;class#mmmFiles#0" expanded="false" />
+                <element signature="method#loadStation#0;class#mmmFiles#0" expanded="false" />
+                <element signature="method#exportData#0;class#mmmFiles#0" expanded="false" />
+                <element signature="method#importData#0;class#mmmFiles#0" expanded="false" />
+                <element signature="method#exportSubwayLineJson#0;class#mmmFiles#0" expanded="false" />
+                <element signature="method#getDataAsDouble#0;class#mmmFiles#0" expanded="false" />
+                <element signature="method#loadJSONFile#0;class#mmmFiles#0" expanded="false" />
+                <element signature="method#loadColor#0;class#mmmFiles#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mmmWorkspace.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/gui/mmmWorkspace.java">
+      <file leaf-file-name="MetroMapMakerApp.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/MetroMapMakerApp.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="156">
-              <caret line="209" column="59" lean-forward="false" selection-start-line="209" selection-start-column="59" selection-end-line="209" selection-end-column="59" />
+            <state relative-caret-position="249">
+              <caret line="117" column="0" lean-forward="false" selection-start-line="117" selection-start-column="0" selection-end-line="117" selection-end-column="0" />
               <folding>
-                <element signature="method#handle#0;class#4227:5362" expanded="false" />
+                <element signature="method#main#0;class#MetroMapMakerApp#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DisplayAllStationsOnLineSingleton.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/gui/DisplayAllStationsOnLineSingleton.java">
+      <file leaf-file-name="DraggableImage.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/data/DraggableImage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="65" column="42" lean-forward="false" selection-start-line="65" selection-start-column="42" selection-end-line="65" selection-end-column="42" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Station.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/data/Station.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+            <state relative-caret-position="106">
+              <caret line="55" column="39" lean-forward="false" selection-start-line="55" selection-start-column="39" selection-end-line="55" selection-end-column="39" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#Station#0;class#Station#0" expanded="false" />
-                <element signature="method#Station#1;class#Station#0" expanded="false" />
-                <element signature="method#orbitLabel#0;class#Station#0" expanded="false" />
-                <element signature="method#rotateLabel#0;class#Station#0" expanded="false" />
-                <element signature="method#start#0;class#Station#0" expanded="false" />
-                <element signature="method#drag#0;class#Station#0" expanded="false" />
-                <element signature="method#getNewLabelLocation#0;class#Station#0" expanded="false" />
-                <element signature="method#setLocationAndSize#0;class#Station#0" expanded="false" />
-                <element signature="method#changeRadius#0;class#Station#0" expanded="false" />
-                <element signature="method#fixAllLines#0;class#Station#0" expanded="false" />
-                <element signature="method#italisize#0;class#Station#0" expanded="false" />
-                <element signature="method#bolden#0;class#Station#0" expanded="false" />
-                <element signature="method#changeFontFamily#0;class#Station#0" expanded="false" />
+                <element signature="method#DraggableImage#1;class#DraggableImage#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -134,8 +130,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>controll</find>
-      <find>fixUndo</find>
       <find>activateUndoButton</find>
       <find>removeSElected</find>
       <find>addLine</find>
@@ -158,12 +152,14 @@
       <find>add</find>
       <find>updateLine</find>
       <find>borderpane</find>
-      <find>update</find>
       <find>work</find>
-      <find>station</find>
-      <find>shrink</find>
       <find>Stat</find>
+      <find>shrink</find>
       <find>canvas</find>
+      <find>update</find>
+      <find>canvasWr</find>
+      <find>station</find>
+      <find>addImage</find>
     </findStrings>
     <dirStrings>
       <dir>C:\Users\mike spad\Desktop\cse219 final project\Metro Map Maker\src\data</dir>
@@ -225,12 +221,12 @@
         <option value="$PROJECT_DIR$/src/data/RemoveStationFromLineTransaction.java" />
         <option value="$PROJECT_DIR$/src/gui/CanvasController.java" />
         <option value="$PROJECT_DIR$/src/data/SubwayLine.java" />
-        <option value="$PROJECT_DIR$/src/file/mmmFiles.java" />
-        <option value="$PROJECT_DIR$/src/gui/MapEditController.java" />
         <option value="$PROJECT_DIR$/src/data/Station.java" />
         <option value="$PROJECT_DIR$/src/gui/mmmWorkspace.java" />
         <option value="$PROJECT_DIR$/src/gui/FindRouteController.java" />
         <option value="$PROJECT_DIR$/src/gui/DisplayAllStationsOnLineSingleton.java" />
+        <option value="$PROJECT_DIR$/src/gui/MapEditController.java" />
+        <option value="$PROJECT_DIR$/src/file/mmmFiles.java" />
       </list>
     </option>
   </component>
@@ -291,6 +287,12 @@
               <item name="Metro Map Maker" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="data" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Metro Map Maker" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Metro Map Maker" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="file" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Metro Map Maker" type="b2602c69:ProjectViewProjectNode" />
@@ -462,12 +464,12 @@
       <workItem from="1512443328623" duration="12214000" />
       <workItem from="1512538685135" duration="8187000" />
       <workItem from="1512598698908" duration="46106000" />
-      <workItem from="1512723753088" duration="9695000" />
+      <workItem from="1512723753088" duration="15569000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="215965000" />
+    <option name="totallyTimeSpent" value="221839000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -491,11 +493,11 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32612056" sideWeight="0.5515933" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32921174" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31797236" sideWeight="0.44840667" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30261138" sideWeight="0.44840667" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32718894" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30332828" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30257186" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32872504" sideWeight="0.4969743" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -503,7 +505,7 @@
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39631337" sideWeight="0.46369138" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39631337" sideWeight="0.46369138" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -586,22 +588,10 @@
           <option name="timeStamp" value="147" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/data/DraggableImage.java</url>
-          <line>53</line>
-          <properties />
-          <option name="timeStamp" value="170" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/gui/mmmWorkspace.java</url>
           <line>757</line>
           <properties />
           <option name="timeStamp" value="194" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/gui/MapEditController.java</url>
-          <line>586</line>
-          <properties />
-          <option name="timeStamp" value="212" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/gui/MapEditController.java</url>
@@ -628,12 +618,6 @@
           <option name="timeStamp" value="234" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/data/Station.java</url>
-          <line>157</line>
-          <properties />
-          <option name="timeStamp" value="241" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/gui/MapEditController.java</url>
           <line>85</line>
           <properties />
@@ -652,25 +636,31 @@
           <option name="timeStamp" value="261" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/gui/FindRouteController.java</url>
-          <line>22</line>
+          <url>file://$PROJECT_DIR$/src/file/mmmFiles.java</url>
+          <line>282</line>
           <properties />
-          <option name="timeStamp" value="263" />
+          <option name="timeStamp" value="272" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/gui/FindRouteController.java</url>
-          <line>26</line>
+          <url>file://$PROJECT_DIR$/src/file/mmmFiles.java</url>
+          <line>212</line>
           <properties />
-          <option name="timeStamp" value="264" />
+          <option name="timeStamp" value="275" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/gui/FindRouteController.java</url>
-          <line>29</line>
+          <url>file://$PROJECT_DIR$/src/file/mmmFiles.java</url>
+          <line>415</line>
           <properties />
-          <option name="timeStamp" value="265" />
+          <option name="timeStamp" value="276" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/data/DraggableImage.java</url>
+          <line>55</line>
+          <properties />
+          <option name="timeStamp" value="277" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="268" />
+      <option name="time" value="278" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -706,19 +696,6 @@
         <state relative-caret-position="34">
           <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/data/DraggableImage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="16" lean-forward="true" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#303#304#0" expanded="true" />
-            <element signature="e#326#327#0" expanded="true" />
-            <element signature="method#DraggableImage#2;class#DraggableImage#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -825,16 +802,6 @@
             <element signature="method#setLocationAndSize#0;class#DraggableText#0" expanded="false" />
             <element signature="method#italisize#0;class#DraggableText#0" expanded="false" />
             <element signature="method#bolden#0;class#DraggableText#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MetroMapMakerApp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="59" column="61" lean-forward="true" selection-start-line="59" selection-start-column="61" selection-end-line="59" selection-end-column="61" />
-          <folding>
-            <element signature="method#main#0;class#MetroMapMakerApp#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1083,21 +1050,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/file/mmmFiles.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="268" column="65" lean-forward="false" selection-start-line="268" selection-start-column="65" selection-end-line="268" selection-end-column="65" />
-          <folding>
-            <element signature="method#createStationJson#0;class#mmmFiles#0" expanded="false" />
-            <element signature="method#createSubwayLineJson#0;class#mmmFiles#0" expanded="false" />
-            <element signature="method#makeJsonColorObject#0;class#mmmFiles#0" expanded="false" />
-            <element signature="method#loadNode#0;class#mmmFiles#0" expanded="false" />
-            <element signature="method#loadLine#0;class#mmmFiles#0" expanded="false" />
-            <element signature="method#exportData#0;class#mmmFiles#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_151/javafx-src.zip!/javafx/scene/control/ComboBox.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="121">
@@ -1114,33 +1066,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/data/Station.java">
+    <entry file="file://$PROJECT_DIR$/src/gui/DisplayAllStationsOnLineSingleton.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+        <state relative-caret-position="345">
+          <caret line="65" column="42" lean-forward="false" selection-start-line="65" selection-start-column="42" selection-end-line="65" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/mmmWorkspace.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="244">
+          <caret line="708" column="0" lean-forward="true" selection-start-line="708" selection-start-column="0" selection-end-line="708" selection-end-column="0" />
+          <folding>
+            <element signature="method#handle#0;class#4227:5362" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/FindRouteController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="164">
+          <caret line="39" column="51" lean-forward="true" selection-start-line="39" selection-start-column="51" selection-end-line="39" selection-end-column="51" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#Station#0;class#Station#0" expanded="false" />
-            <element signature="method#Station#1;class#Station#0" expanded="false" />
-            <element signature="method#orbitLabel#0;class#Station#0" expanded="false" />
-            <element signature="method#rotateLabel#0;class#Station#0" expanded="false" />
-            <element signature="method#start#0;class#Station#0" expanded="false" />
-            <element signature="method#drag#0;class#Station#0" expanded="false" />
-            <element signature="method#getNewLabelLocation#0;class#Station#0" expanded="false" />
-            <element signature="method#setLocationAndSize#0;class#Station#0" expanded="false" />
-            <element signature="method#changeRadius#0;class#Station#0" expanded="false" />
-            <element signature="method#fixAllLines#0;class#Station#0" expanded="false" />
-            <element signature="method#italisize#0;class#Station#0" expanded="false" />
-            <element signature="method#bolden#0;class#Station#0" expanded="false" />
-            <element signature="method#changeFontFamily#0;class#Station#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/gui/MapEditController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2267">
-          <caret line="466" column="98" lean-forward="false" selection-start-line="466" selection-start-column="98" selection-end-line="466" selection-end-column="98" />
+        <state relative-caret-position="141">
+          <caret line="495" column="48" lean-forward="false" selection-start-line="495" selection-start-column="48" selection-end-line="495" selection-end-column="48" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#MapEditController#0;class#MapEditController#0" expanded="false" />
@@ -1162,7 +1119,7 @@
             <element signature="method#showGrid#0;class#MapEditController#0" expanded="false" />
             <element signature="method#snapToGrid#0;class#MapEditController#0" expanded="false" />
             <element signature="method#enlargeMap#0;class#MapEditController#0" expanded="false" />
-            <element signature="method#addImage#0;class#MapEditController#0" expanded="false" />
+            <element signature="method#shrinkMap#0;class#MapEditController#0" expanded="false" />
             <element signature="method#addLabel#0;class#MapEditController#0" expanded="false" />
             <element signature="method#removeSelectedElement#0;class#MapEditController#0" expanded="false" />
             <element signature="method#setBackgroundImage#0;class#MapEditController#0" expanded="false" />
@@ -1180,31 +1137,73 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/FindRouteController.java">
+    <entry file="file://$PROJECT_DIR$/src/data/Station.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="33" column="55" lean-forward="false" selection-start-line="33" selection-start-column="55" selection-end-line="33" selection-end-column="55" />
+        <state relative-caret-position="-276">
+          <caret line="193" column="11" lean-forward="false" selection-start-line="193" selection-start-column="11" selection-end-line="193" selection-end-column="11" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#Station#0;class#Station#0" expanded="false" />
+            <element signature="method#Station#1;class#Station#0" expanded="false" />
+            <element signature="method#orbitLabel#0;class#Station#0" expanded="false" />
+            <element signature="method#rotateLabel#0;class#Station#0" expanded="false" />
+            <element signature="method#start#0;class#Station#0" expanded="false" />
+            <element signature="method#drag#0;class#Station#0" expanded="false" />
+            <element signature="method#getNewLabelLocation#0;class#Station#0" expanded="false" />
+            <element signature="method#setLocationAndSize#0;class#Station#0" expanded="false" />
+            <element signature="method#changeRadius#0;class#Station#0" expanded="false" />
+            <element signature="method#fixAllLines#0;class#Station#0" expanded="false" />
+            <element signature="method#italisize#0;class#Station#0" expanded="false" />
+            <element signature="method#changeFontFamily#0;class#Station#0" expanded="false" />
+            <element signature="method#clone#0;class#Station#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/mmmWorkspace.java">
+    <entry file="file://$PROJECT_DIR$/src/file/mmmFiles.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="209" column="59" lean-forward="false" selection-start-line="209" selection-start-column="59" selection-end-line="209" selection-end-column="59" />
+        <state relative-caret-position="131">
+          <caret line="416" column="0" lean-forward="false" selection-start-line="416" selection-start-column="0" selection-end-line="416" selection-end-column="0" />
           <folding>
-            <element signature="method#handle#0;class#4227:5362" expanded="false" />
+            <element signature="method#createTextJson#0;class#mmmFiles#0" expanded="false" />
+            <element signature="method#createFontJson#0;class#mmmFiles#0" expanded="false" />
+            <element signature="method#createImageJson#0;class#mmmFiles#0" expanded="false" />
+            <element signature="method#createStationJson#0;class#mmmFiles#0" expanded="false" />
+            <element signature="method#createSubwayLineJson#0;class#mmmFiles#0" expanded="false" />
+            <element signature="method#makeJsonColorObject#0;class#mmmFiles#0" expanded="false" />
+            <element signature="method#loadText#0;class#mmmFiles#0" expanded="false" />
+            <element signature="method#getFontFromJson#0;class#mmmFiles#0" expanded="false" />
+            <element signature="method#loadNode#0;class#mmmFiles#0" expanded="false" />
+            <element signature="method#loadLine#0;class#mmmFiles#0" expanded="false" />
+            <element signature="method#loadStation#0;class#mmmFiles#0" expanded="false" />
+            <element signature="method#exportData#0;class#mmmFiles#0" expanded="false" />
+            <element signature="method#importData#0;class#mmmFiles#0" expanded="false" />
+            <element signature="method#exportSubwayLineJson#0;class#mmmFiles#0" expanded="false" />
+            <element signature="method#getDataAsDouble#0;class#mmmFiles#0" expanded="false" />
+            <element signature="method#loadJSONFile#0;class#mmmFiles#0" expanded="false" />
+            <element signature="method#loadColor#0;class#mmmFiles#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/DisplayAllStationsOnLineSingleton.java">
+    <entry file="file://$PROJECT_DIR$/src/MetroMapMakerApp.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="65" column="42" lean-forward="false" selection-start-line="65" selection-start-column="42" selection-end-line="65" selection-end-column="42" />
-          <folding />
+        <state relative-caret-position="249">
+          <caret line="117" column="0" lean-forward="false" selection-start-line="117" selection-start-column="0" selection-end-line="117" selection-end-column="0" />
+          <folding>
+            <element signature="method#main#0;class#MetroMapMakerApp#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/data/DraggableImage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="106">
+          <caret line="55" column="39" lean-forward="false" selection-start-line="55" selection-start-column="39" selection-end-line="55" selection-end-column="39" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#DraggableImage#1;class#DraggableImage#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
